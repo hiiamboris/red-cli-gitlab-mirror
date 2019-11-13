@@ -27,15 +27,15 @@ cli: context [
 	}
 
 	;-- ERROR CODES refer to themselves, in case one wants to print them
-	ER_FEW:    'ER_FEW
-	ER_MUCH:   'ER_MUCH
-	ER_LOAD:   'ER_LOAD
-	ER_TYPE:   'ER_TYPE
-	ER_OPT:    'ER_OPT
-	ER_CHAR:   'ER_CHAR
-	ER_EMPTY:  'ER_EMPTY
-	ER_VAL:    'ER_VAL
-	ER_FORMAT: 'ER_FORMAT
+	ER_FEW:    'ER_FEW			;-- not enough operands
+	ER_MUCH:   'ER_MUCH			;-- too many operands
+	ER_LOAD:   'ER_LOAD			;-- provided value is invalid
+	ER_TYPE:   'ER_TYPE			;-- provided valus is of wrong type
+	ER_EMPTY:  'ER_EMPTY		;-- no value provided
+	ER_VAL:    'ER_VAL			;-- value provided where no value expected
+	ER_OPT:    'ER_OPT			;-- unknown option
+	ER_FORMAT: 'ER_FORMAT		;-- unknown option format
+	ER_CHAR:   'ER_CHAR			;-- unsupported char in option name
 
 	;-- supported argument FORMAT TYPES
 	loadable-set: make typeset! [integer! float! percent! logic! url! email! tag! time! date!]
