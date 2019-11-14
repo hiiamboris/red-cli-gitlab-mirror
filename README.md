@@ -347,7 +347,7 @@ See [3] on standard charset.
 
 #### 8. Case sensitivity
 
-`/case` so options will be case-sensitive (see [Case sensitivity](#case-sensitivity))
+`/case` so options will be case-sensitive (see [Case sensitivity](#case-sensitivity) notes above)
 
 #### 9. Raw option names
 
