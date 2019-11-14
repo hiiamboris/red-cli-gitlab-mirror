@@ -269,7 +269,7 @@ The prefix trick `/_1` may just help to overcome that. Examples apps are `gzip` 
 But the thing with numerics is that they are ranges, like `-1` to `-9`. It doesn't make any sense to populate words with it as `/_1 /_2 ... /_9`.
 Instead the program should use a generic string! placeholder and extract the integer from it. 
 
-Another question is how better to document these numeric options in help.
+Another question is how better to document these numeric options **in help**.
 `gzip` documents just `-1` as alias to `--fast` and `-9` as alias to `--best`. So only 2 junk words in function spec.
 Not a clue from it's help that one can use `-2` to `-8` as well :)
 
@@ -292,7 +292,7 @@ We could for example pass group info with a refinement, that would be like:
 
 If an option `-a` conflicts with `-b`, document it in docstrings and resolve in Red on case to case basis.
 
-Inverse flags are trickier.
+**Inverse flags** are trickier.
 E.g. you have a `--thing` and `--no-thing` defined, that are mutually exclusive.
 The usual approach I think is to use the flag that occurs latest in the command line.
 It is sometimes useful: for example you set up a batch file `prog.bat` that will call `prog.exe` with some default arguments, or you have those arguments in the environment, or whatever.
@@ -371,17 +371,17 @@ This will give full control over option format, but care should be taken for int
 
 #### 10. Error & output control
 
-`/collect-errors` will not report the errors but will collect those into a provided block in some defined format.
-
-`/output target [string! port!]` will append all output (help, version text, errors) somewhere else than stderr.
+`/collect-errors` will not report the errors but will collect those into a provided block in some defined format (it's only about those that stem from the command line given).
 
 `/check-all` so it will not stop on the first erroneous argument, but will process as much as possible and report everything at once (may lead to illogical error messages?).
+
+`/output target [string! port!]` will append all output (help, version text, errors) somewhere else than stderr.
 
 #### 11. Platform-specific option/switch names polymorphism
 
 `/platform-specific` will allow `/a` and `/abc:def` instead of `-a` and `--abc def`/`--abc=def` on Windows only (may conflict with other options).
 
-`/option` syntax looks more reddish, but it's not portable, as everywhere outside of Windows e.g. `/bin` is a directory, not a switch.
+`program /option` syntax looks more reddish, but it's not portable, as everywhere outside of Windows e.g. `/bin` is a directory, not a switch.
 Hyphen prefix is a better choice since `-filename` is a rare thing, than can anyway be solved with `--`.
 When one writes a Windows-only tool it makes sense though.
 
@@ -393,10 +393,10 @@ Should we allow passing empty strings as **`--option=`**? It can be done with `-
 
 Maybe a flag that would **forbid overriding** options that were already encountered? Does this have any use?
 
-If aliasing options by "ditto" string doesn't work for you, propose a better alternative ;)
+If aliasing options by **"ditto"** string doesn't work for you, propose a better alternative ;)
 I'm not totally convinced it's the best approach either. Just the one that seemed simpler to me.
 
-Should `pair!` type be added to the [loadable set](#type-checking-and-conversion)?
+Should **`pair!`** type be added to the [loadable set](#type-checking-and-conversion)?
 
 
 ### Intermediate form
