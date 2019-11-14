@@ -194,7 +194,7 @@ If **`block!`** is in the typeset, arguments will be **collected** and passed as
 Other than a `block!`, the typeset can contain any **combination** of these **types**:
 - `string!` - accepts the argument as is
 - `file!` - accepts the result of `to-red-file` on the argument (never fails, but can clean up some bad characters)
-- Any subset of **"loadable set"** = `[integer! float! percent! logic! url! email! tag! time! date!]`. In this case argument is `load`ed and it's type checked against the typeset.
+- Any subset of **"loadable set"** = `[integer! float! percent! logic! url! email! tag! issue! time! date!]`. In this case argument is `load`ed and it's type checked against the typeset.
 
 Value **type checking** is done in the following order:
 1. If typeset contains at least one *loadable* type, try to load it and see if it's loaded type belongs to both the loadable set and the argument typeset. Pass the argument on success.
@@ -244,8 +244,6 @@ See [Intermediate form](#intermediate-form) for a possible solution.
 If Red one day starts supporting default argument values in function spec,
 we will be able to infer defaults from it automatically, for the help text.
 
-Same for **conflicting options**. Document it in docstrings if required. Resolve in Red on case to case basis.
-
 **Example or commentary text** that commands often print at the end of their help can be printed manually.
 It's usually too long to appear in a docstring, and although we may repurpose `return:` docstring for that, I don't see it as a particularly bright idea.
 
@@ -290,6 +288,17 @@ We could for example pass group info with a refinement, that would be like:
 ]
 ```
 
+### Conflicting options
+
+If an option `-a` conflicts with `-b`, document it in docstrings and resolve in Red on case to case basis.
+
+Inverse flags are trickier.
+E.g. you have a `--thing` and `--no-thing` defined, that are mutually exclusive.
+The usual approach I think is to use the flag that occurs latest in the command line.
+It is sometimes useful: for example you set up a batch file `prog.bat` that will call `prog.exe` with some default arguments, or you have those arguments in the environment, or whatever.
+And you want to override these defaults in a call, but it won't work.
+In current implementation the receiving function does not possess any positional information, it cannot know if `--no-thing` is after or before `--thing`.
+Reporting an error is recommended in such cases, until a better solution is found.
 
 ## Possible extensions
 
@@ -335,6 +344,11 @@ Allowing both `-ab` and `-a` will conflict with aggregation.
 
 `/allow-multiple` will allow specifying multiple arguments to an option at once, delimited by comma or whitespace: `-a b,c,d` => `-a b -a c -a d` (Guideline 8 [2])
 
+Current implementation is restricted to at most one argument for the following:
+- To meaningfully support `--xx=<y>` form, as `--xx=y1 y2 y3` is somewhat confusing, because with the familiar GNU standard, only `y1` is an argument to `xx`, while `y2` and `y3` read as operands.
+- I don't recall any utility that would support it
+- I didn't decide how to do collection in presence of 2+ arguments: `/x a b`. Maybe `a` and `b` should be either both collecting or both replacing, but not mixed, then it'll work.
+
 #### 6. Sticking
 
 `/allow-sticking` will allow `-ofile` form as an equivalent of `-o file`. Recommended for POSIX compliance [1]
@@ -378,6 +392,11 @@ Should we **list** accepted types of every argument **in the help text**? Or at 
 Should we allow passing empty strings as **`--option=`**? It can be done with `--option ""` or `--option=""` right now anyway.
 
 Maybe a flag that would **forbid overriding** options that were already encountered? Does this have any use?
+
+If aliasing options by "ditto" string doesn't work for you, propose a better alternative ;)
+I'm not totally convinced it's the best approach either. Just the one that seemed simpler to me.
+
+Should `pair!` type be added to the [loadable set](#type-checking-and-conversion)?
 
 
 ### Intermediate form
