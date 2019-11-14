@@ -77,7 +77,7 @@ telnet opts= c=3 a=1 b=2
 
 This will automatically add `author` and `rights` strings from the header once Red supports it:
 ```
->curl-mockup.exe --version
+>curl-mockup --version
 ```
 ```
 curl-mockup 1.0
@@ -86,7 +86,7 @@ Built with Red 0.6.4 (#ed913ef) for Windows
 
 Errors:
 ```
->curl-mockup.exe 1000
+>curl-mockup 1000
 ```
 ```
 1000 should be a value of url type
