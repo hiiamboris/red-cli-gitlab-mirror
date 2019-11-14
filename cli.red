@@ -38,7 +38,7 @@ cli: context [
 	ER_CHAR:   'ER_CHAR			;-- unsupported char in option name
 
 	;-- supported argument FORMAT TYPES
-	loadable-set: make typeset! [integer! float! percent! logic! url! email! tag! time! date!]
+	loadable-set: make typeset! [integer! float! percent! logic! url! email! tag! issue! time! date!]
 	supported-set: union loadable-set make typeset! [string! file! block!]
 
 
