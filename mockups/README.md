@@ -1,6 +1,7 @@
 There's some tiny examples here, to prove the concept and showcase the features.
 With just 1-2 of the hardest to get right options and how they can be expressed:
 
+`<HOST+PORT>` was originally `<HOST:PORT>` but `:` in Red words isn't allowed, so I replaced it and left a note in argument description:
 ```
 >curl-mockup -h
 ```
@@ -17,6 +18,7 @@ Options:
   -h, --help                      Display this help text and exit      
 ```
 
+Huge option description formatting with word wrapping:
 ```
 >x264-mockup -h                                  
 ```
@@ -54,6 +56,16 @@ Options:
   -h, --help                      Display this help text and exit            
 ```
 
+Note *replacement*:
+```
+>x264-mockup --profile prof1 --profile prof2 --profile prof3 input
+```
+```
+infile= input
+profile= prof3
+```
+
+Note *collection*:
 ```
 >curl-mockup -t c=3 ftp://site --socks5=site:80 -t a=1 -t b=2
 ```
@@ -63,13 +75,7 @@ using host= site:80
 telnet opts= c=3 a=1 b=2
 ```
 
-```
->curl-mockup
-```
-```
-Not enough operands given
-```
-
+This will automatically add `author` and `rights` strings from the header once Red supports it:
 ```
 >curl-mockup.exe --version
 ```
@@ -77,11 +83,18 @@ Not enough operands given
 curl-mockup 1.0
 Built with Red 0.6.4 (#ed913ef) for Windows
 ```
-(this will automatically add `author` and `rights` strings from the header once Red supports it)
 
+Errors:
 ```
 >curl-mockup.exe 1000
 ```
 ```
 1000 should be a value of url type
+```
+
+```
+>curl-mockup
+```
+```
+Not enough operands given
 ```
