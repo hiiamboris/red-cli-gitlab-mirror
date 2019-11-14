@@ -183,10 +183,10 @@ In **general**:
 CLI implementation checks the type of every argument automatically.
 
 In the command line same option can appear **multiple times**: `-t 1 -t 2 -t 3` (maybe interspersed with other options or operands).
-We can either **replace** the previous value with the next one, or **collect** them all.
+We can either **replace** the previous value with the next one (`-t 1 -t 2 -t 3` produces `3`), or **collect** them all (`-t 1 -t 2 -t 3` produces `[1 2 3]`).
 Collecting only makes sense for options that accept arguments (`--option value`), not just flags (`--flag`).
 
-If **`block!`** is in the typeset, arguments will be collected and passed as a block:
+If **`block!`** is in the typeset, arguments will be **collected** and passed as a block:
 - **1+ values** given are passed as a block
 - **zero** values given to an **operand** are passed as an empty block `[]` (only the last operand can be collecting)
 - **zero** appearances of an **option** pass cause the corresponding refinement to equal `false` and the argument (if any) to equal `none`, even if it accepts a block
