@@ -214,7 +214,7 @@ Defining option **aliases**:
 - `/y "alias x"` defines `/y` to be an alias of `/x` that can appear anywhere in spec. `x` can be spelled as `/x`
 - `/y "alias of x"` - same
 - `/y "alias for x"` - same
-- To be precise, the parse expression used to define an alias is `["alias " ["of "|"for "|] copy target to end]`
+- To be precise, the parse expression used to define an alias is `["alias " ["of "|"for "|] copy target [skip to end]]`
 
 
 ### Type checking and conversion
