@@ -129,16 +129,17 @@ cli: context [
 				[set opt-doc string! | (opt-doc: copy "")]
 				
 				(force-nullary?: case [					;-- check the docstring for an alias definition
-					find ["ditto" "alias"] opt-doc [		;-- alias the previous refinement
-						(block? opt-names)
-						else {"ditto"/"alias" docstrings cannot be used in the 1st refinement}
-						append opt-names ref-name
-						yes
-					]
+					; find ["ditto" "alias"] opt-doc [		;-- alias the previous refinement
+					; 	(block? opt-names)
+					; 	else {"ditto"/"alias" docstrings cannot be used in the 1st refinement}
+					; 	append opt-names ref-name
+					; 	yes
+					; ]
 					parse opt-doc [							;-- alias specific refinement (may not be known yet)
-						"alias " ["of "|"for "|] copy target [skip to end]
+						; "alias " ["of "|"for "|] copy target [skip to end]
+						"alias " copy target [skip to end]
 					][
-						repend deferred-aliases [ref-name to refinement! target]
+						repend deferred-aliases [ref-name target]
 						yes
 					]
 					'else [									;-- normal refinement
@@ -150,8 +151,11 @@ cli: context [
 			parse spec [any string! any [=arg= | =ref=]]
 		] yes 3
 		foreach [alias target] deferred-aliases [
-			(pos: find-refinement spec target)
-			else form rejoin ["Target "target" of alias "alias" is not defined"]
+			(all [
+				target: attempt [load target]
+				find [word! refinement!] type?/word target
+				pos: find-refinement spec to refinement! target
+			]) else form rejoin ["Target "target" of alias "alias" is not defined"]
 			append pos/1 alias
 		]
 		spec
@@ -159,29 +163,29 @@ cli: context [
 
 	#assert [ (reduce ['x        "" make typeset! [string!] ]) = prep-spec [x] ]
 	#assert [ (reduce ['x     "doc" make typeset! [integer!]]) = prep-spec [x [integer!] "doc"] ]
-	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/x /y "ditto"] ]
-	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/x /y "alias"] ]
+	; #assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/x /y "ditto"] ]
+	; #assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/x /y "alias"] ]
 	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/x /y "alias x"] ]
 	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/y "alias x"       /x] ]
 	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/y "alias /x"      /x] ]
-	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/y "alias of /x"   /x] ]
-	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/y "alias for /x"  /x] ]
-	#assert [ (reduce [[/of /y]  "" none                    ]) = prep-spec [/y "alias /of"     /of] ]
-	#assert [ (reduce [[/of /y]  "" none                    ]) = prep-spec [/y "alias of"      /of] ]
-	#assert [ (reduce [[/of /y]  "" none                    ]) = prep-spec [/y "alias of of"   /of] ]
-	#assert [ (reduce [[/of /y]  "" none                    ]) = prep-spec [/y "alias for of"  /of] ]
-	#assert [ (reduce [[/for /y] "" none                    ]) = prep-spec [/y "alias for"     /for] ]
-	#assert [ (reduce [[/for /y] "" none                    ]) = prep-spec [/y "alias /for"    /for] ]
-	#assert [ (reduce [[/for /y] "" none                    ]) = prep-spec [/y "alias of for"  /for] ]
-	#assert [ (reduce [[/for /y] "" none                    ]) = prep-spec [/y "alias for for" /for] ]
+	; #assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/y "alias of /x"   /x] ]
+	; #assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/y "alias for /x"  /x] ]
+	; #assert [ (reduce [[/of /y]  "" none                    ]) = prep-spec [/y "alias /of"     /of] ]
+	; #assert [ (reduce [[/of /y]  "" none                    ]) = prep-spec [/y "alias of"      /of] ]
+	; #assert [ (reduce [[/of /y]  "" none                    ]) = prep-spec [/y "alias of of"   /of] ]
+	; #assert [ (reduce [[/of /y]  "" none                    ]) = prep-spec [/y "alias for of"  /of] ]
+	; #assert [ (reduce [[/for /y] "" none                    ]) = prep-spec [/y "alias for"     /for] ]
+	; #assert [ (reduce [[/for /y] "" none                    ]) = prep-spec [/y "alias /for"    /for] ]
+	; #assert [ (reduce [[/for /y] "" none                    ]) = prep-spec [/y "alias of for"  /for] ]
+	; #assert [ (reduce [[/for /y] "" none                    ]) = prep-spec [/y "alias for for" /for] ]
 	#assert [
 		(reduce [
 			[/x /y] "doc1" none
 			'z      "doc2" make typeset! [integer! block!]
-		]) = prep-spec [/x "doc1" z [integer! block!] "doc2" /y "ditto"]
+		]) = prep-spec [/x "doc1" z [integer! block!] "doc2" /y "alias x"]
 	]
-	#assert [ error? try [prep-spec [/x y /z "ditto" w]] ]
-	#assert [ error? try [prep-spec [/z "ditto" w]] ]
+	#assert [ error? try [prep-spec [/x y /z "alias x" w]] ]
+	#assert [ error? try [prep-spec [/z "alias x" w]] ]
 
 
 	supported?: function [
@@ -398,7 +402,7 @@ cli: context [
 	#assert [ [f   [1 2] [/y [3]   ]] = add-refinements [f   [1 2] [      ]] func [/x /y z [integer!]][] "y" "3" ]
 	#assert [ [y/y [1 2] [/y [3]   ]] = add-refinements [y/y [1 2] [      ]] func [/x /y z [integer!]][] "y" "3" ]
 	#assert [ [y/y [1 2] [/y [3 4] ]] = add-refinements [y/y [1 2] [/y [3]]] func [/x /y z [integer!]][] "y" "4" ]
-	#assert [ [y/y [1 2] [/y /z [3]]] = add-refinements [y/y [1 2] [      ]] func [/x /y q [integer!] /z "ditto"][] "z" "3" ]
+	#assert [ [y/y [1 2] [/y /z [3]]] = add-refinements [y/y [1 2] [      ]] func [/x /y q [integer!] /z "alias y"][] "z" "3" ]
 
 
 	add-operand: function [
@@ -482,12 +486,12 @@ cli: context [
 		r
 	]
 
-	#assert [ [y/y/x       ] = prep-call [y/y [] [/x    [0]]] func [/x /y q /z "ditto"][] ]
-	#assert [ [y/y/y/z 3   ] = prep-call [y/y [] [/y /z [3]]] func [/x /y q [integer!] /z "ditto"][] ]
-	#assert [ [y/y/y/z [3] ] = prep-call [y/y [] [/y /z [3]]] func [/x /y q [integer! block!] /z "ditto"][] ]
-	#assert [ [y/y 1 2     ] = prep-call [y/y [1 2] []      ] func [a [integer!] b [integer!] /x /z "ditto"][] ]
-	#assert [ [y/y 1 [2]   ] = prep-call [y/y [1 2] []      ] func [a [integer!] b [integer! block!] /x /z "ditto"][] ]
-	#assert [ [y/y 1 [2 3] ] = prep-call [y/y [1 2 3] []    ] func [a [integer!] b [integer! block!] /x /z "ditto"][] ]
+	#assert [ [y/y/x       ] = prep-call [y/y [] [/x    [0]]] func [/x /y q /z "alias y"][] ]
+	#assert [ [y/y/y/z 3   ] = prep-call [y/y [] [/y /z [3]]] func [/x /y q [integer!] /z "alias /y"][] ]
+	#assert [ [y/y/y/z [3] ] = prep-call [y/y [] [/y /z [3]]] func [/x /y q [integer! block!] /z "alias y"][] ]
+	#assert [ [y/y 1 2     ] = prep-call [y/y [1 2] []      ] func [a [integer!] b [integer!] /x /z "alias /x"][] ]
+	#assert [ [y/y 1 [2]   ] = prep-call [y/y [1 2] []      ] func [a [integer!] b [integer! block!] /x /z "alias x"][] ]
+	#assert [ [y/y 1 [2 3] ] = prep-call [y/y [1 2 3] []    ] func [a [integer!] b [integer! block!] /x /z "alias /x"][] ]
 
 
 
@@ -859,7 +863,7 @@ cli: context [
 			/x
 			/y "docstring of y"
 				y1 [float!] "docstring of y1" 
-			/y2 "ditto"
+			/y2 "alias y"
 			/z "docstring of z"
 				z1 [block! date!] "docstring of z1"
 			/local q

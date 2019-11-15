@@ -195,26 +195,18 @@ In **general**:
 - CLI format is derived from the spec automatically
 - A command line with all of it's arguments is transformed into a call of this function
 
-**Spec** processing (e.g. for `program: func ["info" a b /xx "docstrings" y /z "ditto"]`) follow intuitive rules:
+**Spec** processing (e.g. for `program: func ["info" a b /xx "docstrings" y /z "alias xx"]`) follow intuitive rules:
 - mandatory func arguments (`a b`) become CLI operands
 - one-letter refinements (`/z`) become short options (`-z <y>`)
 - longer refinements (`/xx`) become long options (`--xx <y>`)
 - refinements can have at most one argument (`y`) that becomes an option argument (`-z <y>`, `--xx <y>`)
-- "ditto" is a reserved docstring that declares an alias to the previous refinement (`/z` as an alias to `/xx`)
+- `"alias xx"` (or `"alias /xx"`) is a reserved docstring format that declares an alias of another refinement (`/z` as an alias to `/xx` here)
 - aliased refinement cannot have arguments of it's own
 - if any of the aliased options (`-xx` or `-z`) occur in the command line, all aliased refinements (`/z` and `/xx`) will be set to true
 - `program` word itself can be used as Program name or Executable name in help text (in absense of better sources)
 - function "info" is used in help text as program description
-- refinement/argument "docstrings" other than "ditto" are used in help text to provide option and argument info (no docstring = same as "")
+- refinement/argument "docstrings" other than "alias ref" are used in help text to provide option and argument info (no docstring = same as "")
 - `/local`s are ignored
-
-Defining option **aliases**:
-- `/x ... /y "ditto"` defines `/y` to be an alias of the previous option `/x`
-- `/x ... /y "alias"` - same
-- `/y "alias x"` defines `/y` to be an alias of `/x` that can appear anywhere in spec. `x` can be spelled as `/x`
-- `/y "alias of x"` - same
-- `/y "alias for x"` - same
-- To be precise, the parse expression used to define an alias is `["alias " ["of "|"for "|] copy target [skip to end]]`
 
 
 ### Type checking and conversion
@@ -433,7 +425,7 @@ Should we allow passing empty strings as **`--option=`**? It can be done with `-
 
 Maybe a flag that would **forbid overriding** options that were already encountered? Does this have any use?
 
-If aliasing options by **"ditto"** string doesn't work for you, propose a better alternative ;)
+If aliasing options by **"alias ..."** string doesn't work for you, propose a better alternative ;)
 I'm not totally convinced it's the best approach either. Just the one that seemed simpler to me.
 
 Should **`pair!`** type be added to the [loadable set](#type-checking-and-conversion)?
