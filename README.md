@@ -208,6 +208,14 @@ In **general**:
 - refinement/argument "docstrings" other than "ditto" are used in help text to provide option and argument info (no docstring = same as "")
 - `/local`s are ignored
 
+Defining option **aliases**:
+- `/x ... /y "ditto"` defines `/y` to be an alias of the previous option `/x`
+- `/x ... /y "alias"` - same
+- `/y "alias x"` defines `/y` to be an alias of `/x` that can appear anywhere in spec. `x` can be spelled as `/x`
+- `/y "alias of x"` - same
+- `/y "alias for x"` - same
+- To be precise, the parse expression used to define an alias is `["alias " ["of "|"for "|] copy target to end]`
+
 
 ### Type checking and conversion
 
@@ -226,7 +234,7 @@ If **`block!`** is in the typeset, arguments will be **collected** and passed as
 Other than a `block!`, the typeset can contain any **combination** of these **types**:
 - `string!` - accepts the argument as is
 - `file!` - accepts the result of `to-red-file` on the argument (never fails, but can clean up some bad characters)
-- Any subset of **"loadable set"** = `[integer! float! percent! logic! url! email! tag! issue! time! date!]`. In this case argument is `load`ed and it's type checked against the typeset.
+- Any subset of **"loadable set"** = `[integer! float! percent! logic! url! email! tag! issue! time! date! pair!]`. In this case argument is `load`ed and it's type checked against the typeset.
 
 Value **type checking** is done in the following order:
 1. If typeset contains at least one *loadable* type, try to load it and see if it's loaded type belongs to both the loadable set and the argument typeset. Pass the argument on success.

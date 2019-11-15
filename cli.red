@@ -24,6 +24,8 @@ cli: context [
 			https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html#tag_12_02
 		[3] "Portable character set"
 			https://en.wikipedia.org/wiki/Portable_character_set
+		[4] "Learning the Bash. Special Characters and Quoting"
+			https://www.oreilly.com/library/view/learning-the-bash/1565923472/ch01s09.html
 	}
 
 	;-- ERROR CODES refer to themselves, in case one wants to print them
@@ -38,7 +40,7 @@ cli: context [
 	ER_CHAR:   'ER_CHAR			;-- unsupported char in option name
 
 	;-- supported argument FORMAT TYPES
-	loadable-set: make typeset! [integer! float! percent! logic! url! email! tag! issue! time! date!]
+	loadable-set: make typeset! [integer! float! percent! logic! url! email! tag! issue! time! date! pair!]
 	supported-set: union loadable-set make typeset! [string! file! block!]
 
 
@@ -68,57 +70,6 @@ cli: context [
 
 	;; ████████████  SPEC ANALYSIS  ████████████
 
-	prep-spec: function [
-		"Converts a function SPEC into internal format used for easier argument processing"
-		;-- internal spec format is a block of triplets:
-		;; [      name-word          "docstring"  typeset! ]  for operands and option arguments
-		;; [ [ /option /alias ... ]  "docstring"  none     ]  for --options themselves
-		spec [block! function!]
-		/local arg-name ref-name
-	][
-		if function? :spec [spec: spec-of :spec]
-		force-nullary?: no
-		new-line/skip collect [
-			=arg=: [									;-- operand / argument (word)
-				set arg-name word!  (arg-types: [string!]  arg-doc: copy "")
-				any [set arg-types block! | set arg-doc string!]
-				(
-					(not force-nullary?) else {alias refinements cannot have arguments}
-					if arg-types = [block!] [append arg-types string!]
-					keep reduce [arg-name  arg-doc  make typeset! arg-types]
-				)
-			]
-			=ref=: [									;-- option (refinement)
-				opt [/local to [refinement! | end]]			;-- skip /locals
-				set ref-name refinement! [
-					"ditto" (								;-- use "ditto" as alias to the previos refinement
-						(block? opt-names) else {"ditto" docstring cannot be used in the 1st refinement}
-						append opt-names ref-name
-						force-nullary?: yes
-					)
-				|	[set opt-doc string! | (opt-doc: copy "")]
-					(	keep reduce [opt-names: reduce [ref-name]  opt-doc  none]
-						force-nullary?: no
-					)
-				]
-			]
-			parse spec [any string! any [=arg= | =ref=]]
-		] yes 3
-	]
-
-	#assert [ (reduce ['x      "" make typeset! [string!] ]) = prep-spec [x] ]
-	#assert [ (reduce ['x   "doc" make typeset! [integer!]]) = prep-spec [x [integer!] "doc"] ]
-	#assert [ (reduce [[/x /y] "" none                    ]) = prep-spec [/x /y "ditto"] ]
-	#assert [
-		(reduce [
-			[/x /y] "doc1" none
-			'z      "doc2" make typeset! [integer! block!]
-		]) = prep-spec [/x "doc1" z [integer! block!] "doc2" /y "ditto"]
-	]
-	#assert [ error? try [prep-spec [/x y /z "ditto" w]] ]
-	#assert [ error? try [prep-spec [/z "ditto" w]] ]
-
-
 	str-to-ref: func [
 		{Convert "string" into /refinement}
 		s [string!]
@@ -135,6 +86,8 @@ cli: context [
 		to refinement! s
 	]
 
+	#assert [/x = str-to-ref "x"]
+
 	find-refinement: function [
 		"Return SPEC at block containing /ref, or none if not found"
 		spec [block!]
@@ -147,6 +100,89 @@ cli: context [
 		]
 		none
 	]
+
+
+	prep-spec: function [
+		"Converts a function SPEC into internal format used for easier argument processing"
+		;-- internal spec format is a block of triplets:
+		;; [      name-word          "docstring"  typeset! ]  for operands and option arguments
+		;; [ [ /option /alias ... ]  "docstring"  none     ]  for --options themselves
+		spec [block! function!]
+		/local arg-name ref-name target
+	][
+		if function? :spec [spec: spec-of :spec]
+		force-nullary?: no
+		deferred-aliases: copy []
+		spec: new-line/skip collect [
+			=arg=: [									;-- operand / argument (word)
+				set arg-name word!  (arg-types: [string!]  arg-doc: copy "")
+				any [set arg-types block! | set arg-doc string!]
+				(
+					(not force-nullary?) else {alias refinements cannot have arguments}
+					if arg-types = [block!] [append arg-types string!]
+					keep reduce [arg-name  arg-doc  make typeset! arg-types]
+				)
+			]
+			=ref=: [									;-- option (refinement)
+				opt [/local to [refinement! | end]]			;-- skip /locals
+				set ref-name refinement!
+				[set opt-doc string! | (opt-doc: copy "")]
+				
+				(force-nullary?: case [					;-- check the docstring for an alias definition
+					find ["ditto" "alias"] opt-doc [		;-- alias the previous refinement
+						(block? opt-names)
+						else {"ditto"/"alias" docstrings cannot be used in the 1st refinement}
+						append opt-names ref-name
+						yes
+					]
+					parse opt-doc [							;-- alias specific refinement (may not be known yet)
+						"alias " ["of "|"for "|] copy target [skip to end]
+					][
+						repend deferred-aliases [ref-name to refinement! target]
+						yes
+					]
+					'else [									;-- normal refinement
+						keep reduce [opt-names: reduce [ref-name]  opt-doc  none]
+						no
+					]
+				])
+			]
+			parse spec [any string! any [=arg= | =ref=]]
+		] yes 3
+		foreach [alias target] deferred-aliases [
+			(pos: find-refinement spec target)
+			else form rejoin ["Target "target" of alias "alias" is not defined"]
+			append pos/1 alias
+		]
+		spec
+	]
+
+	#assert [ (reduce ['x        "" make typeset! [string!] ]) = prep-spec [x] ]
+	#assert [ (reduce ['x     "doc" make typeset! [integer!]]) = prep-spec [x [integer!] "doc"] ]
+	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/x /y "ditto"] ]
+	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/x /y "alias"] ]
+	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/x /y "alias x"] ]
+	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/y "alias x"       /x] ]
+	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/y "alias /x"      /x] ]
+	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/y "alias of /x"   /x] ]
+	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/y "alias for /x"  /x] ]
+	#assert [ (reduce [[/of /y]  "" none                    ]) = prep-spec [/y "alias /of"     /of] ]
+	#assert [ (reduce [[/of /y]  "" none                    ]) = prep-spec [/y "alias of"      /of] ]
+	#assert [ (reduce [[/of /y]  "" none                    ]) = prep-spec [/y "alias of of"   /of] ]
+	#assert [ (reduce [[/of /y]  "" none                    ]) = prep-spec [/y "alias for of"  /of] ]
+	#assert [ (reduce [[/for /y] "" none                    ]) = prep-spec [/y "alias for"     /for] ]
+	#assert [ (reduce [[/for /y] "" none                    ]) = prep-spec [/y "alias /for"    /for] ]
+	#assert [ (reduce [[/for /y] "" none                    ]) = prep-spec [/y "alias of for"  /for] ]
+	#assert [ (reduce [[/for /y] "" none                    ]) = prep-spec [/y "alias for for" /for] ]
+	#assert [
+		(reduce [
+			[/x /y] "doc1" none
+			'z      "doc2" make typeset! [integer! block!]
+		]) = prep-spec [/x "doc1" z [integer! block!] "doc2" /y "ditto"]
+	]
+	#assert [ error? try [prep-spec [/x y /z "ditto" w]] ]
+	#assert [ error? try [prep-spec [/z "ditto" w]] ]
+
 
 	supported?: function [
 		"Check if option R is supported by F"
@@ -470,7 +506,18 @@ cli: context [
 	][
 		;-- [1]: Long options consist of ‘--’ followed by a name made of ALPHANUMERIC characters and DASHES
 		;-- [2]: Each option name should be a single ALPHANUMERIC character from the PORTABLE character set
-		=optchar=: charset [#"a" - #"z"  #"A" - #"Z"  #"0" - #"9"  "-"]
+		; =optchar=: charset [#"a" - #"z"  #"A" - #"Z"  #"0" - #"9"  "-"]
+
+		;-- relaxed charset on par with Red words
+		=optchar=: charset [
+			not
+			{/\^^,[](){}"#%$@:;}						;-- non-word chars
+			" "											;-- whitespace
+			#"^(00)" - #"^(1F)"							;-- C0 control codes
+			#"^(80)" - #"^(9F)"							;-- C1 control codes
+			"="											;-- option/argument delimiter
+			"&`'|?*~!<>"								;-- special chars in shell
+		]
 
 		allow-options?: yes								;-- will be switched off by `--`
 		r: make block! 20
@@ -712,7 +759,7 @@ cli: context [
 
 				unless committed? [commit]
 
-				short: clear ""  long: clear ""
+				short: copy ""  long: copy ""
 				foreach name names [					;-- form short & long options strings
 					either single? form to word! name 
 						[ repend short ["-" name ", "] ]
