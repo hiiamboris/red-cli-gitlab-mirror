@@ -385,23 +385,18 @@ Current implementation is restricted to at most one argument for the following:
 
 `/allow-sticking` will allow `-ofile` form as an equivalent of `-o file`. Recommended for POSIX compliance [1]
 
-#### 7. Extended character set
 
-`/allow-non-alnum` will allow non-alphanumeric characters (that may appear in words) for argument names (like Windows' famous "/?", or for utilities that target only a certain language community).
-
-See [3] on standard charset.
-
-#### 8. Case sensitivity
+#### 7. Case sensitivity
 
 `/case` so options will be case-sensitive (see [Case sensitivity](#case-sensitivity) notes above)
 
-#### 9. Raw option names
+#### 8. Raw option names
 
 `/no-prefix` will not add `-` and `--` to refinement names automatically (both for help text and cli argument to refinement matching).
 A `/--ref` option would constitute what normally would be `/ref`.
 This will give full control over option format, but care should be taken for integer options as `/-1` and such can't be words.
 
-#### 10. Error & output control
+#### 9. Error & output control
 
 `/collect-errors` will not report the errors but will collect those into a provided block in some defined format (it's only about those that stem from the command line given).
 
@@ -409,7 +404,7 @@ This will give full control over option format, but care should be taken for int
 
 `/output target [string! port!]` will append all output (help, version text, errors) somewhere else than stderr.
 
-#### 11. Platform-specific option/switch names polymorphism
+#### 10. Platform-specific option/switch names polymorphism
 
 `/platform-specific` will allow `/a` and `/abc:def` instead of `-a` and `--abc def`/`--abc=def` on Windows only (may conflict with other options).
 
