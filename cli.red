@@ -384,7 +384,7 @@ cli: context [
 		either pos: find/tail call/3 ref [				;-- are refinements already added?
 			pos: find pos block!							;-- jump to values
 		][												;-- otherwise
-			foreach ref refs [append call/3 ref]			;-- list all aliases
+			append call/3 refs								;-- list all aliases
 			pos: tail call/3
 			append/only call/3 copy []						;-- create a block to hold values
 		]
@@ -523,10 +523,22 @@ cli: context [
 			"&`'|?*~!<>"								;-- special chars in shell
 		]
 
+		help-version-quit?: has [msg] [					;-- default -h / --version handler
+			if msg: case [									;-- two special cases apply
+				all [not no-help     find ["h" "help"] arg-name]
+					[ help-for/options (program) opts ]
+				all [not no-version  arg-name = "version"]
+					[ version-for/options (program) opts ]
+			][
+				print msg
+				quit/return 0
+			]
+		]
+
 		allow-options?: yes								;-- will be switched off by `--`
 		r: make block! 20
 		forall args [
-			arg: first args
+			arg: :args/1
 			unless string? :arg [arg: form :arg]		;-- should never happen?
 
 			either not all [allow-options?  option?/options arg opts] [
@@ -559,15 +571,7 @@ cli: context [
 						ahead dlms											;-- forbid multiple chars after a single hyphen
 					]
 					(unless supported? get program arg-name [			;-- check the option name
-						if msg: case [										;-- two special cases apply
-							all [not no-help     find ["h" "help"] arg-name]
-								[ help-for/options (program) opts ]
-							all [not no-version  arg-name = "version"]
-								[ version-for/options (program) opts ]
-						][
-							print msg
-							quit/return 0
-						]
+						help-version-quit?									;-- try default handlers when not handled by the program
 						complain [ER_OPT "Unsupported option:" arg]
 					])
 					[	if (unary? get program arg-name)				;-- read the value (if required)
@@ -577,7 +581,7 @@ cli: context [
 						[	end (											;-- consume the next argument when needed
 								args: next args
 								if empty? args [complain [ER_EMPTY arg "needs a value"]]
-								arg: first args
+								arg: :args/1
 								unless string? :arg [arg: form :arg]		;-- should never happen?
 								arg-value: copy arg
 							)
@@ -734,7 +738,7 @@ cli: context [
 
 		committed?: yes
 		header?: no
-		commit: does [
+		commit: has [ln] [
 			unless header? [append r "Options:^/"  header?: yes]
 
 			pad  append cols1-4: s-opts #" "  sum copy/part cols 3
@@ -749,8 +753,8 @@ cli: context [
 					]
 				]
 			]
-			forall s-doc [								;-- output all lines
-				repend r [cols1-4 s-doc/1 #"^/"]
+			foreach ln s-doc [								;-- output all lines
+				repend r [cols1-4 ln #"^/"]
 				replace/all cols1-4 [skip] #" "
 			]
 			committed?: yes
