@@ -11,11 +11,48 @@ Red [
 	}
 ]
 
-#include %common/init.red
+;; ████████████  DEBUGGING FACILITIES  ████████████
 
-do expand-directives [									;-- boring workaround for #4128
+#macro [#debug 'on]  func [s e] [debug: on  []]
+#macro [#debug 'off] func [s e] [debug: off []]
+#macro [#debug block!] func [s e] [either debug [ s/2 ][ [] ]]
+#debug off
 
+#macro [#assert 'on]  func [s e] [assertions: on  []]
+#macro [#assert 'off] func [s e] [assertions: off []]
+#assert off
+
+#macro [#assert block!] func [s e] [
+	either assertions [ reduce ['assert s/2] ][ [] ]
+]
+
+
+;-- comment these out to disable self-testing
+
+#debug on
+#assert on
+
+; #include %common/init.red
+
+; do expand-directives [									;-- boring workaround for #4128
 cli: context [
+
+	assertions-run: 0
+	assert: function [contract [block!]][
+		set [cond msg] reduce contract
+		set 'assertions-run assertions-run + 1
+		unless cond [
+			print ["ASSERTION FAILURE:" mold contract]
+			if none? msg [msg: last contract]
+			if any-word? msg [
+				msg: either function? get msg
+				[ rejoin ["" msg " result is unexpected"] ]
+				[ rejoin ["" msg " is " mold/part/flat get msg 1024] ]
+			]
+			do make error! form msg
+		]
+	]
+
 	comment {
 		References:
 		[1] "Program Argument Syntax Conventions"
@@ -523,15 +560,17 @@ cli: context [
 			"&`'|?*~!<>"								;-- special chars in shell
 		]
 
-		help-version-quit?: has [msg] [					;-- default -h / --version handler
-			if msg: case [									;-- two special cases apply
-				all [not no-help     find ["h" "help"] arg-name]
-					[ help-for/options (program) opts ]
-				all [not no-version  arg-name = "version"]
-					[ version-for/options (program) opts ]
-			][
-				print msg
-				quit/return 0
+		do [											;@@ DO for compiler
+			help-version-quit?: has [msg] [					;-- default -h / --version handler
+				if msg: case [									;-- two special cases apply
+					all [not no-help     find ["h" "help"] arg-name]
+						[ help-for/options (program) opts ]
+					all [not no-version  arg-name = "version"]
+						[ version-for/options (program) opts ]
+				][
+					print msg
+					quit/return 0
+				]
 			]
 		]
 
@@ -571,7 +610,7 @@ cli: context [
 						ahead dlms											;-- forbid multiple chars after a single hyphen
 					]
 					(unless supported? get program arg-name [			;-- check the option name
-						help-version-quit?									;-- try default handlers when not handled by the program
+						do [help-version-quit?]								;-- try default handlers when not handled by the program ;@@ DO for compiler
 						complain [ER_OPT "Unsupported option:" arg]
 					])
 					[	if (unary? get program arg-name)				;-- read the value (if required)
@@ -624,13 +663,13 @@ cli: context [
 
 		standalone?: none? system/options/script		;@@ is there a better way to check?
 
-		dehyphenize: func [x] [replace/all form x #"-" #" "]
+		do [dehyphenize: func [x] [replace/all form x #"-" #" "]]	;@@ DO for compiler
 		pname: form any [
 			pname										;-- when explicitly provided
 			attempt [system/script/title]
 			attempt [system/script/header/title]
 			attempt [dehyphenize last program]			;-- last item in the path: obj/program
-			dehyphenize program							;-- the word itself
+			do [dehyphenize program]					;-- the word itself ;@@ DO for compiler
 			;-- reminder: do not use exe name as program name (it can be renamed easily by the user)
 		]
 
@@ -699,25 +738,27 @@ cli: context [
 
 		append r version-for/brief/options (program) opts	;-- add the header: Program vX.Y.Z by ... (C) ...
 
-		basename?: func [x] [							;-- filename from path w/o extension
-			also x: last split-path to file! x
-				clear find/last x #"."
+		do [											;@@ DO for compiler
+			basename?: func [x] [							;-- filename from path w/o extension
+				also x: last split-path to file! x
+					clear find/last x #"."
+			]
+			decorate: func [x types] [					;-- x -> "<x>" or "[x]"
+				mold/flat to either find types block! [block!][tag!] x
+			]
 		]
+
 		xname: form any [
 			xname										;-- when explicitly provided
 			attempt [basename? system/options/script]	;-- when run as `red script.red`
 			attempt [basename? system/options/boot]		;-- when run as a compiled exe (options/script = none)
 		]
 
-		decorate: func [x types] [						;-- x -> "<x>" or "[x]"
-			mold/flat to either find types block! [block!][tag!] x
-		]
-
 		repend r ["^/Syntax: " xname]					;-- "Syntax: program"
 		if find spec none [append r " [options]"]		;-- add [options] if at least one option is supported
 		foreach [name doc types] spec [					;-- list operands:
 			if none? types [break]							;-- stop right after the last operand
-			repend r [" " decorate name types]				;-- append every operand as "<name>"
+			repend r [" " do [decorate name types]]			;-- append every operand as "<name>" ;@@ DO for compiler
 		]
 		append r "^/^/"
 
@@ -738,7 +779,7 @@ cli: context [
 
 		committed?: yes
 		header?: no
-		commit: has [ln] [
+		commit: [										;-- commits current s-arg, s-opts, s-doc into `r`, forming a column ;@@ as a block for compiler
 			unless header? [append r "Options:^/"  header?: yes]
 
 			pad  append cols1-4: s-opts #" "  sum copy/part cols 3
@@ -753,7 +794,7 @@ cli: context [
 					]
 				]
 			]
-			foreach ln s-doc [								;-- output all lines
+			foreach ln s-doc [							;-- output all lines
 				repend r [cols1-4 ln #"^/"]
 				replace/all cols1-4 [skip] #" "
 			]
@@ -765,7 +806,7 @@ cli: context [
 			either none? types [						;-- options
 				#assert [not empty? names]
 
-				unless committed? [commit]
+				unless committed? [do commit]
 
 				short: copy ""  long: copy ""
 				foreach name names [					;-- form short & long options strings
@@ -788,19 +829,19 @@ cli: context [
 				either committed? [						;-- an operand?
 					if empty? doc [continue]				;-- skip operands without description
 					s-opts: copy ""							;-- leave "--flag" column empty
-					s-arg: decorate names types				;-- "<name>" or "[name]"
+					s-arg: do [decorate names types]		;-- "<name>" or "[name]" ;@@ DO for compiler
 				][										;-- an option then ("--flag" part was filled above)
-					s-arg: decorate names none				;-- always as "<name>"
+					s-arg: do [decorate names none]			;-- always as "<name>" ;@@ DO for compiler
 				]
 				s-doc: case [							;-- combine `doc` with that of `--option` (if any)
 					committed? [copy doc]					;-- "      <arg> Arg description"
 					empty? doc [s-doc]						;-- "--opt <arg> Opt description"
 					'else [ rejoin [s-doc "; " doc] ]		;-- "--opt <arg> Opt description; Arg description"
 				]
-				commit
+				do commit
 			]
 		]
-		unless committed? [commit]
+		unless committed? [do commit]
 		append r "^/"
 		r
 	];; help-for: function
@@ -812,7 +853,7 @@ cli: context [
 
 	process-into: function [
 		"Calls PROGRAM with arguments read from the command line. Passes through the returned value"
-		'program	[word! path!]						;-- can't support `function!` here cause can't add refinements to a function! literal
+		'program	[word! lit-word! path!]				;-- can't support `function!` here cause can't add refinements to a function! literal
 		/no-version				"Suppress automatic creation of --version argument"
 		/no-help				"Suppress automatic creation of --help and -h arguments"
 		/name					"Overrides program name"
@@ -830,7 +871,7 @@ cli: context [
 			;;  value returned by handler on error is passed through by process-into
 		/options				"Specify all the above options as a block"
 			opts	[block!]
-		/local opt val r
+		/local opt val r ok?
 	][
 		err: catch/name [								;-- catch processing errors only
 			apply-options context? 'opts opts				;-- args preference: /args, then /options, then system/options/args
@@ -847,10 +888,12 @@ cli: context [
 					[ add-operand/options     call get program value opts ]
 			]
 														;-- call the function, return it's value
-			return do prep-call/options call get program opts
+			set/any 'r do prep-call/options call get program opts
+			ok?: yes									;@@ can't `return :r` here, compiler bug 
 		] 'complaint
-														;-- OK, there was a processing error
-		if :handler [return handler err]				;-- pass handler's return through, if any
+		if ok? [return :r]
+														;-- so, there was a processing error!
+		if :handler [return do [handler err]]			;-- pass handler's return through, if any ;@@ DO for compiler
 
 		print next err									;@@ TODO: output to stderr (not yet in Red)
 		quit/return 1
@@ -886,14 +929,15 @@ cli: context [
 			replace/all result 'none  none
 			assert [result = got]
 		]
+
+		handler: func [er [block!]] [return er/1]
+
 		test-fail-1: function ['code [word!] args [block!]] [
-			handler: func [er [block!]] [return er/1]
 			got: process-into/options test-prog-1 [args: args on-error: handler]
 			assert [code = got]
 		]
 
 		test-fail-2: function ['code [word!] args [block!]] [
-			handler: func [er [block!]] [return er/1]
 			got: process-into/options test-prog-2 [args: args on-error: handler]
 			assert [code = got]
 		]
@@ -971,9 +1015,9 @@ cli: context [
 		; print version-for test-prog-1
 		; print help-for test-prog-1 
 		; print help-for/columns test-prog-1 [1 3 6 8 10]
+		print ["CLI self-test:" assertions-run "assertions evaluated"]
 
 	];; #debug
 
 ];; cli: context
-
-];; do expand-directives
+; ];; do expand-directives

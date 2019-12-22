@@ -8,13 +8,13 @@ curl-mockup: func [
 		HOST+PORT "as HOST[:PORT]"
 	/telnet-option "Set telnet option"
 		OPT=VAL [block!]
-	/t "ditto"
+	/t "alias /telnet-option"
 ][
 	print ["url=" url]
 	if socks5 [print ["using host=" host+port]]
 	if telnet-option [print ["telnet opts=" opt=val]]
 ]
 
-cli/process-into curl-mockup
+probe cli/process-into curl-mockup
 ; print help-for curl-mockup
 
