@@ -296,10 +296,13 @@ cli: context [
 		]
 														;-- loaded but didn't pass the type check...
 		types: to block! exclude types make typeset! [block!]
+		a-an: either find "aeiou" first form types/1 ["an"] ["a"]
 		complain compose [								;-- tell which types are accepted
 			ER_TYPE
-			v "should be a value of"
-			(either last? types [ [first types "type"] ][ ["any of" mold types "types"] ])
+			v "should be" (pick [
+				[ a-an types/1 "value"]
+				["one of these types:" mold types]
+			] last? types)
 		]
 	]
 
