@@ -255,7 +255,7 @@ cli: context [
 	#assert [not unary? func [/x y z][] "x"]
 	#assert [not unary? func [/x][]     "x"]
 
-
+	
 	check-value: function [
 		"Typecheck value V against a set of TYPES"
 		v			[string!]
@@ -453,7 +453,8 @@ cli: context [
 		/options				"(placeholder for future expansion)"
 			opts	[block! none!]
 	][
-		n-args: length? call/2
+		arity: preprocessor/func-arity? spec-of :prog
+		n-args: min arity length? call/2
 		spec: skip prep-spec :prog (n-args * 3)
 														;-- find the accepted types
 		if not word? first spec [						;-- past the arguments already
@@ -996,6 +997,9 @@ cli: context [
 		test-ok-1 
 			[a: 1 b: %a.out c: [3:00:00 4-May-2006] x: true  y: true  y1: 2.0  y2: true  z: true  z1: [1-Jan-2001 2-Feb-2002]]
 			["1" "-z 1/1/1" "a.out" "-z 2/2/2" "-y" "1.0" "3:0" "4/5/6" "-x" "-y" "2.0"]
+		test-ok-1 
+			[a: 1 b: %a.out c: [3:00:00 4-May-2006 4:00:00 5:00:00] x: true  y: true  y1: 2.0  y2: true  z: true  z1: [1-Jan-2001 2-Feb-2002]]
+			["1" "-z 1/1/1" "a.out" "-z 2/2/2" "-y" "1.0" "3:0" "4/5/6" "4:0" "5:0:0" "-x" "-y" "2.0"]
 
 		test-fail-1 ER_FEW    []
 		test-fail-1 ER_FEW    ["1"]
