@@ -1,0 +1,1 @@
+cli-glob --from .. --omit *.exe --omit *.red

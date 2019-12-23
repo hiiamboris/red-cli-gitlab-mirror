@@ -1,0 +1,1 @@
+cli-profile "1 + 1" "sqrt 2" "wait 0.01" --accuracy 0:0:1 --show
