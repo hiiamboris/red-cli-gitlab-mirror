@@ -29,8 +29,8 @@ Red [
 
 ;-- comment these out to disable self-testing
 
-#debug on
-#assert on
+; #debug on
+; #assert on
 
 ; #include %common/init.red
 
@@ -691,8 +691,8 @@ cli: context [
 
 		repend r [
 			pname " " ver								;-- "Program 1.2.3"
-			either desc [ ["" desc] ][ "" ]				;-- " long description ..."
-			either author [ ["by" author] ][ "" ]		;-- " by Yours Truly"
+			either desc [ reduce ["" desc] ][ "" ]			;-- " long description ..."
+			either author [ reduce ["by" author] ][ "" ]	;-- " by Yours Truly"
 			#"^/"
 		]
 		if rights  [repend r [rights #"^/"]]			;-- "(C) Copyrights..."
