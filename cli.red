@@ -743,7 +743,7 @@ cli: context [
 
 		do [											;@@ DO for compiler
 			basename?: func [x] [							;-- filename from path w/o extension
-				also x: last split-path to file! x
+				also x: last split-path to-red-file x
 					clear find/last x #"."
 			]
 			decorate: func [x types] [					;-- x -> "<x>" or "[x]"
@@ -753,8 +753,8 @@ cli: context [
 
 		xname: form any [
 			xname										;-- when explicitly provided
-			attempt [basename? system/options/script]	;-- when run as `red script.red`
-			attempt [basename? system/options/boot]		;-- when run as a compiled exe (options/script = none)
+			attempt [do [basename? system/options/script]]	;-- when run as `red script.red` ;@@ DO for compiler
+			attempt [do [basename? system/options/boot]]	;-- when run as a compiled exe (options/script = none) ;@@ DO for compiler
 		]
 
 		repend r ["^/Syntax: " xname]					;-- "Syntax: program"
