@@ -539,6 +539,20 @@ cli: context [
 	;; ████████████  ARGUMENTS PARSER  ████████████
 
 
+	default-exename: function ["Returns the executable/script name without path"] [
+		do [											;@@ DO for compiler
+			basename?: func [x] [							;-- filename from path w/o extension
+				also x: last split-path to-red-file x
+					clear find/last x #"."
+			]
+			any [
+				attempt [basename? system/options/script]	;-- when run as `red script.red`
+				attempt [basename? system/options/boot]		;-- when run as a compiled exe (options/script = none)
+			]
+		]
+	]
+
+
 	extract-args: function [
 		"Convert CLI args into a block of [name value] according to PROGRAM's spec (name = none for operands)"
 		args		[block!]		"block of arguments to process"
@@ -733,6 +747,7 @@ cli: context [
 			opts	[block! none!]
 	][
 		apply-options context? 'opts opts
+		opts: fill-options context? 'opts				;@@ TODO: merge with existing opts block?
 		
 		spec: prep-spec get program
 		unless no-version [repend spec [ [/version] "Display program version and exit" none ]]
@@ -743,10 +758,6 @@ cli: context [
 		append r version-for/brief/options (program) opts	;-- add the header: Program vX.Y.Z by ... (C) ...
 
 		do [											;@@ DO for compiler
-			basename?: func [x] [							;-- filename from path w/o extension
-				also x: last split-path to-red-file x
-					clear find/last x #"."
-			]
 			decorate: func [x types] [					;-- x -> "<x>" or "[x]"
 				mold/flat to either find types block! [block!][tag!] x
 			]
@@ -754,8 +765,7 @@ cli: context [
 
 		xname: form any [
 			xname										;-- when explicitly provided
-			attempt [do [basename? system/options/script]]	;-- when run as `red script.red` ;@@ DO for compiler
-			attempt [do [basename? system/options/boot]]	;-- when run as a compiled exe (options/script = none) ;@@ DO for compiler
+			default-exename								;-- try to infer it otherwise
 		]
 
 		repend r ["^/Syntax: " xname]					;-- "Syntax: program"
