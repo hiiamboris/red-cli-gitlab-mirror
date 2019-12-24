@@ -1033,10 +1033,10 @@ cli: context [
 		assert [(help-for/version    test-prog-1 1.2.3.4        ) = (help-for/options test-prog-1 [version: 1.2.3.4]        )]
 		assert [(help-for/columns    test-prog-1 [5 10 20 10 30]) = (help-for/options test-prog-1 [columns: [5 10 20 10 30]])]
 
-		assert [(version-for/name       test-prog-1 "no name!"  ) = (version-for/options test-prog-1 [name: "no name!"]        )]
-		assert [(version-for/exename    test-prog-1 "no name!"  ) = (version-for/options test-prog-1 [exename: "no name!"]     )]
-		assert [(version-for/version    test-prog-1 "custom"    ) = (version-for/options test-prog-1 [version: "custom"]       )]
-		assert [(version-for/brief      test-prog-1             ) = (version-for/options test-prog-1 [brief: yes]              )]
+		assert [(version-for/name       test-prog-1 "no name!"  ) = (version-for/options test-prog-1 [name: "no name!"]     )]
+		assert [(version-for/exename    test-prog-1 "no name!"  ) = (version-for/options test-prog-1 [exename: "no name!"]  )]
+		assert [(version-for/version    test-prog-1 "custom"    ) = (version-for/options test-prog-1 [version: "custom"]    )]
+		assert [(version-for/brief      test-prog-1             ) = (version-for/options test-prog-1 [brief: yes]           )]
 
 		; print help-for test-prog-2
 		; process-into/options test-prog-2 [args: ["-1" "2" "3"]]
