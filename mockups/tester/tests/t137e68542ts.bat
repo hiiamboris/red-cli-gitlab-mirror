@@ -1,0 +1,1 @@
+@red ../scripts/rc5its36p412.red .45231 --option1=2315.4 -o DCAB --option2=BCAD --switch2 --switch1 --switch1 --option1=2315.4 CDBA --switch1 --option1=3412 CDBA --option2=25143. --switch1 --option1=2315.4 --switch2 -o DCAB --switch2-alias-2=DCAB --switch2-alias-2=142.53 --switch2-alias-2=142.53 --switch2-alias-2=DCAB -o DCAB

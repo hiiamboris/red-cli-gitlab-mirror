@@ -1,0 +1,1 @@
+@red ../scripts/r1c2346si5pt.red 2435.1 --switch2 --option1=3241 --switch1 --switch2

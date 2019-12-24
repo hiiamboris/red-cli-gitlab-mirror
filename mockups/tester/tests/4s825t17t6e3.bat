@@ -1,0 +1,1 @@
+@red ../scripts/prst4c35i621.red --switch1 --option1=2134 --switch1-alias=2431 --switch1-alias=24513. --option2-alias=3124 --option2=2143 CBDA CBDA --option1=2431 --switch2-alias-2=ABDC CBDA --switch2 --option2-alias=BCDA --option2=2143 --option1=2134

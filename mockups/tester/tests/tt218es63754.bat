@@ -1,0 +1,1 @@
+@red ../scripts/prst4c35i621.red --switch2-alias=4312 --switch2 --option2=2143 -o .31542 --switch1-alias=2431 -o .31542 --switch1

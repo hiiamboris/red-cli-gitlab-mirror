@@ -1,0 +1,1 @@
+@red ../scripts/s235t41cr6pi.red --option2-alias=4312 --switch2-alias-2=BDAC 2435.1 .23541 --option1=3241 --switch2-alias-2=43251. --switch1-alias=2431

@@ -1,0 +1,1 @@
+@red ../scripts/642s35tir1cp.red --switch2 -o .31542 --option1=2431 --switch2-alias=4312 412.53 --switch2 --option1=2431 --switch2-alias=4312 --switch1 --option1=2431 --option1=2431 --option1=2431 -o .31542 --option2-alias=3124 --option2-alias=BCDA

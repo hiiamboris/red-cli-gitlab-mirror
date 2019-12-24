@@ -1,0 +1,1 @@
+@red ../scripts/6c5pi132s4tr.red DCAB --switch2-alias=DBCA --switch2 --switch1 --option1=3412

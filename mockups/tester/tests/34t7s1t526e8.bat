@@ -1,0 +1,1 @@
+@red ../scripts/25t4is1cr3p6.red CBDA --option1=2431 --switch1-alias=24513. --option1=2134 --switch1-alias=2431 412.53 --switch1-alias=2431 --option1=2431 --switch2 --option2=CABD --switch2 --option1=2134 --switch2

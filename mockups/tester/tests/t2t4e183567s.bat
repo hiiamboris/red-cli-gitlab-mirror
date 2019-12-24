@@ -1,0 +1,1 @@
+@red ../scripts/r4pi263cs15t.red --switch1 --option2-alias=3124 --switch1-alias=24513. 412.53 --switch1 --option2-alias=3124 --option2=CABD --option2=CABD --switch1-alias=24513. --switch1-alias=2431 --option2-alias=3124 --option2=2143 --option2=CABD

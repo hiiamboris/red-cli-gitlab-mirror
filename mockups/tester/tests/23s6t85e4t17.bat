@@ -1,0 +1,1 @@
+@red ../scripts/2ti143spc65r.red .45231 --switch2 --option2-alias=3214.5 --option2=BCAD --option1=3412 -o 3.1524 DCAB --switch2-alias-2=DCAB CDBA 3.5214

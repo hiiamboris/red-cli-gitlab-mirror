@@ -1,0 +1,1 @@
+@red ../scripts/13s6ri245cpt.red --switch1-alias=24513. --option2=2143 --option1=2134 --switch1-alias=24513. --switch2-alias-2=ABDC --switch1-alias=2431 --switch2 --switch2-alias-2=ABDC --switch1 --switch2-alias-2=ABDC

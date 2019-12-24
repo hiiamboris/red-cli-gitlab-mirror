@@ -1,0 +1,1 @@
+@red ../scripts/cri6ps13452t.red --switch1 --switch1 --switch2 --switch2 --option2=2143 --option2=2143

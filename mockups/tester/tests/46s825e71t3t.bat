@@ -1,0 +1,1 @@
+@red ../scripts/6532it1scp4r.red --switch2 -o .31542 --option2-alias=BCDA

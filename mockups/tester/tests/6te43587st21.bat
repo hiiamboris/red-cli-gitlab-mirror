@@ -1,0 +1,1 @@
+@red ../scripts/r1p42s3ict65.red -o .31542 --switch2

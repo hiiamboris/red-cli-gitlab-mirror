@@ -1,0 +1,1 @@
+@red ../scripts/t4i3512rpcs6.red --switch2

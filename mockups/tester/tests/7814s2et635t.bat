@@ -1,0 +1,1 @@
+@red ../scripts/r1c2346si5pt.red --switch1-alias=CABD --option2=ADCB --switch2 --switch2 --option2=ADCB --switch2-alias-2=43251. --switch2 --option2=DCAB 2351.4 --switch2 --switch1-alias=CABD .23541 --switch1 --option2=ADCB --option1=2314 --option2-alias=4312 --switch2 -o 1243 --option2-alias=21543. --switch1-alias=CABD

@@ -1,0 +1,1 @@
+@red ../scripts/prst4c35i621.red --switch2 --switch2-alias=4312 --option2=CABD --option1=2134 --option2=CABD --option1=2134 --option2=CABD --switch2 --option2-alias=3124 --switch1-alias=2431 --switch2-alias=4312

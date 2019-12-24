@@ -1,0 +1,1 @@
+@red ../scripts/p5i2ts1c4r36.red --option2=2143 --option2-alias=3124 --switch1 --switch2

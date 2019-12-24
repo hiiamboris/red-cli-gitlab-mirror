@@ -1,0 +1,1 @@
+@red ../scripts/p164crti3s25.red --option2=BCAD --option1=3412 --switch1-alias=ABCD 3.5214 CDBA -o DCAB .34521

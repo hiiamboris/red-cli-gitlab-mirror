@@ -1,0 +1,1 @@
+@red ../scripts/t4i3512rpcs6.red --option2=2143 --option1=2431 --option2=CABD --option1=2134 --switch1-alias=2431

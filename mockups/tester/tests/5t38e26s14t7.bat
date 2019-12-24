@@ -1,0 +1,1 @@
+@red ../scripts/214src653tip.red -o 143.25 --option2=ADCB --switch2-alias-2=BDAC --option1=42.351 2435.1 -o 143.25 --switch2-alias-2=43251. --switch2-alias=DBCA --option2=DCAB -o 1243 --option2-alias=.24351 --option2=ADCB

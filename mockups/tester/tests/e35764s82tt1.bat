@@ -1,0 +1,1 @@
+@red ../scripts/p164crti3s25.red --switch1-alias=ABCD 3.5214 .34521 --option2-alias=3214.5 --switch2-alias-2=142.53 --option2=5.1342 --option1=3412

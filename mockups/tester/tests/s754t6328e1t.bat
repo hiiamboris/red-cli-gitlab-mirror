@@ -1,0 +1,1 @@
+@red ../scripts/345tciprs621.red --option2=ADCB --switch1 --switch2-alias=DBCA --switch2-alias=DBCA --switch1-alias=CABD 2435.1 --option1=2314 --option1=2314 --option2-alias=4312 --switch2 --switch1-alias=2431 2351.4 --switch1

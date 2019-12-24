@@ -1,0 +1,1 @@
+@red ../scripts/ic5p3t21sr64.red --switch2 --switch2-alias=DBCA DCAB --switch2-alias-2=DCAB --switch2 --switch2-alias=ACDB .34521 --option1=3412 --switch2-alias=ACDB --switch2 --switch1-alias=ABCD --option2-alias=3214.5 --option2-alias=5132.4 --option1=3412 --switch1 --option1=3412 --option2=BCAD .34521

@@ -1,0 +1,1 @@
+@red ../scripts/13s6ri245cpt.red --option2-alias=BCDA --switch1-alias=2431 --option2=2143 --switch1-alias=24513. CBDA --switch1 --switch1-alias=24513. --option2=CABD --switch1 --option2-alias=BCDA --switch1-alias=2431 --switch1-alias=24513.

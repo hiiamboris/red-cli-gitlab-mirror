@@ -1,0 +1,1 @@
+@red ../scripts/prst4c35i621.red --option2=2143 --switch2 412.53 --option1=2134

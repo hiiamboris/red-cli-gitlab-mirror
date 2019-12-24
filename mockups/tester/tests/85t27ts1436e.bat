@@ -1,0 +1,1 @@
+@red ../scripts/1c5ps2i643rt.red .23541 --option1=3241 --switch2-alias-2=DCBA --switch2 -o 1243 --switch2

@@ -1,0 +1,1 @@
+@red ../scripts/53pr46ti2cs1.red --switch2-alias-2=43251. --option1=3241 --option1=3241 --switch2-alias-2=DCBA --option2=DCAB --option2-alias=21543. --option2-alias=4312 --option2-alias=21543. --option2-alias=.24351 .23541 --switch1 --switch2 --option1=42.351 --option1=42.351 --switch2-alias-2=43251. --switch2 .23541 --option2-alias=4312 --option2-alias=4312 --switch1-alias=2431

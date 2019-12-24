@@ -1,0 +1,1 @@
+@red ../scripts/trpi153c642s.red -o 1243 --switch2-alias=CBAD --switch2-alias=CBAD --switch1 --option2-alias=21543. --option1=3241 --option1=2314 --option2=DCAB --switch2 --switch2 --option2=ADCB --switch2 --option2-alias=4312 --switch2-alias=DBCA --option1=42.351 --switch2 --switch2-alias=CBAD -o 143.25 --option2=ADCB --option2-alias=.24351 --switch2 --option2-alias=.24351

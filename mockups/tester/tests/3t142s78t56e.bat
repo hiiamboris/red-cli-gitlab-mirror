@@ -1,0 +1,1 @@
+@red ../scripts/r1p42s3ict65.red --switch2 --switch1 --switch2 --switch1 --option2-alias=BCDA --option1=2431 412.53 --switch2 --switch1 -o .31542

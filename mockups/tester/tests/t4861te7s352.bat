@@ -1,0 +1,1 @@
+@red ../scripts/ic5p3t21sr64.red -o DCAB --switch2-alias-2=142.53 --option2-alias=5132.4 --option2=25143. -o 3.1524 3.5214 .45231 --switch2-alias-2=DCAB --switch2-alias-2=142.53 DCAB --option2-alias=3214.5 --switch2

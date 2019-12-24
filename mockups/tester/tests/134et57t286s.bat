@@ -1,0 +1,1 @@
+@red ../scripts/6532it1scp4r.red --option1=2431 --switch2 --switch1 --switch2 --option2=CABD --option1=2431 CBDA --switch1-alias=2431 --option2-alias=BCDA --switch1 --option1=2431 --option2-alias=BCDA --switch2 CBDA --switch1-alias=2431

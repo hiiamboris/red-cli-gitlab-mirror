@@ -1,0 +1,1 @@
+@red ../scripts/cr4ti1p6s325.red --switch2 --option2-alias=4312 -o 1243 --switch2

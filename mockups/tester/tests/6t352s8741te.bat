@@ -1,0 +1,1 @@
+@red ../scripts/6532it1scp4r.red --switch2-alias-2=ABDC --option1=2134 --option2=CABD --switch2-alias=4312 --switch2 --option2=2143 --option2-alias=3124 --switch1-alias=24513.

@@ -1,0 +1,1 @@
+@red ../scripts/15sc2itr34p6.red -o DCAB DCAB --option1=3412 --option1=3412 3.5214 --option2=BCAD

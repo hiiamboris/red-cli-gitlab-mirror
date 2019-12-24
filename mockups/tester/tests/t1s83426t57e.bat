@@ -1,0 +1,1 @@
+@red ../scripts/t6c2rsi4153p.red --switch1-alias=ABCD --option1=3412 --option1=3412 --switch1 -o DCAB DCAB --switch2-alias-2=DCAB --switch1-alias=ABCD --switch1 --switch2-alias-2=DCAB DCAB --switch2-alias-2=DCAB --option2-alias=3214.5 --switch2-alias-2=142.53 DCAB

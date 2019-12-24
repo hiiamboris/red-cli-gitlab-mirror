@@ -1,0 +1,1 @@
+@red ../scripts/cri6ps13452t.red --option2-alias=3124 --switch1

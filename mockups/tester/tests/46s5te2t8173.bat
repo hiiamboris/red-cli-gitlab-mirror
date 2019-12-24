@@ -1,0 +1,1 @@
+@red ../scripts/r1p42s3ict65.red 412.53 --switch2-alias-2=ABDC --switch2 --switch2 --switch1 --option1=2134 --switch1-alias=2431 --option2=2143 --option2=2143

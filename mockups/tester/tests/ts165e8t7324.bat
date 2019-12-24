@@ -1,0 +1,1 @@
+@red ../scripts/p624r5tci3s1.red --option2=ADCB --option1=42.351 --switch2-alias-2=43251. -o 143.25

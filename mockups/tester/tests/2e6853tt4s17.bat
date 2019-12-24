@@ -1,0 +1,1 @@
+@red ../scripts/p326451rtsci.red --switch1 412.53 412.53 --switch1

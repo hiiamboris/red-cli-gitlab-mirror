@@ -1,0 +1,1 @@
+@red ../scripts/cp12tsr6i453.red --switch1 --switch2 --switch2 --switch1 --option1=42.351 --option2-alias=.24351 --option1=42.351 --switch2-alias-2=BDAC -o 143.25 -o 1243

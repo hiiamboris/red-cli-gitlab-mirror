@@ -1,0 +1,1 @@
+@red ../scripts/6ict154prs32.red --switch2-alias-2=43251. --switch1-alias=CABD

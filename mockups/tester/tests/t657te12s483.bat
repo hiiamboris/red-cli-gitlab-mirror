@@ -1,0 +1,1 @@
+@red ../scripts/25t4is1cr3p6.red --option2-alias=BCDA --option2=CABD --switch1-alias=2431 --switch2 --option1=2431 -o .31542 412.53 412.53 --option1=2134

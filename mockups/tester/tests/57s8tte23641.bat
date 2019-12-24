@@ -1,0 +1,1 @@
+@red ../scripts/6c5pi132s4tr.red .34521 --switch2 --option1=3412 -o DCAB --option2=BCAD --option2=5.1342 --switch2-alias-2=142.53 --option2=BCAD --option2-alias=5132.4 --switch1 CDBA --switch2-alias=ACDB --option1=2315.4 --switch1-alias=ABCD

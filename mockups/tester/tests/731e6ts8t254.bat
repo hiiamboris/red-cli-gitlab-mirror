@@ -1,0 +1,1 @@
+@red ../scripts/53pr46ti2cs1.red --switch2 --option1=42.351 2435.1 --switch1-alias=2431 --option1=2314 --option2=ADCB 2435.1 --switch2 --switch2 --switch2-alias=CBAD --switch1 --option2-alias=4312 --switch2 --option1=3241 --switch1-alias=2431 --switch2-alias-2=BDAC -o 1243

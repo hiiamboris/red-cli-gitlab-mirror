@@ -1,0 +1,1 @@
+@red ../scripts/2ti143spc65r.red 3.5214 -o 3.1524 --switch1-alias=ABCD --switch2-alias=ACDB --switch2-alias=ACDB .34521

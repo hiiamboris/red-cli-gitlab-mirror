@@ -1,0 +1,1 @@
+@red ../scripts/6ict154prs32.red --option2=ADCB --option2-alias=21543. --option2-alias=4312 -o 143.25 --switch1 --switch2-alias-2=DCBA --switch1-alias=CABD --option2=421.35 --option2=421.35

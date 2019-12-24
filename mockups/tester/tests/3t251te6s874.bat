@@ -1,0 +1,1 @@
+@red ../scripts/t4i3512rpcs6.red --option1=2134 --option2-alias=3124 --option1=2431 --option1=2134

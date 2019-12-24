@@ -1,0 +1,1 @@
+@red ../scripts/621i4rctsp35.red --switch1 CBDA --option2-alias=BCDA --switch2

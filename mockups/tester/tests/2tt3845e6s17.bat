@@ -1,0 +1,1 @@
+@red ../scripts/63rs4t1i2cp5.red DCAB --option1=2315.4 --switch2-alias=ACDB --option2=BCAD

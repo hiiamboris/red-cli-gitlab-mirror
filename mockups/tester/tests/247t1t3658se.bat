@@ -1,0 +1,1 @@
+@red ../scripts/321rs4p56cti.red --switch2-alias=DBCA

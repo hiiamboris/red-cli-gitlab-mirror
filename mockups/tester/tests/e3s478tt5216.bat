@@ -1,0 +1,1 @@
+@red ../scripts/cp12tsr6i453.red --option2-alias=4312 .23541 --switch2-alias-2=DCBA --option2=ADCB .23541 --switch2-alias=DBCA --switch2-alias=DBCA --switch1 --switch1-alias=CABD --option2=DCAB --option2-alias=.24351 --switch1-alias=2431 -o 143.25 --option2=421.35 --option2-alias=4312 --option2-alias=4312 --option2=ADCB --option1=3241

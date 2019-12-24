@@ -1,0 +1,1 @@
+@red ../scripts/is5rp46c123t.red --option1=3412 --switch1 -o 3.1524 --option2=BCAD

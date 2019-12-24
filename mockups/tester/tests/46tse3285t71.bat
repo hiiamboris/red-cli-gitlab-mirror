@@ -1,0 +1,1 @@
+@red ../scripts/p326451rtsci.red --option2=CABD --option1=2134 --switch2 --option1=2134 --option2-alias=3124 -o .31542 --switch1 --switch1 -o .31542 --switch2-alias-2=ABDC --option1=2134 --switch1-alias=24513. --option1=2431 --switch2 --option2-alias=3124

@@ -1,0 +1,1 @@
+@red ../scripts/5p4sci1236tr.red --switch1 -o 1243

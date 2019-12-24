@@ -1,0 +1,1 @@
+@red ../scripts/ptsi5361c4r2.red

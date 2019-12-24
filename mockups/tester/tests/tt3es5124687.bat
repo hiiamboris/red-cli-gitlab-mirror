@@ -1,0 +1,1 @@
+@red ../scripts/r4p2sc31ti56.red -o DCAB --option2-alias=5132.4 -o 3.1524 -o DCAB --option1=2315.4 CDBA .45231 --option2-alias=5132.4 --option2-alias=5132.4 --option2=25143. --option2-alias=3214.5 -o 3.1524 --switch2 .45231 --option2-alias=5132.4 .45231 --switch2-alias=ACDB --switch1-alias=ABCD -o DCAB

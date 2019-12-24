@@ -1,0 +1,1 @@
+@red ../scripts/5c31ir4ts2p6.red --switch2 .34521 -o DCAB --option2-alias=5132.4 --option1=2315.4

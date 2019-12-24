@@ -1,0 +1,1 @@
+@red ../scripts/t6c2rsi4153p.red --option2=BCAD

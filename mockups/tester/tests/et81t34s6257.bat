@@ -1,0 +1,1 @@
+@red ../scripts/345tciprs621.red 2351.4 --switch2 --option1=42.351 --switch2-alias=CBAD

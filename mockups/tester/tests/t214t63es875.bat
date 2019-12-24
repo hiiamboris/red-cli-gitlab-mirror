@@ -1,0 +1,1 @@
+@red ../scripts/4i2rps5ct136.red 2435.1 --switch2-alias=CBAD --option1=42.351 --switch2-alias-2=BDAC -o 1243

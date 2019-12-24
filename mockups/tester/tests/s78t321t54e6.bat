@@ -1,0 +1,1 @@
+@red ../scripts/r4pi263cs15t.red -o .31542 CBDA --switch1

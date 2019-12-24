@@ -1,0 +1,1 @@
+@red ../scripts/r1c2346si5pt.red --option1=3241 --option1=3241 --option1=3241 2351.4 --switch2-alias=CBAD --option2=421.35 --option2=421.35 --switch1-alias=CABD --switch2-alias=CBAD --option1=3241 2351.4 --option2-alias=.24351 --switch2 --option2=DCAB --option2-alias=21543. -o 143.25 --switch2 --switch2-alias-2=BDAC --switch2 --option1=42.351 2351.4 --switch2-alias-2=BDAC

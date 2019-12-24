@@ -1,0 +1,1 @@
+@red ../scripts/6ict154prs32.red

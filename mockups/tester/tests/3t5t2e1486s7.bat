@@ -1,0 +1,1 @@
+@red ../scripts/642s35tir1cp.red --option2-alias=BCDA --switch2

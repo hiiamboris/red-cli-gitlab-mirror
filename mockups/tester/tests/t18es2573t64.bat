@@ -1,0 +1,1 @@
+@red ../scripts/6ict154prs32.red --option2-alias=4312 --option1=42.351 .23541 --switch2

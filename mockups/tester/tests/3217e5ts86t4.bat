@@ -1,0 +1,1 @@
+@red ../scripts/5p4sci1236tr.red -o 143.25 --switch2

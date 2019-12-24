@@ -1,0 +1,1 @@
+@red ../scripts/t2cr61pis534.red DCAB --switch2-alias=DBCA -o DCAB --option2-alias=3214.5 --switch1 3.5214 .45231 --option1=3412 --option2=BCAD .45231 --option2-alias=5132.4 --switch2 --option2=BCAD --switch2

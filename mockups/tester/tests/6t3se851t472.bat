@@ -1,0 +1,1 @@
+@red ../scripts/6tic1p35s42r.red 412.53 --switch1 --switch2 --option2-alias=BCDA --option2-alias=BCDA --option1=2134 --option2-alias=3124 --switch2 --switch2-alias-2=ABDC --option2=2143 --option2-alias=BCDA --option1=2431 --option2-alias=3124 --switch1 --switch2-alias=4312 --option2=2143

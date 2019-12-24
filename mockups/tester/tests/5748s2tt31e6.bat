@@ -1,0 +1,1 @@
+@red ../scripts/2ti143spc65r.red 3.5214 --switch2-alias=ACDB -o 3.1524 --option2=BCAD --option2=5.1342 --switch2-alias=DBCA --switch1-alias=ABCD --option2=25143. --option2-alias=5132.4

@@ -1,0 +1,1 @@
+@red ../scripts/ct35ps421r6i.red --switch2-alias=DBCA --option2-alias=5132.4 --switch2-alias-2=DCAB --switch2-alias-2=142.53 -o DCAB --switch1 --option2=5.1342 --option2=5.1342 .45231 --option2-alias=5132.4 DCAB -o DCAB --switch2 --switch2 .45231 --option1=2315.4

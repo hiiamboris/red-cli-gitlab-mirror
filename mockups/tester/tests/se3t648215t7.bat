@@ -1,0 +1,1 @@
+@red ../scripts/r53c461i2pts.red --option2=25143. --switch2-alias=DBCA --option2=25143.

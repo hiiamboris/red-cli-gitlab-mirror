@@ -1,0 +1,1 @@
+@red ../scripts/cp12tsr6i453.red 2435.1 -o 1243 --switch2-alias-2=DCBA -o 1243

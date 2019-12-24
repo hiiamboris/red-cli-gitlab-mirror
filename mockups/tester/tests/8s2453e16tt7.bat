@@ -1,0 +1,1 @@
+@red ../scripts/rp34isct6521.red

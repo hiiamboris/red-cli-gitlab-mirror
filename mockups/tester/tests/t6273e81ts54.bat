@@ -1,0 +1,1 @@
+@red ../scripts/r4pi263cs15t.red --switch2-alias=4312 412.53 --switch1-alias=2431

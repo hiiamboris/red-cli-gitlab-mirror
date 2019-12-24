@@ -1,0 +1,1 @@
+@red ../scripts/6c5pi132s4tr.red --option1=3412 .45231 -o DCAB --switch2 3.5214 --switch2-alias=DBCA --switch2-alias-2=142.53 .34521 .45231 -o DCAB CDBA --switch2-alias=ACDB --switch2-alias-2=142.53 --switch1-alias=ABCD --switch2-alias-2=DCAB --switch2-alias=DBCA .45231 --switch2-alias-2=142.53 --switch2-alias=ACDB -o 3.1524 --switch1-alias=ABCD

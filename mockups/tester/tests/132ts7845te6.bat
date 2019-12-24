@@ -1,0 +1,1 @@
+@red ../scripts/6254rtcsp3i1.red --switch2 -o 143.25 --switch2-alias=CBAD --switch2 --switch2-alias=DBCA --option2-alias=21543. --switch2-alias-2=43251. -o 143.25 --option1=42.351 --option2-alias=.24351 --option2-alias=4312 --option1=2314 --option2=ADCB --option2=421.35 --switch1 --option2=ADCB --option1=2314 --switch1-alias=CABD --switch2-alias-2=43251. 2435.1

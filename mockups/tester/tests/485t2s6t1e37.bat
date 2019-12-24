@@ -1,0 +1,1 @@
+@red ../scripts/621i4rctsp35.red --option1=2134 --switch1 --switch1

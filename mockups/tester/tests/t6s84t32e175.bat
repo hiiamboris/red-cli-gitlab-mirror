@@ -1,0 +1,1 @@
+@red ../scripts/t6c2rsi4153p.red .45231 --switch2 --switch2-alias-2=142.53 --switch1 --option2=5.1342 --switch1 --switch1 --option2=25143. --switch1 --switch2-alias=DBCA --option2=BCAD --option2-alias=5132.4

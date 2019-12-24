@@ -1,0 +1,1 @@
+@red ../scripts/45csr2p136it.red --switch2 --option2=25143. --switch1-alias=ABCD -o 3.1524 --switch2 -o 3.1524 --option2=5.1342 -o 3.1524 --switch2 --switch1 DCAB DCAB --option2-alias=5132.4

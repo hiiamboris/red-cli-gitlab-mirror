@@ -1,0 +1,1 @@
+@red ../scripts/13s6ri245cpt.red --switch1 --switch2 --switch1 --option2-alias=BCDA --option1=2134 --option2-alias=BCDA --option2-alias=3124

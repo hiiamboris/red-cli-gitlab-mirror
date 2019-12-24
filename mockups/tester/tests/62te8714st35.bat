@@ -1,0 +1,1 @@
+@red ../scripts/1rpi5st263c4.red --switch2-alias=DBCA CDBA .45231 --switch2-alias=ACDB --switch1 CDBA 3.5214 --option2-alias=5132.4 --switch2-alias=DBCA .45231 CDBA

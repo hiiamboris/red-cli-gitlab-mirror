@@ -1,0 +1,1 @@
+@red ../scripts/i1rcs3542p6t.red --option2-alias=3124

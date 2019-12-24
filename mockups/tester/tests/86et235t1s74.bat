@@ -1,0 +1,1 @@
+@red ../scripts/r1p42s3ict65.red --switch1 --switch1 --switch2 --option1=2431 --switch2-alias=4312 --option2=2143 --switch2

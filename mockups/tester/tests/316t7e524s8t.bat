@@ -1,0 +1,1 @@
+@red ../scripts/642s35tir1cp.red --switch2 --switch1-alias=24513. --switch1-alias=2431 --switch2 --option1=2431 --switch2 --switch1-alias=2431

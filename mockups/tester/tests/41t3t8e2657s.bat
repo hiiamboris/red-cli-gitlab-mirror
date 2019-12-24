@@ -1,0 +1,1 @@
+@red ../scripts/p164crti3s25.red -o 3.1524 --switch2-alias=ACDB --option2=5.1342 -o DCAB .45231 --option1=2315.4 --option2-alias=5132.4 --option2=BCAD --option1=3412 DCAB .45231 .45231 --option1=3412 .34521 --option1=3412 --switch2 --switch2-alias=ACDB CDBA .45231 --switch2-alias=DBCA --switch2-alias-2=DCAB

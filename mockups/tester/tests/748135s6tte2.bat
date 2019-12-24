@@ -1,0 +1,1 @@
+@red ../scripts/s235t41cr6pi.red --switch2-alias-2=DCBA --option2-alias=4312 2435.1 --switch1

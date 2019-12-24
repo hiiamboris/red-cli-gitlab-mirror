@@ -1,0 +1,1 @@
+@red ../scripts/2c4sr5pit613.red .23541 --switch2-alias-2=DCBA --option2=ADCB --switch2-alias-2=DCBA --switch2-alias-2=BDAC --switch2 --option1=3241 .23541 --switch1 --option1=3241 2435.1 .23541 2351.4 --option2-alias=.24351 --switch1-alias=CABD --option2-alias=4312 --option2-alias=4312 -o 143.25

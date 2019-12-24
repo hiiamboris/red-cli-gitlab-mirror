@@ -1,0 +1,1 @@
+@red ../scripts/6c5pi132s4tr.red --switch1-alias=ABCD --option1=3412 --option2=25143. --option2=25143. -o DCAB

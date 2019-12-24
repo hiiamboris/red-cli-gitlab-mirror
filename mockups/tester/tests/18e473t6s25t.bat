@@ -1,0 +1,1 @@
+@red ../scripts/rc5its36p412.red --option1=3412 --switch2-alias-2=142.53 .45231 3.5214 --switch2-alias-2=142.53 DCAB --option1=3412

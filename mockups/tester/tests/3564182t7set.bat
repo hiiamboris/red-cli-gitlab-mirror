@@ -1,0 +1,1 @@
+@red ../scripts/12ir6s3t54pc.red -o DCAB CDBA --switch2-alias=DBCA --option2-alias=5132.4 --switch2-alias-2=142.53

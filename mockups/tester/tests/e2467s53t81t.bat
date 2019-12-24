@@ -1,0 +1,1 @@
+@red ../scripts/st4c6ir125p3.red --option1=2314 --option1=42.351 --option2-alias=.24351 --switch2-alias=CBAD 2351.4 --switch2-alias-2=BDAC --option2=421.35 --switch2-alias-2=DCBA --switch2 --switch2 --switch1-alias=CABD --switch2-alias-2=DCBA --switch2-alias-2=BDAC 2435.1 --switch1 --switch2 --switch2-alias-2=43251. --option2-alias=4312 --switch2-alias-2=BDAC

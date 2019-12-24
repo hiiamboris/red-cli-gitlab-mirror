@@ -1,0 +1,1 @@
+@red ../scripts/15sc2itr34p6.red .45231 --option2=5.1342 --switch1 --switch2 CDBA .45231 --option2-alias=5132.4 --option2=BCAD CDBA --switch2-alias=DBCA --switch1-alias=ABCD --option2=25143. --switch2-alias=ACDB .45231 --option1=2315.4 --switch2-alias-2=142.53 --switch2-alias=ACDB -o DCAB --switch1

@@ -1,0 +1,1 @@
+@red ../scripts/cp12tsr6i453.red 2435.1 .23541 .23541 -o 143.25 --switch2 --switch1-alias=CABD --switch2-alias-2=BDAC --switch1

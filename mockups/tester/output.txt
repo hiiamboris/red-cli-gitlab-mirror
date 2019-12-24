@@ -1,0 +1,1285 @@
+ 
+*** 12se4t5t7683.bat ***
+@red ../scripts/345tciprs621.red
+Not enough operands given
+
+*** 12t458s736et.bat ***
+@red ../scripts/6c5pi132s4tr.red --option2-alias=5132.4 --option1=2315.4 --switch1
+Not enough operands given
+
+*** 132ts7845te6.bat ***
+@red ../scripts/6254rtcsp3i1.red --switch2 -o 143.25 --switch2-alias=CBAD --switch2 --switch2-alias=DBCA --option2-alias=21543. --switch2-alias-2=43251. -o 143.25 --option1=42.351 --option2-alias=.24351 --option2-alias=4312 --option1=2314 --option2=ADCB --option2=421.35 --switch1 --option2=ADCB --option1=2314 --switch1-alias=CABD --switch2-alias-2=43251. 2435.1
+Option --switch2-alias=CBAD does not accept a value
+
+*** 134et57t286s.bat ***
+@red ../scripts/6532it1scp4r.red --option1=2431 --switch2 --switch1 --switch2 --option2=CABD --option1=2431 CBDA --switch1-alias=2431 --option2-alias=BCDA --switch1 --option1=2431 --option2-alias=BCDA --switch2 CBDA --switch1-alias=2431
+Option --switch1-alias=2431 does not accept a value
+
+*** 137465s28tet.bat ***
+@red ../scripts/p5i2ts1c4r36.red --switch2 --switch1 --switch2 --switch2 --option2=2143 --switch2
+Not enough operands given
+
+*** 13ts64te5872.bat ***
+@red ../scripts/1c5ps2i643rt.red --option2-alias=21543. --switch1-alias=2431 --option2=DCAB --switch1-alias=CABD --switch2 .23541 --option2=DCAB --switch2-alias-2=DCBA --switch1-alias=CABD --switch2-alias=DBCA --switch2-alias=DBCA --switch2-alias-2=43251. --switch2-alias=CBAD --switch2-alias-2=BDAC 2435.1
+Option --switch1-alias=2431 does not accept a value
+
+*** 1435t7268tes.bat ***
+@red ../scripts/1rpi5st263c4.red
+Not enough operands given
+
+*** 14e6t7s82t53.bat ***
+@red ../scripts/5p6rt2cs1i34.red 2351.4 --option1=3241 --option2=DCAB --switch2-alias=CBAD --switch2 2435.1 2351.4 --option1=42.351 --switch2-alias-2=DCBA --option2-alias=4312 --option1=2314 --option1=2314 .23541 --switch1-alias=CABD --switch2-alias-2=43251. --switch1-alias=2431 --switch1-alias=CABD --switch2 --option1=3241 --switch1-alias=2431 --switch2-alias-2=BDAC --switch2-alias=DBCA --option2=DCAB --switch2 --option2-alias=21543.
+Option --switch2-alias=CBAD does not accept a value
+
+*** 158327e4t6ts.bat ***
+@red ../scripts/r1c2346si5pt.red 2435.1 --switch2 --option1=3241 --switch1 --switch2
+string-operand       2435.1
+integer-operands     
+switch1              true
+switch2              true
+switch1-alias        true
+switch2-alias        true
+switch2-alias-2      true
+option1              true
+argument1            3241.0
+option2              false
+argument2            none
+option2-alias        false
+o                    false
+
+*** 15s764t3t2e8.bat ***
+@red ../scripts/6254rtcsp3i1.red --switch2 --option1=3241 --option1=2314 --option2-alias=4312 --option1=2314 --option1=2314 --option1=3241 2435.1 --switch2 --switch2-alias-2=DCBA -o 1243 --switch1-alias=CABD --option2-alias=4312 --option1=42.351 --option1=3241 --option1=3241 --switch2 --switch1
+Option --switch2-alias-2=DCBA does not accept a value
+
+*** 16e5stt47283.bat ***
+@red ../scripts/13s6ri245cpt.red --switch1-alias=24513. --switch1-alias=24513. --switch1 --option2=CABD --switch2 --option2=CABD --switch1-alias=24513. --option2-alias=3124
+Option --switch1-alias=24513. does not accept a value
+
+*** 16s2et48375t.bat ***
+@red ../scripts/62rst5cp4i31.red --option1=3241 --switch2-alias-2=DCBA --option2-alias=4312 --option1=42.351 --switch1 --option1=3241 --switch1 --switch1 --switch2-alias-2=43251. --switch2-alias-2=43251. -o 143.25 --switch2-alias=DBCA --switch1-alias=CABD --switch2 --switch2-alias-2=DCBA --option2=421.35 --option1=42.351 --option2=DCAB --switch1-alias=CABD -o 1243 --option1=2314 --option2-alias=.24351 --option2-alias=4312
+Option --switch2-alias-2=DCBA does not accept a value
+
+*** 183s275t46et.bat ***
+@red ../scripts/r4p2sc31ti56.red
+Not enough operands given
+
+*** 18537st2e46t.bat ***
+@red ../scripts/6254rtcsp3i1.red --option2-alias=.24351 --switch2-alias-2=DCBA --switch2-alias=DBCA --switch2-alias=DBCA --switch2 --option1=42.351 --switch2 --switch1 --switch2-alias-2=43251. .23541 --switch1-alias=CABD --switch2-alias-2=43251. 2435.1 --option2-alias=4312 --option2-alias=4312 -o 1243 --switch2-alias-2=43251. 2435.1 2435.1 --option2-alias=4312
+Option --switch2-alias-2=DCBA does not accept a value
+
+*** 18764t32tes5.bat ***
+@red ../scripts/p624r5tci3s1.red --option2=ADCB --switch2-alias=DBCA --option1=42.351 --switch2-alias-2=DCBA --switch1 --option1=2314 --switch2-alias-2=43251. --switch2-alias=CBAD --switch2
+Option --switch2-alias=DBCA does not accept a value
+
+*** 18e473t6s25t.bat ***
+@red ../scripts/rc5its36p412.red --option1=3412 --switch2-alias-2=142.53 .45231 3.5214 --switch2-alias-2=142.53 DCAB --option1=3412
+Option --switch2-alias-2=142.53 does not accept a value
+
+*** 18ts472t5e63.bat ***
+@red ../scripts/621i4rctsp35.red --switch1 CBDA --option2-alias=BCDA --switch2
+BCDA should be a float value
+
+*** 1e8t32s74t56.bat ***
+@red ../scripts/t6c2rsi4153p.red --option2=BCAD
+BCAD should be a float value
+
+*** 1s5t3t2764e8.bat ***
+@red ../scripts/45csr2p136it.red
+Not enough operands given
+
+*** 1s6745t32e8t.bat ***
+@red ../scripts/6c5pi132s4tr.red --switch1-alias=ABCD --option1=3412 --option2=25143. --option2=25143. -o DCAB
+Option --switch1-alias=ABCD does not accept a value
+
+*** 1se25t84367t.bat ***
+@red ../scripts/p326451rtsci.red --option1=2134 --switch2-alias-2=ABDC --option2=2143 --switch1 --option2-alias=BCDA CBDA --switch2 --option2=2143 --switch1-alias=2431 --switch1 --option1=2431 --option2=2143 --switch2 --option2-alias=BCDA --switch2 --option2-alias=3124
+Option --switch2-alias-2=ABDC does not accept a value
+
+*** 1st5e2846t37.bat ***
+@red ../scripts/r4p2sc31ti56.red
+Not enough operands given
+
+*** 1t6345se82t7.bat ***
+@red ../scripts/13s6ri245cpt.red --option2-alias=BCDA --switch1-alias=2431 --option2=2143 --switch1-alias=24513. CBDA --switch1 --switch1-alias=24513. --option2=CABD --switch1 --option2-alias=BCDA --switch1-alias=2431 --switch1-alias=24513.
+Option --switch1-alias=2431 does not accept a value
+
+*** 1tt8562e43s7.bat ***
+@red ../scripts/6254rtcsp3i1.red --switch1-alias=CABD --switch2-alias-2=DCBA --switch2-alias-2=BDAC --option2-alias=21543. --switch1 --switch1
+Option --switch1-alias=CABD does not accept a value
+
+*** 1tts2e684735.bat ***
+@red ../scripts/45csr2p136it.red --switch2 --option2=25143. --switch1-alias=ABCD -o 3.1524 --switch2 -o 3.1524 --option2=5.1342 -o 3.1524 --switch2 --switch1 DCAB DCAB --option2-alias=5132.4
+Option --switch1-alias=ABCD does not accept a value
+
+*** 2165348te7ts.bat ***
+@red ../scripts/t6c2rsi4153p.red --switch2-alias=ACDB --option2-alias=5132.4 --option2=5.1342 .34521 DCAB --option2=25143. --option2=25143. -o 3.1524 --switch2
+Option --switch2-alias=ACDB does not accept a value
+
+*** 21t3s78e5t64.bat ***
+@red ../scripts/51c3rtp62si4.red
+Not enough operands given
+
+*** 21t87e3t546s.bat ***
+@red ../scripts/6254rtcsp3i1.red
+Not enough operands given
+
+*** 2357t81s64et.bat ***
+@red ../scripts/25t4is1cr3p6.red --option1=2431 --switch2-alias-2=ABDC --switch2 --switch2 --switch2 --option1=2134 --option2=2143 --switch1-alias=24513. CBDA --switch2-alias-2=ABDC --switch2-alias-2=ABDC --switch1 --option1=2431 --option1=2431 --option2=2143 412.53 --switch2-alias=4312
+Option --switch2-alias-2=ABDC does not accept a value
+
+*** 2368517tet4s.bat ***
+@red ../scripts/321rs4p56cti.red --option2-alias=4312 --switch2 --switch1-alias=2431 --option1=42.351 --switch2 --switch2 --option2-alias=21543. --option2=ADCB --switch2-alias-2=43251. --switch2-alias=CBAD --option2=421.35 --option2=DCAB --switch1 --switch1
+Option --switch1-alias=2431 does not accept a value
+
+*** 23s6t85e4t17.bat ***
+@red ../scripts/2ti143spc65r.red .45231 --switch2 --option2-alias=3214.5 --option2=BCAD --option1=3412 -o 3.1524 DCAB --switch2-alias-2=DCAB CDBA 3.5214
+Option --switch2-alias-2=DCAB does not accept a value
+
+*** 247t1t3658se.bat ***
+@red ../scripts/321rs4p56cti.red --switch2-alias=DBCA
+Option --switch2-alias=DBCA does not accept a value
+
+*** 24t5te8713s6.bat ***
+@red ../scripts/s2pr651i4ct3.red -o 3.1524 --switch2-alias=ACDB 3.5214 --switch2 DCAB --option2=BCAD
+Option --switch2-alias=ACDB does not accept a value
+
+*** 2748tse16t35.bat ***
+@red ../scripts/1rpi5st263c4.red
+Not enough operands given
+
+*** 274tt1es6853.bat ***
+@red ../scripts/546ptcr21s3i.red --option2=2143 --option1=2134
+Not enough operands given
+
+*** 2758stt63e41.bat ***
+@red ../scripts/642s35tir1cp.red
+Not enough operands given
+
+*** 281375ett6s4.bat ***
+@red ../scripts/s235t41cr6pi.red
+Not enough operands given
+
+*** 2e6853tt4s17.bat ***
+@red ../scripts/p326451rtsci.red --switch1 412.53 412.53 --switch1
+412.53 should be an integer value
+
+*** 2s518tt7634e.bat ***
+@red ../scripts/5p6rt2cs1i34.red
+Not enough operands given
+
+*** 2s65t317e84t.bat ***
+@red ../scripts/53pr46ti2cs1.red -o 1243 --option2-alias=21543. --switch2-alias-2=DCBA --switch1-alias=2431 --option2=421.35
+Option --switch2-alias-2=DCBA does not accept a value
+
+*** 2s754t8te316.bat ***
+@red ../scripts/6254rtcsp3i1.red --switch2 --switch1-alias=CABD --switch2-alias=CBAD --switch1 --switch2-alias-2=DCBA --option1=2314 --switch1-alias=CABD --switch2-alias=DBCA --option2-alias=21543. --switch2-alias=CBAD .23541 --switch2 --option2-alias=4312
+Option --switch1-alias=CABD does not accept a value
+
+*** 2s8571et346t.bat ***
+@red ../scripts/5ir4c6s1p3t2.red CBDA --option1=2134 --option2-alias=BCDA --switch2 --option2-alias=3124 412.53 --option1=2431 --switch2 --switch2-alias-2=ABDC CBDA 412.53 CBDA --option2-alias=3124
+Option --switch2-alias-2=ABDC does not accept a value
+
+*** 2st631e4758t.bat ***
+@red ../scripts/is5rp46c123t.red
+Not enough operands given
+
+*** 2t5184e67st3.bat ***
+@red ../scripts/cri6ps13452t.red --option2=2143 --option1=2134 --switch2-alias=4312 412.53 --switch2-alias=4312 --option1=2134
+Option --switch2-alias=4312 does not accept a value
+
+*** 2tt3845e6s17.bat ***
+@red ../scripts/63rs4t1i2cp5.red DCAB --option1=2315.4 --switch2-alias=ACDB --option2=BCAD
+Option --switch2-alias=ACDB does not accept a value
+
+*** 3145t8627tse.bat ***
+@red ../scripts/5p4sci1236tr.red --option2=DCAB --switch1
+DCAB should be a float value
+
+*** 316t7e524s8t.bat ***
+@red ../scripts/642s35tir1cp.red --switch2 --switch1-alias=24513. --switch1-alias=2431 --switch2 --option1=2431 --switch2 --switch1-alias=2431
+Option --switch1-alias=24513. does not accept a value
+
+*** 3217e5ts86t4.bat ***
+@red ../scripts/5p4sci1236tr.red -o 143.25 --switch2
+Not enough operands given
+
+*** 32716e845tst.bat ***
+@red ../scripts/prst4c35i621.red CBDA 412.53
+412.53 should be an integer value
+
+*** 34651et7s8t2.bat ***
+@red ../scripts/c6ti5s2r31p4.red
+Not enough operands given
+
+*** 347e1t2s6t58.bat ***
+@red ../scripts/ct35ps421r6i.red DCAB CDBA
+CDBA should be an integer value
+
+*** 34t7s1t526e8.bat ***
+@red ../scripts/25t4is1cr3p6.red CBDA --option1=2431 --switch1-alias=24513. --option1=2134 --switch1-alias=2431 412.53 --switch1-alias=2431 --option1=2431 --switch2 --option2=CABD --switch2 --option1=2134 --switch2
+Option --switch1-alias=24513. does not accept a value
+
+*** 3564182t7set.bat ***
+@red ../scripts/12ir6s3t54pc.red -o DCAB CDBA --switch2-alias=DBCA --option2-alias=5132.4 --switch2-alias-2=142.53
+Option --switch2-alias=DBCA does not accept a value
+
+*** 35t8st671e42.bat ***
+@red ../scripts/621i4rctsp35.red --switch2 412.53 --option2-alias=3124 --option2=2143 --switch1-alias=2431 --option2=2143 --switch1 --switch1-alias=2431
+Option --switch1-alias=2431 does not accept a value
+
+*** 36e5t8s7214t.bat ***
+@red ../scripts/642s35tir1cp.red --switch2-alias=4312 CBDA -o .31542 --switch1-alias=24513. --switch2 --switch1 --option2-alias=BCDA --switch1 --switch2-alias-2=ABDC --switch2 -o .31542 412.53 --option2=CABD 412.53 --option2=CABD --option2=2143
+Option --switch2-alias=4312 does not accept a value
+
+*** 36et17st2548.bat ***
+@red ../scripts/214src653tip.red
+Not enough operands given
+
+*** 36t7s1842e5t.bat ***
+@red ../scripts/5c31ir4ts2p6.red
+Not enough operands given
+
+*** 37t61et4s528.bat ***
+@red ../scripts/ic5p3t21sr64.red --switch2 --switch2-alias=DBCA DCAB --switch2-alias-2=DCAB --switch2 --switch2-alias=ACDB .34521 --option1=3412 --switch2-alias=ACDB --switch2 --switch1-alias=ABCD --option2-alias=3214.5 --option2-alias=5132.4 --option1=3412 --switch1 --option1=3412 --option2=BCAD .34521
+Option --switch2-alias=DBCA does not accept a value
+
+*** 3s815476tt2e.bat ***
+@red ../scripts/63rs4t1i2cp5.red --option2-alias=3214.5 .45231 --switch2 --option2=5.1342 --option2-alias=3214.5 --option1=3412 --switch2-alias=DBCA --option2=25143. --option1=2315.4 CDBA 3.5214 -o 3.1524 -o DCAB --switch1 DCAB --option2-alias=5132.4 --switch1 -o 3.1524 .34521
+Option --switch2-alias=DBCA does not accept a value
+
+*** 3t142s78t56e.bat ***
+@red ../scripts/r1p42s3ict65.red --switch2 --switch1 --switch2 --switch1 --option2-alias=BCDA --option1=2431 412.53 --switch2 --switch1 -o .31542
+BCDA should be a float value
+
+*** 3t251te6s874.bat ***
+@red ../scripts/t4i3512rpcs6.red --option1=2134 --option2-alias=3124 --option1=2431 --option1=2134
+Not enough operands given
+
+*** 3t5s284617et.bat ***
+@red ../scripts/6532it1scp4r.red
+Not enough operands given
+
+*** 3t5t2e1486s7.bat ***
+@red ../scripts/642s35tir1cp.red --option2-alias=BCDA --switch2
+BCDA should be a float value
+
+*** 3t86tes24517.bat ***
+@red ../scripts/51c3rtp62si4.red --switch2-alias-2=DCAB --switch2-alias-2=142.53 .34521 --switch2 --option2=25143. --option2=5.1342
+Option --switch2-alias-2=DCAB does not accept a value
+
+*** 3test8142756.bat ***
+@red ../scripts/4i2rps5ct136.red
+Not enough operands given
+
+*** 3tets2541678.bat ***
+@red ../scripts/53pr46ti2cs1.red --switch2-alias-2=43251. --option1=3241 --option1=3241 --switch2-alias-2=DCBA --option2=DCAB --option2-alias=21543. --option2-alias=4312 --option2-alias=21543. --option2-alias=.24351 .23541 --switch1 --switch2 --option1=42.351 --option1=42.351 --switch2-alias-2=43251. --switch2 .23541 --option2-alias=4312 --option2-alias=4312 --switch1-alias=2431
+Option --switch2-alias-2=43251. does not accept a value
+
+*** 416tte75328s.bat ***
+@red ../scripts/63rs4t1i2cp5.red DCAB --switch1 -o DCAB
+DCAB should be a float value
+
+*** 41t3t8e2657s.bat ***
+@red ../scripts/p164crti3s25.red -o 3.1524 --switch2-alias=ACDB --option2=5.1342 -o DCAB .45231 --option1=2315.4 --option2-alias=5132.4 --option2=BCAD --option1=3412 DCAB .45231 .45231 --option1=3412 .34521 --option1=3412 --switch2 --switch2-alias=ACDB CDBA .45231 --switch2-alias=DBCA --switch2-alias-2=DCAB
+Option --switch2-alias=ACDB does not accept a value
+
+*** 4321685t7ets.bat ***
+@red ../scripts/13s6ri245cpt.red --switch1-alias=24513. --option2=2143 --option1=2134 --switch1-alias=24513. --switch2-alias-2=ABDC --switch1-alias=2431 --switch2 --switch2-alias-2=ABDC --switch1 --switch2-alias-2=ABDC
+Option --switch1-alias=24513. does not accept a value
+
+*** 453t2se16t87.bat ***
+@red ../scripts/r1p42s3ict65.red --switch2-alias=4312 -o .31542 --switch2-alias=4312 --switch2
+Option --switch2-alias=4312 does not accept a value
+
+*** 453te267ts18.bat ***
+@red ../scripts/p164crti3s25.red .45231 .45231 --switch1-alias=ABCD --switch2-alias=ACDB --switch2 --option2=25143. --switch2-alias=DBCA --switch2-alias-2=DCAB --switch2-alias-2=DCAB
+Option --switch1-alias=ABCD does not accept a value
+
+*** 4572s8tte361.bat ***
+@red ../scripts/2ti143spc65r.red
+Not enough operands given
+
+*** 45e2637s1tt8.bat ***
+@red ../scripts/st4c6ir125p3.red
+Not enough operands given
+
+*** 45ett6s28713.bat ***
+@red ../scripts/642s35tir1cp.red
+Not enough operands given
+
+*** 45s261t738et.bat ***
+@red ../scripts/rc5its36p412.red --option2=5.1342 .45231 -o 3.1524 --switch2-alias-2=DCAB --switch2 --switch1 CDBA --switch1 --option2-alias=3214.5 --option2=25143. --switch2-alias=ACDB --switch2-alias=DBCA --switch2-alias=DBCA --switch2-alias-2=DCAB CDBA --option1=2315.4 --option2-alias=3214.5 -o 3.1524 --option2=5.1342 --option2-alias=3214.5
+Option --switch2-alias-2=DCAB does not accept a value
+
+*** 46s5te2t8173.bat ***
+@red ../scripts/r1p42s3ict65.red 412.53 --switch2-alias-2=ABDC --switch2 --switch2 --switch1 --option1=2134 --switch1-alias=2431 --option2=2143 --option2=2143
+Option --switch2-alias-2=ABDC does not accept a value
+
+*** 46s825e71t3t.bat ***
+@red ../scripts/6532it1scp4r.red --switch2 -o .31542 --option2-alias=BCDA
+BCDA should be a float value
+
+*** 46tse3285t71.bat ***
+@red ../scripts/p326451rtsci.red --option2=CABD --option1=2134 --switch2 --option1=2134 --option2-alias=3124 -o .31542 --switch1 --switch1 -o .31542 --switch2-alias-2=ABDC --option1=2134 --switch1-alias=24513. --option1=2431 --switch2 --option2-alias=3124
+Option --switch2-alias-2=ABDC does not accept a value
+
+*** 481s52te7t63.bat ***
+@red ../scripts/6532it1scp4r.red 412.53 --option2-alias=3124 --option2-alias=3124 --option2-alias=BCDA --switch1 --option1=2134 --switch1 --switch2-alias=4312 --option2-alias=3124 --switch2-alias=4312 --switch2 --option2=2143 --switch1-alias=24513. CBDA --option2=CABD --option2-alias=3124 --switch2-alias=4312
+Option --switch2-alias=4312 does not accept a value
+
+*** 485t2s6t1e37.bat ***
+@red ../scripts/621i4rctsp35.red --option1=2134 --switch1 --switch1
+Not enough operands given
+
+*** 48s7t53e216t.bat ***
+@red ../scripts/cp12tsr6i453.red --option2=ADCB --option2-alias=4312 --switch1 --switch2-alias-2=DCBA --switch2-alias=DBCA -o 1243 2435.1 --switch2 --switch1 --option1=3241 -o 143.25 --option2-alias=21543. --switch2-alias-2=43251. --option2-alias=.24351 --option2=421.35 --option2=DCAB --option2=DCAB --option2=DCAB --option1=2314 --option2=421.35
+Option --switch2-alias-2=DCBA does not accept a value
+
+*** 4e68tt35s172.bat ***
+@red ../scripts/53pr46ti2cs1.red
+Not enough operands given
+
+*** 4e72t1s5863t.bat ***
+@red ../scripts/546ptcr21s3i.red
+Not enough operands given
+
+*** 4es2368tt517.bat ***
+@red ../scripts/ct35ps421r6i.red 3.5214 --option2-alias=5132.4 -o 3.1524 --option2=5.1342 --switch2-alias-2=142.53 --switch1-alias=ABCD --switch1-alias=ABCD --option1=3412
+Option --switch2-alias-2=142.53 does not accept a value
+
+*** 4et8t567s231.bat ***
+@red ../scripts/51c3rtp62si4.red
+Not enough operands given
+
+*** 4s31e2786tt5.bat ***
+@red ../scripts/t4i3512rpcs6.red --switch2
+Not enough operands given
+
+*** 4s527e16t8t3.bat ***
+@red ../scripts/13s6ri245cpt.red
+Not enough operands given
+
+*** 4s6825t3e71t.bat ***
+@red ../scripts/5p4sci1236tr.red -o 143.25 2435.1 --option1=2314 --switch2-alias=DBCA --option2=DCAB --switch2-alias-2=43251. .23541 --switch2 --switch2-alias=CBAD -o 143.25 --switch2 --option1=42.351 --switch2 --option2=ADCB
+Option --switch2-alias=DBCA does not accept a value
+
+*** 4s725e3tt861.bat ***
+@red ../scripts/6c5pi132s4tr.red DCAB DCAB --option1=3412 --switch1-alias=ABCD
+Option --switch1-alias=ABCD does not accept a value
+
+*** 4s78tt2613e5.bat ***
+@red ../scripts/345tciprs621.red --switch1 --switch2 2435.1 2435.1 .23541 --switch1 .23541 --switch1 --switch1 --switch2 2351.4 --switch2-alias=CBAD -o 1243 --switch2 --switch1-alias=CABD --option2=DCAB --switch2-alias=DBCA
+Option --switch2-alias=CBAD does not accept a value
+
+*** 4s7e581t63t2.bat ***
+@red ../scripts/62rst5cp4i31.red --option1=3241 --switch2 --option2-alias=.24351 --option1=3241 --switch2-alias-2=BDAC -o 1243 --option1=42.351 --switch2-alias-2=43251. --switch2 --switch1-alias=2431 --switch1 --option2-alias=.24351 --switch1-alias=CABD --option2-alias=4312 --switch2-alias-2=DCBA --switch1-alias=2431
+Option --switch2-alias-2=BDAC does not accept a value
+
+*** 4s825t17t6e3.bat ***
+@red ../scripts/prst4c35i621.red --switch1 --option1=2134 --switch1-alias=2431 --switch1-alias=24513. --option2-alias=3124 --option2=2143 CBDA CBDA --option1=2431 --switch2-alias-2=ABDC CBDA --switch2 --option2-alias=BCDA --option2=2143 --option1=2134
+Option --switch1-alias=2431 does not accept a value
+
+*** 4stt8371265e.bat ***
+@red ../scripts/51c3rtp62si4.red
+Not enough operands given
+
+*** 4t65te7s1238.bat ***
+@red ../scripts/15sc2itr34p6.red -o DCAB DCAB --option1=3412 --option1=3412 3.5214 --option2=BCAD
+DCAB should be a float value
+
+*** 4tet73s85126.bat ***
+@red ../scripts/345tciprs621.red -o 143.25 --switch2 --option1=2314
+Not enough operands given
+
+*** 4tse17856t23.bat ***
+@red ../scripts/s235t41cr6pi.red --option2-alias=4312 --switch2-alias-2=BDAC 2435.1 .23541 --option1=3241 --switch2-alias-2=43251. --switch1-alias=2431
+Option --switch2-alias-2=BDAC does not accept a value
+
+*** 5147ts86e23t.bat ***
+@red ../scripts/2ti143spc65r.red --switch2-alias=ACDB --option1=3412 --option2=25143. -o 3.1524 --option2-alias=5132.4 .34521 --switch2-alias-2=142.53 --option2=25143. --switch2-alias-2=DCAB --switch2-alias=DBCA --switch2 --switch1 -o 3.1524 .34521 --switch1-alias=ABCD -o 3.1524 DCAB -o 3.1524
+Option --switch2-alias=ACDB does not accept a value
+
+*** 52416st8t37e.bat ***
+@red ../scripts/1c5ps2i643rt.red --switch2-alias-2=BDAC --switch2-alias=CBAD --switch2 2435.1 --option2=DCAB
+Option --switch2-alias-2=BDAC does not accept a value
+
+*** 52e1stt43867.bat ***
+@red ../scripts/s235t41cr6pi.red --option1=3241 --switch2-alias-2=43251. --switch2-alias-2=DCBA --switch2 --option2=421.35 --switch2 --option1=42.351
+Option --switch2-alias-2=43251. does not accept a value
+
+*** 52t437et68s1.bat ***
+@red ../scripts/s2pr651i4ct3.red --option1=2315.4 DCAB --option2=5.1342 --switch2 --option2=BCAD DCAB --switch1 .34521 --switch2-alias=ACDB DCAB CDBA --switch2-alias-2=DCAB --switch2-alias-2=142.53 --switch1
+Option --switch2-alias=ACDB does not accept a value
+
+*** 5364s271tt8e.bat ***
+@red ../scripts/6532it1scp4r.red --switch2 --option2=CABD
+CABD should be a float value
+
+*** 541t68et723s.bat ***
+@red ../scripts/63rs4t1i2cp5.red --switch1
+Not enough operands given
+
+*** 5436t8es2t71.bat ***
+@red ../scripts/prst4c35i621.red --option2-alias=3124 CBDA CBDA --option2=2143 --switch1 --switch1 --option2=CABD --switch1-alias=2431 --switch2-alias=4312 CBDA -o .31542 --option2=CABD --option1=2134 412.53 --option2=2143
+Option --switch1-alias=2431 does not accept a value
+
+*** 5487se3t1t62.bat ***
+@red ../scripts/63rs4t1i2cp5.red
+Not enough operands given
+
+*** 568t7se123t4.bat ***
+@red ../scripts/45csr2p136it.red --switch1-alias=ABCD --switch2 --switch2 DCAB .45231 -o DCAB --option2=BCAD --option2=BCAD --switch2-alias=ACDB --option1=2315.4 --switch2-alias-2=DCAB --option2=5.1342 --switch2-alias=DBCA --option2=5.1342 --option2=BCAD --switch2-alias=DBCA --option2-alias=3214.5 --option2=BCAD
+Option --switch1-alias=ABCD does not accept a value
+
+*** 56stt312e487.bat ***
+@red ../scripts/13s6ri245cpt.red
+Not enough operands given
+
+*** 5728e14t6ts3.bat ***
+@red ../scripts/1rpi5st263c4.red CDBA DCAB
+DCAB should be an integer value
+
+*** 5748s2tt31e6.bat ***
+@red ../scripts/2ti143spc65r.red 3.5214 --switch2-alias=ACDB -o 3.1524 --option2=BCAD --option2=5.1342 --switch2-alias=DBCA --switch1-alias=ABCD --option2=25143. --option2-alias=5132.4
+Option --switch2-alias=ACDB does not accept a value
+
+*** 57s8tte23641.bat ***
+@red ../scripts/6c5pi132s4tr.red .34521 --switch2 --option1=3412 -o DCAB --option2=BCAD --option2=5.1342 --switch2-alias-2=142.53 --option2=BCAD --option2-alias=5132.4 --switch1 CDBA --switch2-alias=ACDB --option1=2315.4 --switch1-alias=ABCD
+Option --switch2-alias-2=142.53 does not accept a value
+
+*** 58132ts4e6t7.bat ***
+@red ../scripts/13s6ri245cpt.red --switch2 --switch2 --option2-alias=BCDA -o .31542 --switch2 --switch1
+BCDA should be a float value
+
+*** 58743tse621t.bat ***
+@red ../scripts/321rs4p56cti.red --option1=2314 2435.1 2351.4 --switch2-alias-2=43251. --option1=2314 2351.4 -o 143.25 --option2=DCAB --switch1-alias=2431
+Option --switch2-alias-2=43251. does not accept a value
+
+*** 58e23s76t4t1.bat ***
+@red ../scripts/prst4c35i621.red --option1=2431 --option1=2431 --switch2
+Not enough operands given
+
+*** 5e2s1t3t6478.bat ***
+@red ../scripts/r53c461i2pts.red --switch2-alias=ACDB --switch2-alias=ACDB
+Option --switch2-alias=ACDB does not accept a value
+
+*** 5e34st26t817.bat ***
+@red ../scripts/ct35ps421r6i.red --option2=25143.
+Invalid value format: 25143.
+
+*** 5e736t241st8.bat ***
+@red ../scripts/12ir6s3t54pc.red .45231 --option1=2315.4 --option2=BCAD CDBA --option2=25143. --switch2-alias=DBCA --switch2 3.5214 --switch1 --option2=5.1342 -o 3.1524 --option2=5.1342 --switch2 .34521 --option2-alias=3214.5 --switch2-alias-2=142.53 -o DCAB --option2-alias=5132.4 --option2-alias=3214.5
+Option --switch2-alias=DBCA does not accept a value
+
+*** 5e7s328t416t.bat ***
+@red ../scripts/cri6ps13452t.red --switch2-alias-2=ABDC
+Option --switch2-alias-2=ABDC does not accept a value
+
+*** 5e7t38162s4t.bat ***
+@red ../scripts/s2pr651i4ct3.red
+Not enough operands given
+
+*** 5s48te7632t1.bat ***
+@red ../scripts/2c4sr5pit613.red .23541 --switch2-alias-2=DCBA --option2=ADCB --switch2-alias-2=DCBA --switch2-alias-2=BDAC --switch2 --option1=3241 .23541 --switch1 --option1=3241 2435.1 .23541 2351.4 --option2-alias=.24351 --switch1-alias=CABD --option2-alias=4312 --option2-alias=4312 -o 143.25
+Option --switch2-alias-2=DCBA does not accept a value
+
+*** 5s7436te81t2.bat ***
+@red ../scripts/546ptcr21s3i.red
+Not enough operands given
+
+*** 5st148326t7e.bat ***
+@red ../scripts/prst4c35i621.red
+Not enough operands given
+
+*** 5st3246e87t1.bat ***
+@red ../scripts/p326451rtsci.red --option2-alias=3124 --switch1-alias=2431 --switch1-alias=24513.
+Option --switch1-alias=2431 does not accept a value
+
+*** 5st41276e3t8.bat ***
+@red ../scripts/6ict154prs32.red
+Not enough operands given
+
+*** 5st647e8t231.bat ***
+@red ../scripts/p164crti3s25.red --switch2-alias-2=142.53 --switch1 --switch2-alias=DBCA --switch2 --option2-alias=3214.5 -o DCAB -o DCAB --switch2-alias-2=DCAB -o 3.1524 3.5214 -o 3.1524 --option2=5.1342 --option1=3412 3.5214 --option1=3412 -o DCAB
+Option --switch2-alias-2=142.53 does not accept a value
+
+*** 5t2e8t674s13.bat ***
+@red ../scripts/cri6ps13452t.red --switch2
+Not enough operands given
+
+*** 5t38e26s14t7.bat ***
+@red ../scripts/214src653tip.red -o 143.25 --option2=ADCB --switch2-alias-2=BDAC --option1=42.351 2435.1 -o 143.25 --switch2-alias-2=43251. --switch2-alias=DBCA --option2=DCAB -o 1243 --option2-alias=.24351 --option2=ADCB
+Option --switch2-alias-2=BDAC does not accept a value
+
+*** 5t4s213t678e.bat ***
+@red ../scripts/r1c2346si5pt.red
+Not enough operands given
+
+*** 61s3t78e524t.bat ***
+@red ../scripts/cp12tsr6i453.red
+Not enough operands given
+
+*** 61t2e385t74s.bat ***
+@red ../scripts/2c4sr5pit613.red
+Not enough operands given
+
+*** 62es184t53t7.bat ***
+@red ../scripts/s235t41cr6pi.red
+Not enough operands given
+
+*** 62te8714st35.bat ***
+@red ../scripts/1rpi5st263c4.red --switch2-alias=DBCA CDBA .45231 --switch2-alias=ACDB --switch1 CDBA 3.5214 --option2-alias=5132.4 --switch2-alias=DBCA .45231 CDBA
+Option --switch2-alias=DBCA does not accept a value
+
+*** 63t245te87s1.bat ***
+@red ../scripts/prst4c35i621.red --switch2 --switch2-alias=4312 --option2=CABD --option1=2134 --option2=CABD --option1=2134 --option2=CABD --switch2 --option2-alias=3124 --switch1-alias=2431 --switch2-alias=4312
+Option --switch2-alias=4312 does not accept a value
+
+*** 641s753e8t2t.bat ***
+@red ../scripts/621i4rctsp35.red --option2=CABD 412.53 --option2=CABD --option1=2431
+CABD should be a float value
+
+*** 6423t7158tse.bat ***
+@red ../scripts/621i4rctsp35.red --option2-alias=BCDA --switch1 --option1=2134 --switch2 --option1=2431 --option2=2143 --option2=2143
+BCDA should be a float value
+
+*** 6432et78s51t.bat ***
+@red ../scripts/st4c6ir125p3.red 2351.4 --option2=DCAB
+DCAB should be a float value
+
+*** 64tt572e831s.bat ***
+@red ../scripts/642s35tir1cp.red -o .31542 --option2=CABD --switch1 --switch2-alias-2=ABDC 412.53
+Option --switch2-alias-2=ABDC does not accept a value
+
+*** 6514872t3ets.bat ***
+@red ../scripts/45csr2p136it.red
+Not enough operands given
+
+*** 653ts21478te.bat ***
+@red ../scripts/53pr46ti2cs1.red --option2=DCAB --switch2-alias-2=43251. --option1=2314 --switch1 -o 1243 2351.4 --option2=421.35 --switch2 --option1=2314
+Option --switch2-alias-2=43251. does not accept a value
+
+*** 6541tt328e7s.bat ***
+@red ../scripts/13s6ri245cpt.red --switch1 --switch2 --switch1 --option2-alias=BCDA --option1=2134 --option2-alias=BCDA --option2-alias=3124
+BCDA should be a float value
+
+*** 65s2t418t73e.bat ***
+@red ../scripts/2ti143spc65r.red 3.5214 -o 3.1524 --switch1-alias=ABCD --switch2-alias=ACDB --switch2-alias=ACDB .34521
+Option --switch1-alias=ABCD does not accept a value
+
+*** 68374stte152.bat ***
+@red ../scripts/1rpi5st263c4.red -o DCAB
+DCAB should be a float value
+
+*** 6874tt51s23e.bat ***
+@red ../scripts/ir23t6c1ps45.red --switch1 --option2=421.35 --switch2-alias-2=43251. --switch2 --switch2-alias-2=BDAC --option2-alias=4312 --option2=ADCB --option2-alias=4312 -o 1243
+Option --switch2-alias-2=43251. does not accept a value
+
+*** 68se1t7542t3.bat ***
+@red ../scripts/6c5pi132s4tr.red --option1=3412 .45231 -o DCAB --switch2 3.5214 --switch2-alias=DBCA --switch2-alias-2=142.53 .34521 .45231 -o DCAB CDBA --switch2-alias=ACDB --switch2-alias-2=142.53 --switch1-alias=ABCD --switch2-alias-2=DCAB --switch2-alias=DBCA .45231 --switch2-alias-2=142.53 --switch2-alias=ACDB -o 3.1524 --switch1-alias=ABCD
+Option --switch2-alias=DBCA does not accept a value
+
+*** 6et287t1s543.bat ***
+@red ../scripts/6c5pi132s4tr.red --option2-alias=5132.4 -o DCAB --option2=5.1342 CDBA --switch1 DCAB
+DCAB should be a float value
+
+*** 6s127e45t3t8.bat ***
+@red ../scripts/r4pi263cs15t.red --switch1-alias=2431
+Option --switch1-alias=2431 does not accept a value
+
+*** 6s728e41t5t3.bat ***
+@red ../scripts/5c31ir4ts2p6.red --option2=5.1342 -o DCAB
+DCAB should be a float value
+
+*** 6se214t78t35.bat ***
+@red ../scripts/st4c6ir125p3.red --option2=ADCB --option1=3241 --option2-alias=.24351 2351.4 --switch2-alias-2=DCBA --option2=ADCB --option1=42.351 --option2-alias=4312 --switch2-alias=CBAD --switch1-alias=2431 2351.4 --option1=42.351 --option2-alias=4312
+Option --switch2-alias-2=DCBA does not accept a value
+
+*** 6t14es8253t7.bat ***
+@red ../scripts/5p4sci1236tr.red
+Not enough operands given
+
+*** 6t213et857s4.bat ***
+@red ../scripts/642s35tir1cp.red --switch2 --switch1 -o .31542 -o .31542 -o .31542 --option2=CABD --switch1-alias=24513. --switch1 --switch2-alias-2=ABDC --option2=2143 --switch1-alias=2431 --option1=2134
+Option --switch1-alias=24513. does not accept a value
+
+*** 6t218s5e437t.bat ***
+@red ../scripts/15sc2itr34p6.red .45231 --option2=5.1342 --switch1 --switch2 CDBA .45231 --option2-alias=5132.4 --option2=BCAD CDBA --switch2-alias=DBCA --switch1-alias=ABCD --option2=25143. --switch2-alias=ACDB .45231 --option1=2315.4 --switch2-alias-2=142.53 --switch2-alias=ACDB -o DCAB --switch1
+Option --switch2-alias=DBCA does not accept a value
+
+*** 6t31245t8se7.bat ***
+@red ../scripts/r1c2346si5pt.red --switch2-alias-2=43251. --switch2
+Option --switch2-alias-2=43251. does not accept a value
+
+*** 6t352s8741te.bat ***
+@red ../scripts/6532it1scp4r.red --switch2-alias-2=ABDC --option1=2134 --option2=CABD --switch2-alias=4312 --switch2 --option2=2143 --option2-alias=3124 --switch1-alias=24513.
+Option --switch2-alias-2=ABDC does not accept a value
+
+*** 6t3se851t472.bat ***
+@red ../scripts/6tic1p35s42r.red 412.53 --switch1 --switch2 --option2-alias=BCDA --option2-alias=BCDA --option1=2134 --option2-alias=3124 --switch2 --switch2-alias-2=ABDC --option2=2143 --option2-alias=BCDA --option1=2431 --option2-alias=3124 --switch1 --switch2-alias=4312 --option2=2143
+Option --switch2-alias-2=ABDC does not accept a value
+
+*** 6te43587st21.bat ***
+@red ../scripts/r1p42s3ict65.red -o .31542 --switch2
+Not enough operands given
+
+*** 71t286ts3e45.bat ***
+@red ../scripts/p326451rtsci.red --switch1-alias=2431 --option1=2431 --switch2 CBDA
+Option --switch1-alias=2431 does not accept a value
+
+*** 725e481st6t3.bat ***
+@red ../scripts/ct35ps421r6i.red
+Not enough operands given
+
+*** 73164e2t58st.bat ***
+@red ../scripts/53pr46ti2cs1.red --switch2-alias-2=DCBA
+Option --switch2-alias-2=DCBA does not accept a value
+
+*** 731e6ts8t254.bat ***
+@red ../scripts/53pr46ti2cs1.red --switch2 --option1=42.351 2435.1 --switch1-alias=2431 --option1=2314 --option2=ADCB 2435.1 --switch2 --switch2 --switch2-alias=CBAD --switch1 --option2-alias=4312 --switch2 --option1=3241 --switch1-alias=2431 --switch2-alias-2=BDAC -o 1243
+Option --switch1-alias=2431 does not accept a value
+
+*** 7341t82e6st5.bat ***
+@red ../scripts/5p6rt2cs1i34.red --switch1-alias=CABD --option1=3241 --switch2-alias=DBCA --option1=2314 --option2=DCAB --switch2-alias=CBAD 2351.4 --switch2-alias-2=DCBA .23541 --switch2-alias-2=BDAC 2351.4 --option1=42.351 --switch2 2351.4 --option2=DCAB -o 143.25 2435.1 --option1=2314 --switch1
+Option --switch1-alias=CABD does not accept a value
+
+*** 7386te4521st.bat ***
+@red ../scripts/2ti143spc65r.red --option2=5.1342 -o DCAB --switch2 --option1=3412 --switch2 --option2=25143. --option2-alias=5132.4 CDBA --option1=3412 --switch2-alias=ACDB
+Option --switch2-alias=ACDB does not accept a value
+
+*** 73e418526tst.bat ***
+@red ../scripts/ptsi5361c4r2.red
+Not enough operands given
+
+*** 748135s6tte2.bat ***
+@red ../scripts/s235t41cr6pi.red --switch2-alias-2=DCBA --option2-alias=4312 2435.1 --switch1
+Option --switch2-alias-2=DCBA does not accept a value
+
+*** 74t63te28s51.bat ***
+@red ../scripts/t6c2rsi4153p.red .34521 --switch2-alias-2=DCAB --switch2 --switch2-alias=ACDB .45231
+Option --switch2-alias-2=DCAB does not accept a value
+
+*** 7532te4t168s.bat ***
+@red ../scripts/1c5ps2i643rt.red --option2-alias=21543. .23541 --option2-alias=4312 --switch2-alias=DBCA -o 1243 --option2-alias=4312 --option2=DCAB --switch2 .23541 --switch1 --option1=2314
+Option --switch2-alias=DBCA does not accept a value
+
+*** 75426e1t3ts8.bat ***
+@red ../scripts/642s35tir1cp.red --switch1-alias=24513. --switch1-alias=2431 --option2=CABD --switch1-alias=24513. --option1=2134 --switch1
+Option --switch1-alias=24513. does not accept a value
+
+*** 75et46ts1283.bat ***
+@red ../scripts/s2pr651i4ct3.red --option1=2315.4 --switch1 -o DCAB --switch2-alias-2=DCAB --option2=BCAD --option2-alias=3214.5 --option1=3412 --option2=BCAD -o DCAB
+Option --switch2-alias-2=DCAB does not accept a value
+
+*** 75ett1s46832.bat ***
+@red ../scripts/5c31ir4ts2p6.red
+Not enough operands given
+
+*** 75test128364.bat ***
+@red ../scripts/p164crti3s25.red --option2=BCAD --option1=3412 --switch1-alias=ABCD 3.5214 CDBA -o DCAB .34521
+Option --switch1-alias=ABCD does not accept a value
+
+*** 76te523s4t81.bat ***
+@red ../scripts/c6ti5s2r31p4.red
+Not enough operands given
+
+*** 7814s2et635t.bat ***
+@red ../scripts/r1c2346si5pt.red --switch1-alias=CABD --option2=ADCB --switch2 --switch2 --option2=ADCB --switch2-alias-2=43251. --switch2 --option2=DCAB 2351.4 --switch2 --switch1-alias=CABD .23541 --switch1 --option2=ADCB --option1=2314 --option2-alias=4312 --switch2 -o 1243 --option2-alias=21543. --switch1-alias=CABD
+Option --switch1-alias=CABD does not accept a value
+
+*** 782t53es64t1.bat ***
+@red ../scripts/53pr46ti2cs1.red --switch2-alias-2=BDAC --switch2 --switch2-alias=CBAD --switch1-alias=CABD --option2=ADCB --switch2-alias=CBAD --switch1-alias=CABD --option1=42.351 --option1=2314 -o 143.25
+Option --switch2-alias-2=BDAC does not accept a value
+
+*** 783e5s2t6t41.bat ***
+@red ../scripts/c6ti5s2r31p4.red --option2=BCAD -o DCAB
+BCAD should be a float value
+
+*** 78s2t5t163e4.bat ***
+@red ../scripts/12ir6s3t54pc.red --option2=25143. --option2=BCAD
+Invalid value format: 25143.
+
+*** 7e61s38tt452.bat ***
+@red ../scripts/6tic1p35s42r.red 412.53 --option2=CABD --switch1-alias=24513. CBDA --switch2 --switch2-alias=4312 --option2-alias=BCDA --switch2-alias-2=ABDC --option2-alias=BCDA
+Option --switch1-alias=24513. does not accept a value
+
+*** 7et3t5648s21.bat ***
+@red ../scripts/s235t41cr6pi.red --switch2-alias-2=43251. 2351.4 --switch2-alias-2=DCBA
+Option --switch2-alias-2=43251. does not accept a value
+
+*** 7ets46328t15.bat ***
+@red ../scripts/5tsic2p643r1.red 412.53 --option1=2134 --switch1-alias=2431 --switch1 CBDA
+Option --switch1-alias=2431 does not accept a value
+
+*** 7t361e5s428t.bat ***
+@red ../scripts/6tic1p35s42r.red
+Not enough operands given
+
+*** 7t62e351s84t.bat ***
+@red ../scripts/546ptcr21s3i.red --option2=2143 412.53 --option1=2431 --switch1 --switch2-alias=4312 --switch1-alias=24513. --switch1-alias=24513. --switch1-alias=2431 -o .31542 --switch2 --switch1-alias=2431 412.53 --option2=CABD --switch2-alias=4312 --switch2-alias=4312 --option2=2143
+Option --switch2-alias=4312 does not accept a value
+
+*** 7t835s6t2e14.bat ***
+@red ../scripts/1c5ps2i643rt.red --option2-alias=4312 --option2-alias=21543. -o 1243
+Invalid value format: 21543.
+
+*** 7ts6e425381t.bat ***
+@red ../scripts/4i2rps5ct136.red --switch2-alias-2=DCBA --switch2 --option2-alias=4312 --switch2-alias-2=BDAC --switch2-alias-2=43251. --option1=3241 -o 1243 .23541 --switch2-alias=CBAD --switch2 --option1=42.351 --option2=ADCB --switch2-alias=DBCA --option2-alias=4312
+Option --switch2-alias-2=DCBA does not accept a value
+
+*** 7tt3e52s1684.bat ***
+@red ../scripts/p5i2ts1c4r36.red --option2=CABD --switch1-alias=24513. --switch2 CBDA
+Option --switch1-alias=24513. does not accept a value
+
+*** 8137te4s62t5.bat ***
+@red ../scripts/p5i2ts1c4r36.red --option2=2143 --option2-alias=3124 --switch1 --switch2
+Not enough operands given
+
+*** 8162t7e35t4s.bat ***
+@red ../scripts/p326451rtsci.red --option2=2143 -o .31542
+Not enough operands given
+
+*** 81e27tt635s4.bat ***
+@red ../scripts/prst4c35i621.red --option2=2143 --switch2 412.53 --option1=2134
+string-operand       412.53
+integer-operands     
+switch1              false
+switch2              true
+switch1-alias        false
+switch2-alias        true
+switch2-alias-2      true
+option1              true
+argument1            2134.0
+option2              true
+argument2            2143.0
+option2-alias        true
+o                    true
+
+*** 81ets25t4736.bat ***
+@red ../scripts/p5i2ts1c4r36.red
+Not enough operands given
+
+*** 82t1763t5se4.bat ***
+@red ../scripts/t4i3512rpcs6.red --option2=2143 --option1=2431 --option2=CABD --option1=2134 --switch1-alias=2431
+Option --switch1-alias=2431 does not accept a value
+
+*** 837e41t265st.bat ***
+@red ../scripts/12ir6s3t54pc.red -o DCAB --option2-alias=5132.4 --option2-alias=3214.5 --switch2-alias-2=DCAB --switch1-alias=ABCD --switch1 --switch1-alias=ABCD --switch2-alias=ACDB .34521
+Option --switch2-alias-2=DCAB does not accept a value
+
+*** 842t6t15se73.bat ***
+@red ../scripts/53pr46ti2cs1.red
+Not enough operands given
+
+*** 8473se216t5t.bat ***
+@red ../scripts/63rs4t1i2cp5.red CDBA --switch1 --option2-alias=3214.5 --switch2-alias-2=142.53 --switch2-alias-2=142.53
+Option --switch2-alias-2=142.53 does not accept a value
+
+*** 8517236estt4.bat ***
+@red ../scripts/6c5pi132s4tr.red --switch2-alias=ACDB --switch2-alias=ACDB --option2=25143.
+Option --switch2-alias=ACDB does not accept a value
+
+*** 85s264317ett.bat ***
+@red ../scripts/6tic1p35s42r.red --switch2
+Not enough operands given
+
+*** 85s3et62714t.bat ***
+@red ../scripts/r1p42s3ict65.red --switch1 --switch2-alias-2=ABDC --switch1-alias=2431 --option2=2143 --switch1-alias=2431 --option2-alias=3124 -o .31542 --option1=2134 --option2-alias=3124 --switch1 --switch2
+Option --switch2-alias-2=ABDC does not accept a value
+
+*** 85stet314726.bat ***
+@red ../scripts/6532it1scp4r.red --switch1-alias=2431 -o .31542 -o .31542 --option2=CABD
+Option --switch1-alias=2431 does not accept a value
+
+*** 85t27ts1436e.bat ***
+@red ../scripts/1c5ps2i643rt.red .23541 --option1=3241 --switch2-alias-2=DCBA --switch2 -o 1243 --switch2
+Option --switch2-alias-2=DCBA does not accept a value
+
+*** 85test472631.bat ***
+@red ../scripts/prst4c35i621.red --switch1-alias=24513. --switch2-alias=4312 --switch1 --switch1-alias=24513. --option2=CABD --switch1 --switch1-alias=2431 --option1=2134
+Option --switch1-alias=24513. does not accept a value
+
+*** 864stt3e2751.bat ***
+@red ../scripts/p624r5tci3s1.red 2351.4 --switch1 --option2=421.35 --switch1 --switch1-alias=2431 2435.1 --switch1 .23541 --option1=42.351 --switch1 --switch2 --switch2-alias=DBCA --switch2 --switch2-alias-2=BDAC --option1=3241 --switch2
+Option --switch1-alias=2431 does not accept a value
+
+*** 86et235t1s74.bat ***
+@red ../scripts/r1p42s3ict65.red --switch1 --switch1 --switch2 --option1=2431 --switch2-alias=4312 --option2=2143 --switch2
+Option --switch2-alias=4312 does not accept a value
+
+*** 87e53641s2tt.bat ***
+@red ../scripts/6ict154prs32.red --switch2-alias-2=43251. --switch1-alias=CABD
+Option --switch2-alias-2=43251. does not accept a value
+
+*** 87se651t4t32.bat ***
+@red ../scripts/546ptcr21s3i.red
+Not enough operands given
+
+*** 87se6534tt12.bat ***
+@red ../scripts/cp12tsr6i453.red .23541 --option1=2314 --option2=421.35 --option2=ADCB --switch2 --switch2 -o 1243 --option1=42.351 --switch1-alias=CABD --switch1-alias=CABD -o 143.25 --switch2-alias-2=43251. .23541 --switch1
+Option --switch1-alias=CABD does not accept a value
+
+*** 8e23s651t4t7.bat ***
+@red ../scripts/1c5ps2i643rt.red
+Not enough operands given
+
+*** 8e72tt46s153.bat ***
+@red ../scripts/1c5ps2i643rt.red --switch2-alias-2=43251. --switch2-alias=CBAD --switch2-alias-2=DCBA --switch2 --switch1 --switch1 --switch1-alias=2431 --switch2 --switch2 -o 1243 --option2=ADCB --option2=ADCB --option2-alias=4312 --switch2 .23541 --switch2-alias=DBCA -o 143.25 2351.4 .23541 --switch2 --option2=ADCB --switch2-alias=DBCA
+Option --switch2-alias-2=43251. does not accept a value
+
+*** 8s2453e16tt7.bat ***
+@red ../scripts/rp34isct6521.red
+Not enough operands given
+
+*** 8t164375t2es.bat ***
+@red ../scripts/ir23t6c1ps45.red --switch2-alias-2=DCBA 2435.1 --option1=42.351 --switch2 2351.4 --switch1 2351.4 --option2-alias=4312
+Option --switch2-alias-2=DCBA does not accept a value
+
+*** 8t314e62t5s7.bat ***
+@red ../scripts/13s6ri245cpt.red --option2-alias=BCDA --switch2-alias-2=ABDC --option1=2134 412.53 --switch2-alias-2=ABDC --switch2-alias-2=ABDC --option2-alias=3124 --option1=2134 CBDA --switch2 --switch1-alias=24513. CBDA --option2-alias=3124 --switch1-alias=24513. --switch2
+Option --switch2-alias-2=ABDC does not accept a value
+
+*** 8t573642s1te.bat ***
+@red ../scripts/45csr2p136it.red --option1=2315.4 --option2=5.1342 3.5214 --switch2 --switch1 --option2=25143. --switch2-alias=ACDB --switch2
+Option --switch2-alias=ACDB does not accept a value
+
+*** 8t6se5t41732.bat ***
+@red ../scripts/642s35tir1cp.red
+Not enough operands given
+
+*** 8tste3216475.bat ***
+@red ../scripts/5c31ir4ts2p6.red --switch2-alias-2=DCAB .45231 --switch2-alias=ACDB --switch2-alias-2=142.53 --option1=3412 --switch2
+Option --switch2-alias-2=DCAB does not accept a value
+
+*** e2467s53t81t.bat ***
+@red ../scripts/st4c6ir125p3.red --option1=2314 --option1=42.351 --option2-alias=.24351 --switch2-alias=CBAD 2351.4 --switch2-alias-2=BDAC --option2=421.35 --switch2-alias-2=DCBA --switch2 --switch2 --switch1-alias=CABD --switch2-alias-2=DCBA --switch2-alias-2=BDAC 2435.1 --switch1 --switch2 --switch2-alias-2=43251. --option2-alias=4312 --switch2-alias-2=BDAC
+Option --switch2-alias=CBAD does not accept a value
+
+*** e35764s82tt1.bat ***
+@red ../scripts/p164crti3s25.red --switch1-alias=ABCD 3.5214 .34521 --option2-alias=3214.5 --switch2-alias-2=142.53 --option2=5.1342 --option1=3412
+Option --switch1-alias=ABCD does not accept a value
+
+*** e3s478tt5216.bat ***
+@red ../scripts/cp12tsr6i453.red --option2-alias=4312 .23541 --switch2-alias-2=DCBA --option2=ADCB .23541 --switch2-alias=DBCA --switch2-alias=DBCA --switch1 --switch1-alias=CABD --option2=DCAB --option2-alias=.24351 --switch1-alias=2431 -o 143.25 --option2=421.35 --option2-alias=4312 --option2-alias=4312 --option2=ADCB --option1=3241
+Option --switch2-alias-2=DCBA does not accept a value
+
+*** e3t4ts817526.bat ***
+@red ../scripts/s2pr651i4ct3.red --option2=5.1342 -o DCAB --option1=2315.4 DCAB --option2=BCAD --switch1 --switch1
+DCAB should be a float value
+
+*** e4385t2176st.bat ***
+@red ../scripts/s2pr651i4ct3.red --option1=3412 --switch2 --option2-alias=3214.5
+Not enough operands given
+
+*** e4s5tt687123.bat ***
+@red ../scripts/cp12tsr6i453.red --option1=2314 --switch2 --switch1-alias=CABD --switch2-alias-2=DCBA --option2-alias=.24351 --option2-alias=4312 --option1=2314 2351.4 --switch1-alias=CABD --option2=DCAB --option1=42.351 --switch2 --switch2-alias-2=BDAC --option2=421.35 2351.4 --switch1 --switch1 --option2-alias=.24351 --switch1 -o 1243
+Option --switch1-alias=CABD does not accept a value
+
+*** e521st8t3674.bat ***
+@red ../scripts/cr4ti1p6s325.red --switch2 --option2-alias=4312 -o 1243 --switch2
+Not enough operands given
+
+*** e5614723stt8.bat ***
+@red ../scripts/t6c2rsi4153p.red --option2=25143. DCAB --switch2-alias=ACDB --switch2-alias-2=142.53 --switch2-alias=ACDB --switch2 --switch2-alias-2=DCAB --switch2-alias-2=142.53 --switch2-alias=DBCA .45231 DCAB --option2-alias=3214.5 --option2-alias=3214.5 --switch2 --option2-alias=3214.5
+Option --switch2-alias=ACDB does not accept a value
+
+*** e64253t17st8.bat ***
+@red ../scripts/63rs4t1i2cp5.red
+Not enough operands given
+
+*** e681475tt23s.bat ***
+@red ../scripts/cp12tsr6i453.red 2435.1 -o 1243 --switch2-alias-2=DCBA -o 1243
+Option --switch2-alias-2=DCBA does not accept a value
+
+*** e68s1t253t47.bat ***
+@red ../scripts/prst4c35i621.red 412.53 --switch2-alias=4312 --switch1-alias=24513. --option2=CABD
+Option --switch2-alias=4312 does not accept a value
+
+*** e6t24s713t85.bat ***
+@red ../scripts/trpi153c642s.red -o 1243 --switch2-alias=CBAD --switch2-alias=CBAD --switch1 --option2-alias=21543. --option1=3241 --option1=2314 --option2=DCAB --switch2 --switch2 --option2=ADCB --switch2 --option2-alias=4312 --switch2-alias=DBCA --option1=42.351 --switch2 --switch2-alias=CBAD -o 143.25 --option2=ADCB --option2-alias=.24351 --switch2 --option2-alias=.24351
+Option --switch2-alias=CBAD does not accept a value
+
+*** e72158stt643.bat ***
+@red ../scripts/4i2rps5ct136.red
+Not enough operands given
+
+*** e75683stt124.bat ***
+@red ../scripts/r4p2sc31ti56.red --option2=25143. .45231 --option1=3412 --option2=25143. 3.5214
+Invalid value format: 25143.
+
+*** e7t5164s328t.bat ***
+@red ../scripts/ic5p3t21sr64.red .34521
+string-operand       .34521
+integer-operands     
+switch1              false
+switch2              false
+switch1-alias        false
+switch2-alias        false
+switch2-alias-2      false
+option1              false
+argument1            none
+option2              false
+argument2            none
+option2-alias        false
+o                    false
+
+*** e8527s36t4t1.bat ***
+@red ../scripts/53pr46ti2cs1.red --option2-alias=.24351 --option2=DCAB 2351.4 --switch2 --switch2-alias-2=43251. --option2-alias=21543. --option1=2314 --switch2-alias-2=DCBA --switch2-alias=CBAD -o 1243 --switch2-alias-2=43251. --option1=2314 --option2=421.35 --switch1 --switch2-alias-2=43251. --option1=3241 --switch2 --switch2-alias-2=DCBA --switch2-alias=DBCA --switch2-alias=CBAD --switch2 --option1=3241 .23541
+Option --switch2-alias-2=43251. does not accept a value
+
+*** es54827t16t3.bat ***
+@red ../scripts/p5i2ts1c4r36.red
+Not enough operands given
+
+*** est68247531t.bat ***
+@red ../scripts/6c5pi132s4tr.red DCAB --switch2-alias=DBCA --switch2 --switch1 --option1=3412
+Option --switch2-alias=DBCA does not accept a value
+
+*** et175t8234s6.bat ***
+@red ../scripts/ir23t6c1ps45.red
+Not enough operands given
+
+*** et528ts43617.bat ***
+@red ../scripts/6ict154prs32.red --option2=ADCB --option2-alias=21543. --option2-alias=4312 -o 143.25 --switch1 --switch2-alias-2=DCBA --switch1-alias=CABD --option2=421.35 --option2=421.35
+Option --switch2-alias-2=DCBA does not accept a value
+
+*** et81t34s6257.bat ***
+@red ../scripts/345tciprs621.red 2351.4 --switch2 --option1=42.351 --switch2-alias=CBAD
+Option --switch2-alias=CBAD does not accept a value
+
+*** et863t725s14.bat ***
+@red ../scripts/15sc2itr34p6.red DCAB
+string-operand       DCAB
+integer-operands     
+switch1              false
+switch2              false
+switch1-alias        false
+switch2-alias        false
+switch2-alias-2      false
+option1              false
+argument1            none
+option2              false
+argument2            none
+option2-alias        false
+o                    false
+
+*** s13t78t465e2.bat ***
+@red ../scripts/45csr2p136it.red
+Not enough operands given
+
+*** s18e3527t6t4.bat ***
+@red ../scripts/13s6ri245cpt.red --option2-alias=BCDA CBDA --option2-alias=BCDA --option2=CABD --option2=2143 --switch2-alias=4312 --switch2 --switch2-alias-2=ABDC --option1=2431 -o .31542 --option2-alias=BCDA
+Option --switch2-alias=4312 does not accept a value
+
+*** s18t54723e6t.bat ***
+@red ../scripts/p624r5tci3s1.red --option1=3241 --option2-alias=21543. --switch2-alias=DBCA
+Option --switch2-alias=DBCA does not accept a value
+
+*** s1t68725t3e4.bat ***
+@red ../scripts/p326451rtsci.red
+Not enough operands given
+
+*** s214t6375et8.bat ***
+@red ../scripts/63rs4t1i2cp5.red
+Not enough operands given
+
+*** s2e37t6458t1.bat ***
+@red ../scripts/cp12tsr6i453.red .23541 --switch2 --switch2-alias=DBCA
+Option --switch2-alias=DBCA does not accept a value
+
+*** s2e5147tt683.bat ***
+@red ../scripts/i1rcs3542p6t.red --option2-alias=3124
+Not enough operands given
+
+*** s327t85te416.bat ***
+@red ../scripts/cp12tsr6i453.red --switch1 --switch2 --switch2 --switch1 --option1=42.351 --option2-alias=.24351 --option1=42.351 --switch2-alias-2=BDAC -o 143.25 -o 1243
+Option --switch2-alias-2=BDAC does not accept a value
+
+*** s32tt5e87614.bat ***
+@red ../scripts/cri6ps13452t.red --option2-alias=3124 --switch1
+Not enough operands given
+
+*** s371425tt68e.bat ***
+@red ../scripts/ct35ps421r6i.red --switch2-alias=DBCA --option2-alias=5132.4 --switch2-alias-2=DCAB --switch2-alias-2=142.53 -o DCAB --switch1 --option2=5.1342 --option2=5.1342 .45231 --option2-alias=5132.4 DCAB -o DCAB --switch2 --switch2 .45231 --option1=2315.4
+Option --switch2-alias=DBCA does not accept a value
+
+*** s38e254t17t6.bat ***
+@red ../scripts/r1p42s3ict65.red --switch2-alias=4312
+Option --switch2-alias=4312 does not accept a value
+
+*** s4e2581t7t36.bat ***
+@red ../scripts/5c31ir4ts2p6.red --switch2 .34521 -o DCAB --option2-alias=5132.4 --option1=2315.4
+DCAB should be a float value
+
+*** s4te12586t73.bat ***
+@red ../scripts/5ir4c6s1p3t2.red --option2=CABD --switch2 --switch2-alias=4312 --switch2 --switch2 --option2=2143 --switch1 --switch2 --switch2
+Option --switch2-alias=4312 does not accept a value
+
+*** s4te8613t725.bat ***
+@red ../scripts/5p4sci1236tr.red --switch1 -o 1243
+Not enough operands given
+
+*** s5862731t4et.bat ***
+@red ../scripts/t6c2rsi4153p.red DCAB --option2-alias=5132.4 -o 3.1524 --switch2-alias=ACDB --option2=25143. --option2=5.1342 --option1=2315.4 --switch1 -o 3.1524 3.5214 -o 3.1524 --switch1-alias=ABCD
+Option --switch2-alias=ACDB does not accept a value
+
+*** s642517ett83.bat ***
+@red ../scripts/p164crti3s25.red .45231 --option1=3412 .34521 --switch1-alias=ABCD --switch2-alias=ACDB --switch2-alias=ACDB .34521 --switch2-alias-2=142.53 3.5214 --switch2 .45231 --switch2-alias-2=DCAB --option2=25143. 3.5214
+Option --switch1-alias=ABCD does not accept a value
+
+*** s6581734tet2.bat ***
+@red ../scripts/cri6ps13452t.red --switch1 --option2=CABD --option1=2134 --option2=CABD --switch2 --option2=2143 --switch1 --option2=CABD --switch2-alias-2=ABDC
+Option --switch2-alias-2=ABDC does not accept a value
+
+*** s71e82546tt3.bat ***
+@red ../scripts/642s35tir1cp.red --switch2 -o .31542 --option1=2431 --switch2-alias=4312 412.53 --switch2 --option1=2431 --switch2-alias=4312 --switch1 --option1=2431 --option1=2431 --option1=2431 -o .31542 --option2-alias=3124 --option2-alias=BCDA
+Option --switch2-alias=4312 does not accept a value
+
+*** s754t6328e1t.bat ***
+@red ../scripts/345tciprs621.red --option2=ADCB --switch1 --switch2-alias=DBCA --switch2-alias=DBCA --switch1-alias=CABD 2435.1 --option1=2314 --option1=2314 --option2-alias=4312 --switch2 --switch1-alias=2431 2351.4 --switch1
+Option --switch2-alias=DBCA does not accept a value
+
+*** s78t321t54e6.bat ***
+@red ../scripts/r4pi263cs15t.red -o .31542 CBDA --switch1
+string-operand       CBDA
+integer-operands     
+switch1              true
+switch2              false
+switch1-alias        true
+switch2-alias        false
+switch2-alias-2      false
+option1              false
+argument1            none
+option2              true
+argument2            0.31542
+option2-alias        true
+o                    true
+
+*** s7e182tt4635.bat ***
+@red ../scripts/s235t41cr6pi.red --switch2-alias-2=DCBA --switch1-alias=2431 --switch2 --switch2-alias-2=DCBA --option1=2314 --switch1-alias=CABD --switch2-alias-2=BDAC --option1=2314 --switch1-alias=2431 --option2-alias=4312 --switch2-alias=DBCA --switch2-alias-2=BDAC --option2-alias=.24351 --switch2 --switch1 --option2=421.35 --switch2-alias-2=DCBA .23541 --switch2-alias=DBCA -o 1243 --option2-alias=.24351 --switch2-alias-2=43251. --option1=2314
+Option --switch2-alias-2=DCBA does not accept a value
+
+*** s7t286e451t3.bat ***
+@red ../scripts/3rpci42t16s5.red -o .31542 --option2=CABD --switch1 --switch1 --switch2
+CABD should be a float value
+
+*** se3t648215t7.bat ***
+@red ../scripts/r53c461i2pts.red --option2=25143. --switch2-alias=DBCA --option2=25143.
+Option --switch2-alias=DBCA does not accept a value
+
+*** se62t48t1735.bat ***
+@red ../scripts/p164crti3s25.red --option2-alias=3214.5 CDBA
+string-operand       CDBA
+integer-operands     
+switch1              false
+switch2              false
+switch1-alias        false
+switch2-alias        false
+switch2-alias-2      false
+option1              false
+argument1            none
+option2              true
+argument2            3214.5
+option2-alias        true
+o                    true
+
+*** se7t3648t215.bat ***
+@red ../scripts/r53c461i2pts.red --switch2-alias=ACDB --switch1-alias=ABCD --switch2
+Option --switch2-alias=ACDB does not accept a value
+
+*** set5t7836214.bat ***
+@red ../scripts/2c4sr5pit613.red
+Not enough operands given
+
+*** st251t6738e4.bat ***
+@red ../scripts/p5i2ts1c4r36.red --option1=2431 --switch2 -o .31542 412.53 --switch2-alias=4312 --switch2-alias=4312 --switch1 --switch1-alias=24513. --option2=CABD --switch2
+Option --switch2-alias=4312 does not accept a value
+
+*** st35t127e486.bat ***
+@red ../scripts/ir23t6c1ps45.red --switch2 --switch2
+Not enough operands given
+
+*** st8e4326175t.bat ***
+@red ../scripts/6532it1scp4r.red --option2-alias=BCDA --switch1 --switch2-alias=4312 --switch1 --switch2-alias-2=ABDC --switch2 --option1=2134 --switch2-alias=4312 --option2=CABD --switch1-alias=24513. --switch1 --option2-alias=BCDA --switch1-alias=24513. --switch2
+Option --switch2-alias=4312 does not accept a value
+
+*** t13486275ets.bat ***
+@red ../scripts/st4c6ir125p3.red --switch2-alias-2=BDAC --switch2 .23541 --option2=ADCB --option1=42.351 --option2=ADCB --switch2 --option2-alias=21543. --switch2-alias-2=DCBA --switch2-alias-2=DCBA --option2=ADCB --switch2-alias=CBAD
+Option --switch2-alias-2=BDAC does not accept a value
+
+*** t137e68542ts.bat ***
+@red ../scripts/rc5its36p412.red .45231 --option1=2315.4 -o DCAB --option2=BCAD --switch2 --switch1 --switch1 --option1=2315.4 CDBA --switch1 --option1=3412 CDBA --option2=25143. --switch1 --option1=2315.4 --switch2 -o DCAB --switch2-alias-2=DCAB --switch2-alias-2=142.53 --switch2-alias-2=142.53 --switch2-alias-2=DCAB -o DCAB
+Option --switch2-alias-2=DCAB does not accept a value
+
+*** t17t328645se.bat ***
+@red ../scripts/63rs4t1i2cp5.red
+Not enough operands given
+
+*** t18es2573t64.bat ***
+@red ../scripts/6ict154prs32.red --option2-alias=4312 --option1=42.351 .23541 --switch2
+string-operand       .23541
+integer-operands     
+switch1              false
+switch2              true
+switch1-alias        false
+switch2-alias        true
+switch2-alias-2      true
+option1              true
+argument1            42.351
+option2              true
+argument2            4312.0
+option2-alias        true
+o                    true
+
+*** t1s83426t57e.bat ***
+@red ../scripts/t6c2rsi4153p.red --switch1-alias=ABCD --option1=3412 --option1=3412 --switch1 -o DCAB DCAB --switch2-alias-2=DCAB --switch1-alias=ABCD --switch1 --switch2-alias-2=DCAB DCAB --switch2-alias-2=DCAB --option2-alias=3214.5 --switch2-alias-2=142.53 DCAB
+Option --switch1-alias=ABCD does not accept a value
+
+*** t1se53624t78.bat ***
+@red ../scripts/12ir6s3t54pc.red
+Not enough operands given
+
+*** t214t63es875.bat ***
+@red ../scripts/4i2rps5ct136.red 2435.1 --switch2-alias=CBAD --option1=42.351 --switch2-alias-2=BDAC -o 1243
+Option --switch2-alias=CBAD does not accept a value
+
+*** t2es7453t168.bat ***
+@red ../scripts/r1p42s3ict65.red
+Not enough operands given
+
+*** t2s487e613t5.bat ***
+@red ../scripts/cp12tsr6i453.red --switch1-alias=2431 --option1=2314 2351.4 -o 1243 --switch2-alias-2=DCBA --switch2 --option1=42.351 2435.1 -o 143.25 -o 1243 --option2-alias=21543. --option2=ADCB --switch2-alias=CBAD .23541 --switch2 --option1=2314
+Option --switch1-alias=2431 does not accept a value
+
+*** t2t4e183567s.bat ***
+@red ../scripts/r4pi263cs15t.red --switch1 --option2-alias=3124 --switch1-alias=24513. 412.53 --switch1 --option2-alias=3124 --option2=CABD --option2=CABD --switch1-alias=24513. --switch1-alias=2431 --option2-alias=3124 --option2=2143 --option2=CABD
+Option --switch1-alias=24513. does not accept a value
+
+*** t2ts814e6735.bat ***
+@red ../scripts/62rst5cp4i31.red --switch1-alias=CABD --option2-alias=4312 --option1=3241 .23541 --option2=421.35 --switch2-alias=DBCA --switch2-alias-2=DCBA 2351.4 2351.4 --option2-alias=4312 --switch2-alias-2=DCBA
+Option --switch1-alias=CABD does not accept a value
+
+*** t34s5716et82.bat ***
+@red ../scripts/ic5p3t21sr64.red
+Not enough operands given
+
+*** t4861te7s352.bat ***
+@red ../scripts/ic5p3t21sr64.red -o DCAB --switch2-alias-2=142.53 --option2-alias=5132.4 --option2=25143. -o 3.1524 3.5214 .45231 --switch2-alias-2=DCAB --switch2-alias-2=142.53 DCAB --option2-alias=3214.5 --switch2
+Option --switch2-alias-2=142.53 does not accept a value
+
+*** t52617348tes.bat ***
+@red ../scripts/s2pr651i4ct3.red --switch1 --switch2-alias=ACDB --switch1-alias=ABCD -o DCAB --option2=BCAD --switch1-alias=ABCD --option2=5.1342 -o 3.1524 --switch1 --switch2-alias=ACDB --switch1 3.5214
+Option --switch2-alias=ACDB does not accept a value
+
+*** t5736t4e128s.bat ***
+@red ../scripts/p5i2ts1c4r36.red --switch1 --option2=2143 412.53 412.53 --switch2-alias-2=ABDC -o .31542 --switch1-alias=2431 --switch1-alias=24513. --option2-alias=3124 --option1=2134 412.53 --switch2-alias=4312
+Option --switch2-alias-2=ABDC does not accept a value
+
+*** t5e1t3s42678.bat ***
+@red ../scripts/621i4rctsp35.red --option1=2431 --option1=2431 --option2=2143 412.53 --switch2-alias-2=ABDC --switch2 --switch2-alias=4312 --option2=2143 412.53 --switch1 --switch2-alias=4312 --option1=2134
+Option --switch2-alias-2=ABDC does not accept a value
+
+*** t5s467812e3t.bat ***
+@red ../scripts/ir23t6c1ps45.red
+Not enough operands given
+
+*** t618752s43et.bat ***
+@red ../scripts/cp12tsr6i453.red 2435.1 .23541 .23541 -o 143.25 --switch2 --switch1-alias=CABD --switch2-alias-2=BDAC --switch1
+Option --switch1-alias=CABD does not accept a value
+
+*** t6273e81ts54.bat ***
+@red ../scripts/r4pi263cs15t.red --switch2-alias=4312 412.53 --switch1-alias=2431
+Option --switch2-alias=4312 does not accept a value
+
+*** t657te12s483.bat ***
+@red ../scripts/25t4is1cr3p6.red --option2-alias=BCDA --option2=CABD --switch1-alias=2431 --switch2 --option1=2431 -o .31542 412.53 412.53 --option1=2134
+Option --switch1-alias=2431 does not accept a value
+
+*** t675s8et2143.bat ***
+@red ../scripts/62rst5cp4i31.red --switch2
+Not enough operands given
+
+*** t6s84t32e175.bat ***
+@red ../scripts/t6c2rsi4153p.red .45231 --switch2 --switch2-alias-2=142.53 --switch1 --option2=5.1342 --switch1 --switch1 --option2=25143. --switch1 --switch2-alias=DBCA --option2=BCAD --option2-alias=5132.4
+Option --switch2-alias-2=142.53 does not accept a value
+
+*** t76382s5e14t.bat ***
+@red ../scripts/6tic1p35s42r.red --switch2-alias=4312 --switch1-alias=24513. --option2-alias=3124 --switch2-alias=4312 --switch1 --switch2 --option2-alias=3124 --switch2-alias-2=ABDC
+Option --switch2-alias=4312 does not accept a value
+
+*** t83s6e4t7215.bat ***
+@red ../scripts/p164crti3s25.red --option2-alias=3214.5 --option2=25143. 3.5214 --switch2 --switch1 DCAB --switch1-alias=ABCD --switch2 --switch1-alias=ABCD --switch2-alias=ACDB
+Option --switch1-alias=ABCD does not accept a value
+
+*** t8615t4e37s2.bat ***
+@red ../scripts/rc5its36p412.red
+Not enough operands given
+
+*** t8t2e76s4351.bat ***
+@red ../scripts/t2cr61pis534.red DCAB --switch2-alias=DBCA -o DCAB --option2-alias=3214.5 --switch1 3.5214 .45231 --option1=3412 --option2=BCAD .45231 --option2-alias=5132.4 --switch2 --option2=BCAD --switch2
+Option --switch2-alias=DBCA does not accept a value
+
+*** t8te542s7163.bat ***
+@red ../scripts/cri6ps13452t.red --switch1 --switch1 --switch2 --switch2 --option2=2143 --option2=2143
+Not enough operands given
+
+*** te24358s71t6.bat ***
+@red ../scripts/1c5ps2i643rt.red --option1=2314 --switch2 --option1=3241 --option1=3241 --option2=ADCB --option1=42.351 --option2-alias=21543. --option2=421.35 --option1=3241 --option2-alias=21543. --option2-alias=21543. --switch2-alias-2=BDAC --option1=3241 --switch2 --switch1-alias=2431 --switch2 --switch2-alias=DBCA --switch1-alias=CABD --option1=42.351 .23541 --option2=DCAB
+Option --switch2-alias-2=BDAC does not accept a value
+
+*** te27s314t865.bat ***
+@red ../scripts/trpi153c642s.red 2351.4 --option2-alias=.24351 --switch2-alias-2=43251. --option2=ADCB --option2-alias=21543. -o 143.25 .23541 2351.4 .23541 --switch1
+Option --switch2-alias-2=43251. does not accept a value
+
+*** te45287s6t31.bat ***
+@red ../scripts/6ict154prs32.red
+Not enough operands given
+
+*** te4t536218s7.bat ***
+@red ../scripts/is5rp46c123t.red --option1=3412 --switch1 -o 3.1524 --option2=BCAD
+BCAD should be a float value
+
+*** te63175ts248.bat ***
+@red ../scripts/4i2rps5ct136.red
+Not enough operands given
+
+*** te73t2s18465.bat ***
+@red ../scripts/4i2rps5ct136.red --option1=2314 -o 1243 --option2-alias=21543. --option2-alias=21543. --option1=42.351 --switch1 --option2=DCAB --switch2 --switch2 --option1=3241 --option1=42.351
+Invalid value format: 21543.
+
+*** te7t248163s5.bat ***
+@red ../scripts/5p4sci1236tr.red --option1=2314 --switch1 --switch2-alias-2=BDAC --switch1 --switch2-alias-2=BDAC -o 143.25 --option1=2314 -o 1243 --switch1 --option1=3241 --option1=2314 --switch2 --option2-alias=4312
+Option --switch2-alias-2=BDAC does not accept a value
+
+*** ts165e8t7324.bat ***
+@red ../scripts/p624r5tci3s1.red --option2=ADCB --option1=42.351 --switch2-alias-2=43251. -o 143.25
+Option --switch2-alias-2=43251. does not accept a value
+
+*** ts248e6753t1.bat ***
+@red ../scripts/r1c2346si5pt.red --option1=3241 --option1=3241 --option1=3241 2351.4 --switch2-alias=CBAD --option2=421.35 --option2=421.35 --switch1-alias=CABD --switch2-alias=CBAD --option1=3241 2351.4 --option2-alias=.24351 --switch2 --option2=DCAB --option2-alias=21543. -o 143.25 --switch2 --switch2-alias-2=BDAC --switch2 --option1=42.351 2351.4 --switch2-alias-2=BDAC
+Option --switch2-alias=CBAD does not accept a value
+
+*** ts4765et3812.bat ***
+@red ../scripts/rc5its36p412.red --option2-alias=3214.5
+Not enough operands given
+
+*** ts6824e315t7.bat ***
+@red ../scripts/546ptcr21s3i.red --switch1-alias=2431 --option1=2431 --switch1-alias=2431 --switch1-alias=24513. --option2=2143 --switch2-alias=4312 --option2=2143 --switch1 --switch1-alias=24513. --option2=2143 --option2-alias=BCDA --switch2 --switch2-alias-2=ABDC --switch1-alias=2431 412.53
+Option --switch1-alias=2431 does not accept a value
+
+*** tt218es63754.bat ***
+@red ../scripts/prst4c35i621.red --switch2-alias=4312 --switch2 --option2=2143 -o .31542 --switch1-alias=2431 -o .31542 --switch1
+Option --switch2-alias=4312 does not accept a value
+
+*** tt23se475861.bat ***
+@red ../scripts/st4c6ir125p3.red
+Not enough operands given
+
+*** tt3es5124687.bat ***
+@red ../scripts/r4p2sc31ti56.red -o DCAB --option2-alias=5132.4 -o 3.1524 -o DCAB --option1=2315.4 CDBA .45231 --option2-alias=5132.4 --option2-alias=5132.4 --option2=25143. --option2-alias=3214.5 -o 3.1524 --switch2 .45231 --option2-alias=5132.4 .45231 --switch2-alias=ACDB --switch1-alias=ABCD -o DCAB
+Option --switch2-alias=ACDB does not accept a value
+
+*** tt4183se6725.bat ***
+@red ../scripts/642s35tir1cp.red
+Not enough operands given
+

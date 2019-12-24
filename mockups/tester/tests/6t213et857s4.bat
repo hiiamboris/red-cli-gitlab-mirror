@@ -1,0 +1,1 @@
+@red ../scripts/642s35tir1cp.red --switch2 --switch1 -o .31542 -o .31542 -o .31542 --option2=CABD --switch1-alias=24513. --switch1 --switch2-alias-2=ABDC --option2=2143 --switch1-alias=2431 --option1=2134

@@ -1,0 +1,1 @@
+@red ../scripts/546ptcr21s3i.red --switch1-alias=2431 --option1=2431 --switch1-alias=2431 --switch1-alias=24513. --option2=2143 --switch2-alias=4312 --option2=2143 --switch1 --switch1-alias=24513. --option2=2143 --option2-alias=BCDA --switch2 --switch2-alias-2=ABDC --switch1-alias=2431 412.53

@@ -1,0 +1,1 @@
+@red ../scripts/63rs4t1i2cp5.red --option2-alias=3214.5 .45231 --switch2 --option2=5.1342 --option2-alias=3214.5 --option1=3412 --switch2-alias=DBCA --option2=25143. --option1=2315.4 CDBA 3.5214 -o 3.1524 -o DCAB --switch1 DCAB --option2-alias=5132.4 --switch1 -o 3.1524 .34521

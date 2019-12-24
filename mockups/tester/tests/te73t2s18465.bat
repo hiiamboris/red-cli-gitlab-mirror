@@ -1,0 +1,1 @@
+@red ../scripts/4i2rps5ct136.red --option1=2314 -o 1243 --option2-alias=21543. --option2-alias=21543. --option1=42.351 --switch1 --option2=DCAB --switch2 --switch2 --option1=3241 --option1=42.351

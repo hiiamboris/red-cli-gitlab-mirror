@@ -1,0 +1,1 @@
+@red ../scripts/s2pr651i4ct3.red -o 3.1524 --switch2-alias=ACDB 3.5214 --switch2 DCAB --option2=BCAD

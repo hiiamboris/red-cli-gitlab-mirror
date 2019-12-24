@@ -1,0 +1,1 @@
+@red ../scripts/p164crti3s25.red --option2-alias=3214.5 --option2=25143. 3.5214 --switch2 --switch1 DCAB --switch1-alias=ABCD --switch2 --switch1-alias=ABCD --switch2-alias=ACDB

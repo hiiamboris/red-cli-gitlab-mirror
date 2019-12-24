@@ -1,0 +1,1 @@
+@red ../scripts/63rs4t1i2cp5.red CDBA --switch1 --option2-alias=3214.5 --switch2-alias-2=142.53 --switch2-alias-2=142.53

@@ -1,0 +1,1 @@
+@red ../scripts/cri6ps13452t.red --switch1 --option2=CABD --option1=2134 --option2=CABD --switch2 --option2=2143 --switch1 --option2=CABD --switch2-alias-2=ABDC

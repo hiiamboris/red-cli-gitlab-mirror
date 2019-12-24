@@ -1,0 +1,1 @@
+@red ../scripts/p326451rtsci.red --switch1-alias=2431 --option1=2431 --switch2 CBDA
