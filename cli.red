@@ -29,8 +29,8 @@ Red [
 
 ;-- comment these out to disable self-testing
 
-; #debug on
-; #assert on
+#debug on
+#assert on
 
 ; #include %common/init.red
 
@@ -867,7 +867,7 @@ cli: context [
 
 	process-into: function [
 		"Calls PROGRAM with arguments read from the command line. Passes through the returned value"
-		'program	[word! lit-word! path!]				;-- can't support `function!` here cause can't add refinements to a function! literal
+		'program	[word! path!]						;-- can't support `function!` here cause can't add refinements to a function! literal
 		/no-version				"Suppress automatic creation of --version argument"
 		/no-help				"Suppress automatic creation of --help and -h arguments"
 		/name					"Overrides program name"
@@ -1030,7 +1030,7 @@ cli: context [
 		; process-into/options test-prog-2 [args: ["-1" "2" "3"]]
 
 		; print version-for test-prog-1
-		; print help-for test-prog-1 
+		print help-for test-prog-1 
 		; print help-for/columns test-prog-1 [1 3 6 8 10]
 		print ["CLI self-test:" assertions-run "assertions evaluated"]
 
