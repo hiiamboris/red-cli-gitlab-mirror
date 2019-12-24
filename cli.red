@@ -1026,11 +1026,23 @@ cli: context [
 
 		assert [(reduce [none "--" none "-- --"]) = extract-args ["--" "--" "-- --"] test-prog-1]
 
+		assert [(help-for/no-version test-prog-1                ) = (help-for/options test-prog-1 [no-version: yes]         )]
+		assert [(help-for/no-help    test-prog-1                ) = (help-for/options test-prog-1 [no-help: yes]            )]
+		assert [(help-for/name       test-prog-1 "no name!"     ) = (help-for/options test-prog-1 [name: "no name!"]        )]
+		assert [(help-for/exename    test-prog-1 "no name!"     ) = (help-for/options test-prog-1 [exename: "no name!"]     )]
+		assert [(help-for/version    test-prog-1 1.2.3.4        ) = (help-for/options test-prog-1 [version: 1.2.3.4]        )]
+		assert [(help-for/columns    test-prog-1 [5 10 20 10 30]) = (help-for/options test-prog-1 [columns: [5 10 20 10 30]])]
+
+		assert [(version-for/name       test-prog-1 "no name!"  ) = (version-for/options test-prog-1 [name: "no name!"]        )]
+		assert [(version-for/exename    test-prog-1 "no name!"  ) = (version-for/options test-prog-1 [exename: "no name!"]     )]
+		assert [(version-for/version    test-prog-1 "custom"    ) = (version-for/options test-prog-1 [version: "custom"]       )]
+		assert [(version-for/brief      test-prog-1             ) = (version-for/options test-prog-1 [brief: yes]              )]
+
 		; print help-for test-prog-2
 		; process-into/options test-prog-2 [args: ["-1" "2" "3"]]
 
 		; print version-for test-prog-1
-		print help-for test-prog-1 
+
 		; print help-for/columns test-prog-1 [1 3 6 8 10]
 		print ["CLI self-test:" assertions-run "assertions evaluated"]
 
