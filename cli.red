@@ -2,7 +2,7 @@ Red [
 	Title:		"Simple & powerful command line argument validation system"
 	Author: 	@hiiamboris
 	File: 		%cli.red
-	Version:	12/11/2019
+	Version:	24/12/2019
 	Tabs:		4
 	Rights:		"Copyright (C) 2011-2019 Red Foundation. All rights reserved."
 	License: {
