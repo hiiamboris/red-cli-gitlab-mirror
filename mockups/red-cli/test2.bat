@@ -1,0 +1,1 @@
+red-cli load red-cli.red

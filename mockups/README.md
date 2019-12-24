@@ -8,4 +8,8 @@
 
 [**GLOB turned into a CLI utility**](glob/) (compile as `red -c cli-glob.red` or run directly as `red cli-glob.red --help`)
 
-There's also a `test.bat` sample command in most examples.
+[**Multi-command CLI interface to Red functions**](red-cli/) (compile as `red -c red-cli.red` or run directly as `red red-cli.red`)
+
+There's also a `test.bat` sample command in most examples (requires a compiled exe).
+
+
