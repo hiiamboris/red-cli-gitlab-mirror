@@ -29,8 +29,8 @@ Red [
 
 ;-- comment these out to disable self-testing
 
-#debug on
-#assert on
+; #debug on
+; #assert on
 
 ; #include %common/init.red
 
