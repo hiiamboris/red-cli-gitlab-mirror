@@ -56,7 +56,7 @@ context [															;-- do not add another functions to system/words
 		quit/return 0
 	]
 
-	if "help" = form command [cli/process-into/no-help red-cli]		;-- handle `help` command
+	if "help" = form command [cli/process-into/no-help Red-CLI]		;-- handle `help` command
 
 	print ["Unrecognized command" uppercase form command]			;-- handle errors
 	quit/return 1
