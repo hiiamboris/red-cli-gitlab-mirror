@@ -29,8 +29,8 @@ Red [
 
 ;-- comment these out to disable self-testing
 
-; #debug on
-; #assert on
+#debug on
+#assert on
 
 ; #include %common/init.red
 
@@ -139,82 +139,57 @@ cli: context [
 	]
 
 
+	default: func [:w [set-word!] v] [unless get :w [set :w v]]
+
 	prep-spec: function [
 		"Converts a function SPEC into internal format used for easier argument processing"
 		;-- internal spec format is a block of triplets:
 		;; [      name-word          "docstring"  typeset! ]  for operands and option arguments
 		;; [ [ /option /alias ... ]  "docstring"  none     ]  for --options themselves
 		spec [block! function!]
-		/local arg-name ref-name target
+		/local name target
 	][
 		if function? :spec [spec: spec-of :spec]
-		force-nullary?: no
-		deferred-aliases: copy []
-		spec: new-line/skip collect [
-			=arg=: [									;-- operand / argument (word)
-				set arg-name word!  (arg-types: [string!]  arg-doc: copy "")
-				any [set arg-types block! | set arg-doc string!]
-				(
-					(not force-nullary?) else {alias refinements cannot have arguments}
-					if arg-types = [block!] [append arg-types string!]
-					keep reduce [arg-name  arg-doc  make typeset! arg-types]
-				)
-			]
-			=ref=: [									;-- option (refinement)
-				opt [/local to [refinement! | end]]			;-- skip /locals
-				set ref-name refinement!
-				[set opt-doc string! | (opt-doc: copy "")]
-				
-				(force-nullary?: case [					;-- check the docstring for an alias definition
-					; find ["ditto" "alias"] opt-doc [		;-- alias the previous refinement
-					; 	(block? opt-names)
-					; 	else {"ditto"/"alias" docstrings cannot be used in the 1st refinement}
-					; 	append opt-names ref-name
-					; 	yes
-					; ]
-					parse opt-doc [							;-- alias specific refinement (may not be known yet)
-						; "alias " ["of "|"for "|] copy target [skip to end]
-						"alias " copy target [skip to end]
-					][
-						repend deferred-aliases [ref-name target]
-						yes
-					]
-					'else [									;-- normal refinement
-						keep reduce [opt-names: reduce [ref-name]  opt-doc  none]
-						no
-					]
-				])
-			]
-			parse spec [any string! any [=arg= | =ref=]]
-		] yes 3
-		foreach [alias target] deferred-aliases [
+		=arg=: [									;-- operand / argument (word)
+			set name      word!
+			set types opt block!  (default types: [string!])
+			set doc   opt string! (default doc: copy "")
+			(
+				(not force-nullary?) else {alias refinements cannot have arguments}
+				if types = [block!] [append types 'string!]
+				repend r [name  doc  make typeset! types]
+			)
+		]
+		=ref=: [									;-- option (refinement)
+			any [[/local | /extern] to [refinement! | end]]				;-- skip /locals & /externs
+			set name    refinement!
+			set doc opt string!     (default doc: copy "")
+			(										;-- check the docstring for an alias definition
+				either force-nullary?: target: find/match doc "alias "	;-- alias? allow no arguments to it
+					[ repend aliases [name target] ]
+					[ repend r [to block! name  doc  none] ]
+			)
+		]
+		force-nullary?: no  aliases: copy []  r: copy []
+		parse spec [any string! any [=arg= | =ref=]]
+		r: new-line/skip r yes 3
+		foreach [alias target] aliases [
 			(all [
 				target: attempt [load target]
 				find [word! refinement!] type?/word target
-				pos: find-refinement spec to refinement! target
-			]) else form rejoin ["Target "target" of alias "alias" is not defined"]
+			]) else form rejoin ["Target "target" must be a word or refinement"]
+			pos: find-refinement r to refinement! target
+			pos else form rejoin ["Target "target" of alias "alias" is not defined"]
 			append pos/1 alias
 		]
-		spec
+		r
 	]
 
 	#assert [ (reduce ['x        "" make typeset! [string!] ]) = prep-spec [x] ]
 	#assert [ (reduce ['x     "doc" make typeset! [integer!]]) = prep-spec [x [integer!] "doc"] ]
-	; #assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/x /y "ditto"] ]
-	; #assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/x /y "alias"] ]
 	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/x /y "alias x"] ]
 	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/y "alias x"       /x] ]
 	#assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/y "alias /x"      /x] ]
-	; #assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/y "alias of /x"   /x] ]
-	; #assert [ (reduce [[/x /y]   "" none                    ]) = prep-spec [/y "alias for /x"  /x] ]
-	; #assert [ (reduce [[/of /y]  "" none                    ]) = prep-spec [/y "alias /of"     /of] ]
-	; #assert [ (reduce [[/of /y]  "" none                    ]) = prep-spec [/y "alias of"      /of] ]
-	; #assert [ (reduce [[/of /y]  "" none                    ]) = prep-spec [/y "alias of of"   /of] ]
-	; #assert [ (reduce [[/of /y]  "" none                    ]) = prep-spec [/y "alias for of"  /of] ]
-	; #assert [ (reduce [[/for /y] "" none                    ]) = prep-spec [/y "alias for"     /for] ]
-	; #assert [ (reduce [[/for /y] "" none                    ]) = prep-spec [/y "alias /for"    /for] ]
-	; #assert [ (reduce [[/for /y] "" none                    ]) = prep-spec [/y "alias of for"  /for] ]
-	; #assert [ (reduce [[/for /y] "" none                    ]) = prep-spec [/y "alias for for" /for] ]
 	#assert [
 		(reduce [
 			[/x /y] "doc1" none
@@ -296,7 +271,7 @@ cli: context [
 		]
 														;-- loaded but didn't pass the type check...
 		types: to block! exclude types make typeset! [block!]
-		a-an: either find "aeiou" first form types/1 ["an"] ["a"]
+		a-an: either find "aeiou" first form types/1 ["an"] ["a"]	;-- `a-an` undefined outside of console
 		complain compose [								;-- tell which types are accepted
 			ER_TYPE
 			v "should be" (pick [
@@ -350,15 +325,15 @@ cli: context [
 		options [block! none!]
 		/local opt arg types
 	][
-		unless options [exit]
+		unless options [exit]									;-- no options were provided initially
 		spec: spec-of :caller
 		foreach [opt val] options [
 			if all [
 				set [opt arg types] find-option? :caller opt	;-- option is supported by the caller
-				not get opt [continue]							;-- it wasn't explicitly provided
+				not get opt										;-- it wasn't explicitly provided (tip: `opt` is bound to :caller)
 			][
 				if arg [
-					if none? :val [continue]					;-- no need to set to `none`
+					if none? :val [continue]					;-- no need to set to `none` (none is rarely in the accepted typeset)
 					unless find types type: type?/word val [	;-- check the supplied value type
 						if word? val [val: get val]
 						(find types type: type?/word :val)		;-- try also with word's value
@@ -388,8 +363,16 @@ cli: context [
 				get any [arg opt]
 			]
 		]
+		all [									;-- unify the result with caller's own `opts` block
+			set [opt arg types] find-option? :caller 'options		;-- has /options
+			arg = 'opts							;-- it's valid `/options opts`
+			get arg								;-- opts is set to something
+			r: union/skip r get arg	2			;-- first arg `r` gets priority
+		]
 		r
 	]
+
+	#assert [[a: b] = union/skip [a: b] [a: c] 2]
 
 
 	;; ████████████  INTERNAL CALL BUILDUP  ████████████
