@@ -692,9 +692,10 @@ cli: context [
 		]
 
 		ver: form any [
-			ver
-			attempt [system/script/header/version]
-			"1.0"
+			ver											;-- explicitly provided
+			attempt [system/script/header/version]		;-- from the header
+			attempt [first query system/options/script]	;-- script modification date if interpreted
+			#do keep [now/date]							;-- compilation date otherwise
 		]
 
 		desc: first spec-of get program
@@ -704,10 +705,10 @@ cli: context [
 		rights:  attempt [system/script/header/rights]
 		license: attempt [system/script/header/license]
 
-		repend r [
-			pname " " ver								;-- "Program 1.2.3"
-			either desc [ reduce ["" desc] ][ "" ]			;-- " long description ..."
-			either author [ reduce ["by" author] ][ "" ]	;-- " by Yours Truly"
+		append r form compose [
+			(pname) (ver)								;-- "Program 1.2.3"
+			(any [desc ()])								;-- "long description ..."
+			(either author [rejoin ["by "author]][()])	;-- "by Yours Truly"
 			#"^/"
 		]
 		if rights  [repend r [rights #"^/"]]			;-- "(C) Copyrights..."
@@ -723,6 +724,7 @@ cli: context [
 				" for " system/platform
 				#"^/"
 			]
+			if standalone? [repend r ["Build timestamp: "#do keep [now]]]
 
 			if license [repend r [license #"^/"]]		;-- "License text..."
 		]
