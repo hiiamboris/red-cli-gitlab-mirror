@@ -1,0 +1,1 @@
+@red ../scripts/3c2641p5rist.red --version --switch1

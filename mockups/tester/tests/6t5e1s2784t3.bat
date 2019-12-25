@@ -1,0 +1,1 @@
+@red ../scripts/i3t621c4s5rp.red --option2=1432 --option2=1432 --option2-alias=ACDB 1423 --switch2-alias-2=3241 --version BCDA --option1=DABC --switch1 1423 --switch1 -o 2543.1 BCDA 3124 --switch1-alias=CBDA --switch2-alias=2314.5 --switch2-alias=2314.5 3124 --switch2

@@ -1,0 +1,1 @@
+@red ../scripts/i4s2t1r6c5p3.red -o 1342 --option2=1432 -o 2431 3124 3124 --switch2

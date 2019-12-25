@@ -1,0 +1,1 @@
+@red ../scripts/3rs16c25i4pt.red -o 2431 --switch2-alias-2=3241 --help --switch1-alias=CBDA --version -o 1342 --option2-alias=ACDB --option2-alias=ACDB

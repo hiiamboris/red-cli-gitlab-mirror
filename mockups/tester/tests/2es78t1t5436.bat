@@ -1,0 +1,1 @@
+@red ../scripts/pi24t6sc153r.red

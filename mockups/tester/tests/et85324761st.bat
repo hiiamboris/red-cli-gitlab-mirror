@@ -1,0 +1,1 @@
+@red ../scripts/6ripcts23451.red --switch2 --switch2-alias-2=3241 --option2=1432 --switch1-alias=CBDA 1423 --help 4231

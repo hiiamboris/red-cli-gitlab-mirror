@@ -1,0 +1,1 @@
+@red ../scripts/s6tri1452p3c.red

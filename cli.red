@@ -2,14 +2,24 @@ Red [
 	Title:		"Simple & powerful command line argument validation system"
 	Author: 	@hiiamboris
 	File: 		%cli.red
-	Version:	24/12/2019
+	Version:	25/12/2019
 	Tabs:		4
 	Rights:		"Copyright (C) 2011-2019 Red Foundation. All rights reserved."
+	Homepage:	https://gitlab.com/hiiamboris/red-cli
 	License: {
 		Distributed under the Boost Software License, Version 1.0.
 		See https://github.com/red/red/blob/master/BSL-License.txt
 	}
+	Bugs: {
+		- When compiled, words lose their case info, so
+		  if program name is generated from a word, it will always be in lower case
+	}
+	Usage: {
+		my-program: function [operands .. /switches /options arguments] [code]
+		cli/process-into my-program
+	}
 ]
+
 
 ;; ████████████  DEBUGGING FACILITIES  ████████████
 
@@ -29,10 +39,9 @@ Red [
 
 ;-- comment these out to disable self-testing
 
-#debug on
-#assert on
+; #debug on
+; #assert on
 
-; #include %common/init.red
 
 ; do expand-directives [									;-- boring workaround for #4128
 cli: context [
@@ -715,32 +724,24 @@ cli: context [
 		r
 	]
 
-	help-for: function [
-		"Returns help text for the PROGRAM"
+	syntax-for: function [
+		"Returns usage text for the PROGRAM"
 		'program	[word! path!]
 		/no-version				"Suppress automatic creation of --version argument"
 		/no-help				"Suppress automatic creation of --help and -h arguments"
-		/name					"Overrides program name"
-			pname	[string!]
-		/exename				"Overrides executable name"
-			xname	[string!]
-		/version				"Overrides version"
-			ver		[tuple! string!]					;@@ TODO: add float? for 1.0 etc
 		/columns				"Specify widths of columns: indent, short option, long option, argument, description"
 			cols	[block!]
 		/options				"Specify all the above options as a block"
 			opts	[block! none!]
 	][
 		apply-options context? 'opts opts
-		opts: fill-options context? 'opts				;@@ TODO: merge with existing opts block?
+		opts: fill-options context? 'opts
 		
 		spec: prep-spec get program
 		unless no-version [repend spec [ [/version] "Display program version and exit" none ]]
 		unless no-help    [repend spec [ [/h /help] "Display this help text and exit"  none ]]
 
 		r: make string! 500
-
-		append r version-for/brief/options (program) opts	;-- add the header: Program vX.Y.Z by ... (C) ...
 
 		do [											;@@ DO for compiler
 			decorate: func [x types] [					;-- x -> "<x>" or "[x]"
@@ -844,7 +845,32 @@ cli: context [
 		unless committed? [do commit]
 		append r "^/"
 		r
-	];; help-for: function
+	];; syntax-for: function
+
+
+	help-for: function [
+		"Returns help text for the PROGRAM"
+		'program	[word! path!]
+		/no-version				"Suppress automatic creation of --version argument"
+		/no-help				"Suppress automatic creation of --help and -h arguments"
+		/name					"Overrides program name"
+			pname	[string!]
+		/exename				"Overrides executable name"
+			xname	[string!]
+		/version				"Overrides version"
+			ver		[tuple! string!]					;@@ TODO: add float? for 1.0 etc
+		/columns				"Specify widths of columns: indent, short option, long option, argument, description"
+			cols	[block!]
+		/options				"Specify all the above options as a block"
+			opts	[block! none!]
+	][
+		apply-options context? 'opts opts
+		opts: fill-options context? 'opts
+		rejoin [
+			version-for/brief/options (program) opts
+			syntax-for/options (program) opts
+		]
+	]
 
 
 

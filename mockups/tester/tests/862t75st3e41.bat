@@ -1,0 +1,1 @@
+@red ../scripts/ci1p5sr42t63.red --switch2

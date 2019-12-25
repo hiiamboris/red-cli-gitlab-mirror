@@ -1,0 +1,1 @@
+@red ../scripts/r35it4s2cp16.red BCDA 4231 --switch2 --switch2-alias=2314.5 --option2-alias=.43125 --switch2-alias-2=BACD BCDA --option1=54231. --option2-alias=.43125

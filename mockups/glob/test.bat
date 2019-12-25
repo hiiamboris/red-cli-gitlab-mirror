@@ -1,1 +1,1 @@
-cli-glob --from .. --omit *.exe --omit *.red
+cli-glob --from .. --omit *.exe --omit *.red --omit *.bat

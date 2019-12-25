@@ -1,0 +1,1 @@
+@red ../scripts/64s1r2cipt53.red -o 1342 1423 --switch2-alias-2=BACD -o 2543.1

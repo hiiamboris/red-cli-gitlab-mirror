@@ -1,0 +1,1 @@
+@red ../scripts/23s6pr514cit.red -o 2431 --version 4231 --switch2-alias-2=3241 --switch1-alias=CBDA --switch2-alias-2=BACD

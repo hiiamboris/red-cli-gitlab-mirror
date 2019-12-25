@@ -1,0 +1,1 @@
+@red ../scripts/64s1r2cipt53.red --option2-alias=54.321 --switch1-alias=CBDA --option2-alias=.43125 --option2-alias=54.321 --option2-alias=.43125 --option2-alias=.43125 --switch2 1423 --option1=54231. BCDA --switch2 -o 1342 --version

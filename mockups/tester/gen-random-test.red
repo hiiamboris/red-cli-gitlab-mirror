@@ -45,7 +45,7 @@ gen-random-test: function [
 	find-parse program [set w entry if (set-word? w) ['func | 'function] set spec block!] program
 	print ["Found spec:" mold spec]
 	
-	program-options: copy []
+	program-options: copy ["--help" "--version"]
 	forparse [refinement! (break) | set oper word!] spec [
 		print ["Found operand:" oper]
 		loop random 3 [append program-options rejoin [random first random ["1234" "123.45" "ABCD"]]]	;@@ TODO: more types

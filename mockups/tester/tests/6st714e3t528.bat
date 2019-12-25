@@ -1,0 +1,1 @@
+@red ../scripts/i4s2t1r6c5p3.red --switch2-alias=2314.5 3124 --option2-alias=ACDB --option1=DABC --option2=1432 --option1=54231. 4231 4231 --switch2-alias=2314.5 --switch2-alias-2=3241

@@ -1,0 +1,1 @@
+@red ../scripts/pi24t6sc153r.red --help 1423 --option1=DABC --switch2-alias=2314.5 -o 2543.1 --option2-alias=.43125

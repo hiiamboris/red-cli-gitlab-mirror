@@ -1,0 +1,1 @@
+@red ../scripts/6c24tpis3r15.red -o 2431 4231 --option2=1432 BCDA --switch2-alias-2=BACD --switch1-alias=CBDA -o 2543.1 --option1=54231. 3124 BCDA

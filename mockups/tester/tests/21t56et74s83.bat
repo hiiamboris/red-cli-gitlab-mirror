@@ -1,0 +1,1 @@
+@red ../scripts/pi24t6sc153r.red --option2=1432 --switch2-alias=2314.5 --option1=54231.

@@ -16,8 +16,8 @@ context [															;-- do not add another functions to system/words
 			quit/return 0
 		]
 		if attempt [find cmds command: to word! arguments/1] [		;-- specific command help
-			help: cli/help-for/no-help/no-version (command)
-			help: change/part help cli/version-for/brief Red-CLI  find/tail help lf
+			help: tail cli/version-for/brief Red-CLI  find/tail help lf
+			append help cli/syntax-for/no-help/no-version (command)
 			insert find/tail help "red-cli" rejoin [" " command]
 			print head help
 			quit/return 0
@@ -56,7 +56,10 @@ context [															;-- do not add another functions to system/words
 		quit/return 0
 	]
 
-	if "help" = form command [cli/process-into/no-help Red-CLI]		;-- handle `help` command
+	if any [
+		"help" = form command
+		#"-" = first form command 
+	][cli/process-into/no-help Red-CLI]		;-- handle `help` command
 
 	print ["Unrecognized command" uppercase form command]			;-- handle errors
 	quit/return 1

@@ -1,0 +1,1 @@
+@red ../scripts/5p14r3i26tcs.red --switch2-alias-2=BACD --help -o 2431 --option1=DABC -o 1342 --help --switch2 --switch2 --option2-alias=54.321 1423 --switch2

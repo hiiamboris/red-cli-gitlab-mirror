@@ -1,0 +1,1 @@
+@red ../scripts/s6tri1452p3c.red --option1=DABC --switch2-alias-2=3241 --switch2 --switch2 --version -o 2431 --option1=54231. --switch2 --switch2 --switch1 --switch1 1423 4231 --option2-alias=54.321 --option2=1432 --version --option2-alias=ACDB --help --option2-alias=.43125 --switch2-alias-2=3241

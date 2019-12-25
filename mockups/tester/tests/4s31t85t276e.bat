@@ -1,0 +1,1 @@
+@red ../scripts/ct1s326p4ri5.red --switch1 --switch1 --option2-alias=.43125

@@ -1,6 +1,6 @@
 Red []
 
-#include %../cli.red
+#include %../../cli.red
 
 x264-mockup: func [
 	infile [file!]

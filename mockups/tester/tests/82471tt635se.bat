@@ -1,0 +1,1 @@
+@red ../scripts/4tp1r2ic635s.red 4231 -o 2543.1 --option2-alias=.43125 --option2-alias=54.321 BCDA --option2-alias=54.321 --option2-alias=.43125 -o 1342 --version --switch2-alias=2314.5 -o 2543.1 --help --option2-alias=54.321 --switch2-alias-2=BACD --option2-alias=54.321 -o 2543.1 --switch2-alias=2314.5 --version --option2-alias=ACDB --option2-alias=.43125 3124

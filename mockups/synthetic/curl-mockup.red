@@ -1,6 +1,6 @@
 Red []
 
-#include %../cli.red
+#include %../../cli.red
 
 curl-mockup: func [
 	url [url!]

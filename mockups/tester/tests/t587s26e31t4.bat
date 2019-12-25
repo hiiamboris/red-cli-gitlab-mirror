@@ -1,0 +1,1 @@
+@red ../scripts/2c46s31ptr5i.red --option2=1432 4231 --switch2 --switch2-alias=2314.5 --option2=1432 3124 3124 --option2-alias=.43125 --version 3124 -o 2431

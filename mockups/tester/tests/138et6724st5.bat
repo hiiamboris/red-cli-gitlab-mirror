@@ -1,0 +1,1 @@
+@red ../scripts/3rs16c25i4pt.red --switch2 --option2-alias=54.321 3124 --version --switch2 -o 2431 --option1=DABC --switch1-alias=CBDA --version --switch2-alias-2=3241 --option1=54231. -o 1342

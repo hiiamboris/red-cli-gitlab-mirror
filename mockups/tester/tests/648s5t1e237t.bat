@@ -1,0 +1,1 @@
+@red ../scripts/i3t621c4s5rp.red 3124 --option2=1432 --option2-alias=54.321 --option2=1432 3124 --help --switch2

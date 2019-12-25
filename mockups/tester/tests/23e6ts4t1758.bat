@@ -1,0 +1,1 @@
+@red ../scripts/2c46s31ptr5i.red --option2=1432 --option2=1432 --switch1 --switch2-alias-2=BACD --option1=DABC BCDA BCDA -o 1342 --option1=54231. --option2-alias=54.321 -o 2543.1 --option1=54231.

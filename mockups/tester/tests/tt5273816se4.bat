@@ -1,0 +1,1 @@
+@red ../scripts/6ripcts23451.red --switch2 --switch2-alias-2=BACD BCDA --switch1-alias=CBDA 4231 --option2-alias=.43125 --switch1-alias=CBDA --option2-alias=.43125 -o 2431 --switch1 --version -o 2431

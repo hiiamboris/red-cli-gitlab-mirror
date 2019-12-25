@@ -1,0 +1,1 @@
+@red ../scripts/3t5i16pc4rs2.red --option2-alias=ACDB

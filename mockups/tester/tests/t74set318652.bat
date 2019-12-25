@@ -1,0 +1,1 @@
+@red ../scripts/14p62cir5st3.red --option1=54231. --option2-alias=ACDB --switch2 3124 --option2-alias=.43125 --switch2-alias-2=BACD --version

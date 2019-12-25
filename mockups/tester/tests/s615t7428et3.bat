@@ -1,0 +1,1 @@
+@red ../scripts/s6tri1452p3c.red --switch2-alias-2=BACD --option1=DABC --option2-alias=.43125 --option1=54231. --switch2 --option1=DABC BCDA --switch1-alias=CBDA -o 2543.1 --option2-alias=.43125 --help 4231

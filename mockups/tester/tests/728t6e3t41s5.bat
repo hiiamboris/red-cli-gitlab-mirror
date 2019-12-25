@@ -1,0 +1,1 @@
+@red ../scripts/ct1s326p4ri5.red -o 2543.1 3124 --switch2 --option2=1432 --switch1 --version --switch2-alias-2=3241 --version 1423 --option2=1432 --switch1

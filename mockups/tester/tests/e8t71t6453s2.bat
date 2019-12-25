@@ -1,0 +1,1 @@
+@red ../scripts/tp4r1s35ci62.red --switch2 --switch2-alias=2314.5 -o 1342 --version --option2=1432 --switch2 --switch2 --option2-alias=ACDB --switch1 BCDA --switch2 BCDA 3124 --switch2

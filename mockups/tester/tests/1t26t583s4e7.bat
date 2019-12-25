@@ -1,0 +1,1 @@
+@red ../scripts/ci1p5sr42t63.red --option2-alias=ACDB --option2-alias=ACDB --version --switch2-alias=2314.5 --option1=54231. --help --help -o 2543.1

@@ -1,0 +1,1 @@
+@red ../scripts/ci1p5sr42t63.red --switch2-alias=2314.5 --switch2-alias-2=BACD --option2-alias=.43125 --switch2-alias-2=BACD --switch1 --version --switch1 --option1=54231. --option2-alias=54.321 --switch2-alias-2=BACD --option1=54231. --option2=1432 --switch2-alias=2314.5 --option2-alias=ACDB 4231 1423 --option2-alias=.43125 BCDA

@@ -1,0 +1,1 @@
+@red ../scripts/3t5i16pc4rs2.red --option2=1432 -o 2431 --switch2-alias=2314.5 --option2-alias=ACDB --switch1-alias=CBDA --switch1-alias=CBDA --switch1-alias=CBDA BCDA

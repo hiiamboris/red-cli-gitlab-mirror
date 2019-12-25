@@ -1,0 +1,1 @@
+@red ../scripts/3t5i16pc4rs2.red --switch1-alias=CBDA

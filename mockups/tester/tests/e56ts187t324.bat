@@ -1,0 +1,1 @@
+@red ../scripts/pi24t6sc153r.red --option2-alias=.43125 --version --switch1 -o 2543.1 1423 1423 --switch2-alias-2=BACD 4231 --switch2 3124 --option2-alias=ACDB --switch1 -o 1342 4231 --option1=54231.
