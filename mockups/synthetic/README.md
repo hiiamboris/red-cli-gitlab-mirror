@@ -6,7 +6,7 @@ With just 1-2 of the hardest to get right options and how they can be expressed:
 >curl-mockup -h
 ```
 ```
-curl-mockup 1.0                                                        
+curl mockup 25-Dec-2019                                                       
                                                                        
 Syntax: curl-mockup [options] <url>                                    
                                                                        
@@ -23,7 +23,7 @@ Huge option description formatting with word wrapping:
 >x264-mockup -h                                  
 ```
 ```
-x264-mockup 1.0                                                              
+x264 mockup 25-Dec-2019                                                             
                                                                              
 Syntax: x264-mockup [options] <infile>                                       
                                                                              
@@ -80,8 +80,9 @@ This will automatically add `author` and `rights` strings from the header once R
 >curl-mockup --version
 ```
 ```
-curl-mockup 1.0
-Built with Red 0.6.4 (#ed913ef) for Windows
+curl mockup 25-Dec-2019
+Built with Red 0.6.4 (#544a6e1) for Windows
+Build timestamp: 25-Dec-2019/20:48:21+03:00
 ```
 
 Errors:

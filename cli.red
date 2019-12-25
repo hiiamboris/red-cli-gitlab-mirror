@@ -11,6 +11,9 @@ Red [
 		See https://github.com/red/red/blob/master/BSL-License.txt
 	}
 	Bugs: {
+		- Red does not support system/script/header, so
+		  don't expect values from it to be automatically fetched yet
+		  unless you make this object yourself
 		- When compiled, words lose their case info, so
 		  if program name is generated from a word, it will always be in lower case
 	}
