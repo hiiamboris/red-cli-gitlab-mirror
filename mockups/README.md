@@ -10,6 +10,8 @@
 
 [**Multi-command CLI interface to Red functions**](red-cli/) (compile as `red -c red-cli.red` or run directly as `red red-cli.red`)
 
+[**Mixed GUI+CLI demo**](gui-demo/) (compile as `red -c gooey.red`)
+
 There's also a `test.bat` sample command in most examples (requires a compiled exe).
 
 
