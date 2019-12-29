@@ -266,10 +266,17 @@ cli: context [
 				not block? :x								;-- single value?
 				any [
 					find loadable type? :x					;-- accepted?
-					all [									;-- automatic integer to float promotion when required
-						integer? :x
-						find loadable float!
-						x: 1.0 * x
+					any [									;-- automatic promotion when required
+						all [									;-- integer to float
+							integer? :x
+							find loadable float!
+							x: 1.0 * x
+						]
+						all [									;-- word to logic
+							word? :x
+							find loadable logic!
+							logic? x: get x
+						]
 					]
 				]
 			][return x]
@@ -951,8 +958,20 @@ cli: context [
 			compose/only [a: (a) b: (b)]
 		]
 
+		test-prog-3: func [/a x [logic! block!] /b y [logic!] /c z [logic! string!]] [
+			compose/only [a: (a) x: (x) b: (b) y: (y) c: (c) z: (z)]
+		]
+
 		test-ok-1: function [result [block!] args [block!]] [
 			got: process-into/options test-prog-1 [args: args]
+			replace/all result 'false false
+			replace/all result 'true  true
+			replace/all result 'none  none
+			assert [result = got]
+		]
+
+		test-ok-3: function [result [block!] args [block!]] [
+			got: process-into/options test-prog-3 [args: args]
 			replace/all result 'false false
 			replace/all result 'true  true
 			replace/all result 'none  none
@@ -968,6 +987,11 @@ cli: context [
 
 		test-fail-2: function ['code [word!] args [block!]] [
 			got: process-into/options test-prog-2 [args: args on-error: handler]
+			assert [code = got]
+		]
+
+		test-fail-3: function ['code [word!] args [block!]] [
+			got: process-into/options test-prog-3 [args: args on-error: handler]
 			assert [code = got]
 		]
 
@@ -1038,6 +1062,17 @@ cli: context [
 		test-fail-1 ER_FORMAT ["1" "2" "-zxc"]
 
 		test-fail-2 ER_MUCH   ["1" "2" "3"]
+
+		test-ok-3 [a: false x: none b: true y: true c: false z: none] ["-b" "yes"]
+		test-ok-3 [a: false x: none b: true y: true c: false z: none] ["-b" "on"]
+		test-ok-3 [a: false x: none b: true y: true c: false z: none] ["-b" "true"]
+		test-ok-3 
+			compose/deep [a: true x: [(true) (false) (false) (false)] b: false y: none c: false z: none]
+			["-a" "yes" "-a" "no" "-a" "false" "-a" "off"]
+		test-ok-3 [a: false x: none b: false y: none c: true z: false] ["-c" "no"]
+		test-ok-3 [a: false x: none b: false y: none c: true z: true] ["-c" "yes"]
+
+		test-fail-3 ER_TYPE   ["-a" "100"]
 
 		assert [(reduce [none "--" none "-- --"]) = extract-args ["--" "--" "-- --"] test-prog-1]
 
