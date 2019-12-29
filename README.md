@@ -1,6 +1,6 @@
-[--> EXAMPLES HERE <--](mockups/)
+### [--> EXAMPLES HERE <--](mockups/)
 
-[TL;DR: see drinking example for quick start on usage](mockups/sing/cli-sing.red).<br>What you need is to define a Red function that will serve as an interface with the outside world, and call `cli/process-into <function-name>`. That's all.
+[**TL;DR: see drinking example for quick start on usage**](mockups/sing/cli-sing.red).<br>What you need is to define a Red function that will serve as an interface with the outside world, and call `cli/process-into <function-name>`. That's all.
 
 ---
 
