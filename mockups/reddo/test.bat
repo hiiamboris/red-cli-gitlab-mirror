@@ -1,0 +1,1 @@
+reddo "view [button {click cluck} focus [unview]]"

@@ -12,6 +12,8 @@
 
 [**Mixed GUI+CLI minimal demo**](gui-demo/) (compile as `red -c gooey.red`)
 
-There's also a `test.bat` sample command in most examples (requires a compiled exe).
+[**Feed scripts to Red from command line**](reddo/)
+
+There's also a `test.bat` sample command in most examples (requires a compiled exe, usually).
 
 
