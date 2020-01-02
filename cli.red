@@ -2,9 +2,9 @@ Red [
 	Title:		"Simple & powerful command line argument validation system"
 	Author: 	@hiiamboris
 	File: 		%cli.red
-	Version:	29/12/2019
+	Version:	02/01/2020
 	Tabs:		4
-	Rights:		"Copyright (C) 2011-2019 Red Foundation. All rights reserved."
+	Rights:		"Copyright (C) 2011-2020 Red Foundation. All rights reserved."
 	Homepage:	https://gitlab.com/hiiamboris/red-cli
 	License: {
 		Distributed under the Boost Software License, Version 1.0.
@@ -151,7 +151,7 @@ cli: context [
 	]
 
 
-	default: func [:w [set-word!] v] [unless get :w [set :w v]]
+	default: func [:w [set-word!] v] [unless get/any :w [set :w v]]
 
 	prep-spec: function [
 		"Converts a function SPEC into internal format used for easier argument processing"
@@ -349,12 +349,12 @@ cli: context [
 		foreach [opt val] options [
 			if all [
 				set [opt arg types] find-option? :caller opt	;-- option is supported by the caller
-				not get opt										;-- it wasn't explicitly provided (tip: `opt` is bound to :caller)
+				not get/any opt									;-- it wasn't explicitly provided (tip: `opt` is bound to :caller)
 			][
 				if arg [
 					if none? :val [continue]					;-- no need to set to `none` (none is rarely in the accepted typeset)
-					unless find types type: type?/word val [	;-- check the supplied value type
-						if word? val [val: get val]
+					unless find types type: type?/word :val [	;-- check the supplied value type
+						if word? :val [set/any 'val get/any val]
 						(find types type: type?/word :val)		;-- try also with word's value
 						else form reduce [
 							mold/part :caller 50 "does not accept" opt "of type" type
@@ -379,13 +379,13 @@ cli: context [
 			#assert [opt]
 			repend r [
 				to set-word! opt
-				get any [arg opt]
+				get/any any [arg opt]
 			]
 		]
 		all [									;-- unify the result with caller's own `opts` block
 			set [opt arg types] find-option? :caller 'options		;-- has /options
 			arg = 'opts							;-- it's valid `/options opts`
-			get arg								;-- opts is set to something
+			block? get/any arg					;-- opts is set to a block
 			r: union/skip r get arg	2			;-- first arg `r` gets priority
 		]
 		r
@@ -629,11 +629,11 @@ cli: context [
 						(dlms: [      some [#" " | #"^-"] | end])				;-- no "=" allowed
 						ahead dlms											;-- forbid multiple chars after a single hyphen
 					]
-					(unless supported? get program arg-name [			;-- check the option name
+					(unless supported? get/any program arg-name [		;-- check the option name
 						do [help-version-quit?]								;-- try default handlers when not handled by the program ;@@ DO for compiler
 						complain [ER_OPT "Unsupported option:" arg]
 					])
-					[	if (unary? get program arg-name)				;-- read the value (if required)
+					[	if (unary? get/any program arg-name)			;-- read the value (if required)
 						[	dlms											;-- require a delimiter
 						|	pos: (complain [ER_CHAR "Unsupported option character at" pos])
 						]
@@ -700,7 +700,7 @@ cli: context [
 			#do keep [now/date]							;-- compilation date otherwise
 		]
 
-		desc: first spec-of get program
+		desc: first spec-of get/any program
 		unless string? desc [desc: none]
 
 		author:  attempt [system/script/header/author]	;@@ TODO: join multiple authors with comma or ampersand?
@@ -747,7 +747,7 @@ cli: context [
 		apply-options context? 'opts opts
 		opts: fill-options context? 'opts
 		
-		spec: prep-spec get program
+		spec: prep-spec get/any program
 		unless no-version [repend spec [ [/version] "Display program version and exit" none ]]
 		unless no-help    [repend spec [ [/h /help] "Display this help text and exit"  none ]]
 
@@ -920,11 +920,11 @@ cli: context [
 			arg-blk: extract-args/options arg-blk (program) opts
 			foreach [name value] arg-blk [					;-- do processing
 				either name										;-- none if operand
-					[ add-refinements/options call get program name value opts ]
-					[ add-operand/options     call get program value opts ]
+					[ add-refinements/options call get/any program name value opts ]
+					[ add-operand/options     call get/any program value opts ]
 			]
 														;-- call the function, return it's value
-			set/any 'r do prep-call/options call get program opts
+			set/any 'r do prep-call/options call get/any program opts
 			ok?: yes									;@@ can't `return :r` here, compiler bug 
 		] 'complaint
 		if ok? [return :r]
