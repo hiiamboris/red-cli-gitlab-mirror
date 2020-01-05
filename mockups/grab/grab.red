@@ -15,6 +15,7 @@ Red [
 #include %../../cli.red
 
 grab: function [
+	"Screen grabber demo"
 	/offset ofs		[pair!] "Left top corner (default: 0x0)"
 	/size sz		[pair!] "Region to capture (default: screen size - offset)"
 	/into dir		[file!] "Save image in a directory path (default: current directory)"
