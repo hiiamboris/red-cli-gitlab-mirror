@@ -10,7 +10,9 @@
 
 [**Multi-command CLI interface to Red functions**](red-cli/) (compile as `red -c red-cli.red` or run directly as `red red-cli.red`)
 
-[**Mixed GUI+CLI minimal demo**](gui-demo/) (compile as `red -c gooey.red`)
+[**Mixed GUI+CLI minimal demo**](gui-demo/) (compile with `build-gooey.red`)
+
+[**Mixed GUI+CLI screen grabber demo**](grab/) (compile with `build-grab.red`)
 
 [**Feed scripts to Red from command line**](reddo/)
 
