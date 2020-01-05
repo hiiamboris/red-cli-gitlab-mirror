@@ -2,7 +2,7 @@
 
 that leverages GUI+CLI mixed mode (I externalized this functionality as [console-on-demand.red](console-on-demand.red))
 
-Build it with `build-grab.red` script
+Build it with `build-grab.red` script. Make a shortcut to the exe with desired options and put it into a toolbar or somewhere.
 
 ```
 grab 5-Jan-2020
