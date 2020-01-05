@@ -2,7 +2,7 @@ Red [
 	Title:		"Simple & powerful command line argument validation system"
 	Author: 	@hiiamboris
 	File: 		%cli.red
-	Version:	02/01/2020
+	Version:	05/01/2020
 	Tabs:		4
 	Rights:		"Copyright (C) 2011-2020 Red Foundation. All rights reserved."
 	Homepage:	https://gitlab.com/hiiamboris/red-cli
@@ -847,6 +847,7 @@ cli: context [
 				s-doc: case [							;-- combine `doc` with that of `--option` (if any)
 					committed? [copy doc]					;-- "      <arg> Arg description"
 					empty? doc [s-doc]						;-- "--opt <arg> Opt description"
+					empty? s-doc [copy doc]					;-- "--opt <arg> Arg description"
 					'else [ rejoin [s-doc "; " doc] ]		;-- "--opt <arg> Opt description; Arg description"
 				]
 				do commit
