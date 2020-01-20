@@ -173,7 +173,7 @@ cli: context [
 			)
 		]
 		=ref=: [									;-- option (refinement)
-			any [[/local | /extern] to [refinement! | end]]				;-- skip /locals & /externs
+			any [/local to [refinement! | end]]			;-- skip /locals (/externs are never present in the spec)
 			set name    refinement!
 			set doc opt string!     (default doc: copy "")
 			(										;-- check the docstring for an alias definition
