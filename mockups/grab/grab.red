@@ -33,9 +33,9 @@ grab: function [
 		dt: now/precise
 		foreach x [month day hour minute second] [set x next form 100 + dt/:x]
 		clear skip remove skip second 2 3
-		name: rejoin [dirize dir %screenshot- dt/year month day '- hour minute second %.jpg]
+		name: rejoin [dirize dir %screenshot- dt/year month day '- hour minute second %.png]
 
-		save/as name shot 'jpeg
+		save/as name shot 'png
 		; maybe-print to-local-file name
 		if clip [write-clipboard shot]
 	]
