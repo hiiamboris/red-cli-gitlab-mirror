@@ -319,7 +319,7 @@ cli: context [
 	;--       otherwise one option will do different things in different funcs that use `apply-options`
 
 
-	find-option?: func [
+	find-option?: function [
 		"Find an option O in F's spec, return a block [option argument arg-types], or none if not found"
 		f [function!] o [any-word!]
 	][
