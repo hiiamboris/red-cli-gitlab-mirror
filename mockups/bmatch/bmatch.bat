@@ -1,0 +1,1 @@
+@red %~dp0bmatch.red %*
