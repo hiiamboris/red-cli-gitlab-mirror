@@ -16,6 +16,8 @@
 
 [**Feed scripts to Red from command line**](reddo/)
 
+[**Find mismatched brackets easily**](bmatch/)
+
 There's also a `test.bat` sample command in most examples (requires a compiled exe, usually).
 
 
