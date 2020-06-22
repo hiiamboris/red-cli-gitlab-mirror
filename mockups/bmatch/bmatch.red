@@ -87,7 +87,7 @@ read-until: function [end-marker /local line1 indent1 /extern tol pos script] [
 			break
 		|	pos: skip (print #composite "(script): Unexpected occurrence of (pos/1) on line (line)")
 		]
-		(unless found? [print #composite "(script): No ending (end-marker) after (line1)"])
+		(unless found? [print #composite "(script): No ending (end-marker) after line (line1)"])
 	]
 ]
 
