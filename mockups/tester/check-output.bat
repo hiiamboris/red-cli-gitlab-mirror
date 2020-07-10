@@ -1,1 +1,1 @@
-fc output.txt output.saved
+fc /n output.txt output.saved
