@@ -125,10 +125,10 @@ cli: context [
 	][
 		if any [
 			error? try [s: load s]						;-- unloadable?
-			not word? s									;-- unsupported spelling?
+			not word? :s								;-- unsupported spelling?
 			; all [not integer? s not word? s]			;@@ TODO: integer options?
 		][
-			complain [ER_OPT "Unsupported option:" s]
+			complain [ER_OPT "Unsupported option:" :s]	;-- using get-word for security (one day `load` may support serialized funcs)
 		]
 		; if integer? s [s: to word! rejoin ["_" s]]
 		#assert [word? s]
@@ -187,8 +187,8 @@ cli: context [
 		r: new-line/skip r yes 3
 		foreach [alias target] aliases [
 			(all [
-				target: attempt [load target]
-				find [word! refinement!] type?/word target
+				attempt [target: load target]
+				find [word! refinement!] type?/word :target		;-- using get-word for security (one day `load` may support serialized funcs)
 			]) else form rejoin ["Target "target" must be a word or refinement"]
 			pos: find-refinement r to refinement! target
 			pos else form rejoin ["Target "target" of alias "alias" is not defined"]
@@ -259,7 +259,7 @@ cli: context [
 		loadable: intersect types loadable-set
 		case/all [
 			loadable <> make typeset! [] [				;-- contains a loadable type?
-				x: try [load v]
+				try [x: load v]
 			]
 			all [										;-- try type conversion
 				not error? :x								;-- loaded at all?

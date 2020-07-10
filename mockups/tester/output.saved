@@ -30,7 +30,7 @@ Not enough operands given
 *** 138et6724st5.bat ***
 @red ../scripts/3rs16c25i4pt.red --switch2 --option2-alias=54.321 3124 --version --switch2 -o 2431 --option1=DABC --switch1-alias=CBDA --version --switch2-alias-2=3241 --option1=54231. -o 1342
 QRETWY  25-Dec-2019 test program description 
-Using Red 0.6.4 (#544a6e1) for Windows
+Using Red 0.6.4 (#b452716) for Windows
 
 
 *** 13ts64te5872.bat ***
@@ -150,7 +150,7 @@ Not enough operands given
 *** 1t26t583s4e7.bat ***
 @red ../scripts/ci1p5sr42t63.red --option2-alias=ACDB --option2-alias=ACDB --version --switch2-alias=2314.5 --option1=54231. --help --help -o 2543.1
 my program 25-Dec-2019 test program description 
-Using Red 0.6.4 (#544a6e1) for Windows
+Using Red 0.6.4 (#b452716) for Windows
 
 
 *** 1t6345se82t7.bat ***
@@ -176,7 +176,7 @@ Option --switch2-alias=ACDB does not accept a value
 *** 2187e4t65st3.bat ***
 @red ../scripts/64s1r2cipt53.red -o 2543.1 --version --option1=54231. --switch2
 my program RT EYWQ test program description 
-Using Red 0.6.4 (#544a6e1) for Windows
+Using Red 0.6.4 (#b452716) for Windows
 
 
 *** 21t3s78e5t64.bat ***
@@ -250,7 +250,7 @@ Not enough operands given
 *** 2e6381754stt.bat ***
 @red ../scripts/3c2641p5rist.red --version --switch1
 QRETWY  25-Dec-2019 test program description 
-Using Red 0.6.4 (#544a6e1) for Windows
+Using Red 0.6.4 (#b452716) for Windows
 
 
 *** 2e6853tt4s17.bat ***
@@ -709,7 +709,7 @@ Option --switch2-alias=ACDB does not accept a value
 
 *** 5e34st26t817.bat ***
 @red ../scripts/ct35ps421r6i.red --option2=25143.
-Invalid value format: 25143.
+Not enough operands given
 
 *** 5e736t241st8.bat ***
 @red ../scripts/12ir6s3t54pc.red .45231 --option1=2315.4 --option2=BCAD CDBA --option2=25143. --switch2-alias=DBCA --switch2 3.5214 --switch1 --option2=5.1342 -o 3.1524 --option2=5.1342 --switch2 .34521 --option2-alias=3214.5 --switch2-alias-2=142.53 -o DCAB --option2-alias=5132.4 --option2-alias=3214.5
@@ -936,7 +936,7 @@ Not enough operands given
 *** 71e5st4628t3.bat ***
 @red ../scripts/r35it4s2cp16.red --version --option2-alias=ACDB --option2-alias=ACDB 3124
 my program RT EYWQ test program description 
-Using Red 0.6.4 (#544a6e1) for Windows
+Using Red 0.6.4 (#b452716) for Windows
 
 
 *** 71t286ts3e45.bat ***
@@ -950,7 +950,7 @@ Not enough operands given
 *** 728t6e3t41s5.bat ***
 @red ../scripts/ct1s326p4ri5.red -o 2543.1 3124 --switch2 --option2=1432 --switch1 --version --switch2-alias-2=3241 --version 1423 --option2=1432 --switch1
 my program 25-Dec-2019 test program description 
-Using Red 0.6.4 (#544a6e1) for Windows
+Using Red 0.6.4 (#b452716) for Windows
 
 
 *** 73164e2t58st.bat ***
@@ -976,7 +976,7 @@ Not enough operands given
 *** 746ste1t8532.bat ***
 @red ../scripts/tp4r1s35ci62.red --version --switch2-alias-2=3241 --switch2 --option1=DABC --option2-alias=54.321 --option2-alias=ACDB --version --switch2-alias=2314.5 --option1=DABC -o 2431 --switch2 --switch2 --switch2-alias=2314.5 --option1=DABC --switch2-alias-2=BACD 4231 --switch2-alias-2=3241
 QRETWY  RT EYWQ test program description 
-Using Red 0.6.4 (#544a6e1) for Windows
+Using Red 0.6.4 (#b452716) for Windows
 
 
 *** 748135s6tte2.bat ***
@@ -1033,12 +1033,12 @@ BCAD should be a float value
 
 *** 78s2t5t163e4.bat ***
 @red ../scripts/12ir6s3t54pc.red --option2=25143. --option2=BCAD
-Invalid value format: 25143.
+BCAD should be a float value
 
 *** 7e42tt38516s.bat ***
 @red ../scripts/3rs16c25i4pt.red --option1=DABC --version --switch2-alias=2314.5 --switch2 --switch2-alias-2=3241 -o 2543.1
 QRETWY  25-Dec-2019 test program description 
-Using Red 0.6.4 (#544a6e1) for Windows
+Using Red 0.6.4 (#b452716) for Windows
 
 
 *** 7e61s38tt452.bat ***
@@ -1067,7 +1067,7 @@ Option --switch2-alias=4312 does not accept a value
 
 *** 7t835s6t2e14.bat ***
 @red ../scripts/1c5ps2i643rt.red --option2-alias=4312 --option2-alias=21543. -o 1243
-Invalid value format: 21543.
+Not enough operands given
 
 *** 7ts6e425381t.bat ***
 @red ../scripts/4i2rps5ct136.red --switch2-alias-2=DCBA --switch2 --option2-alias=4312 --switch2-alias-2=BDAC --switch2-alias-2=43251. --option1=3241 -o 1243 .23541 --switch2-alias=CBAD --switch2 --option1=42.351 --option2=ADCB --switch2-alias=DBCA --option2-alias=4312
@@ -1124,7 +1124,7 @@ Not enough operands given
 *** 82471tt635se.bat ***
 @red ../scripts/4tp1r2ic635s.red 4231 -o 2543.1 --option2-alias=.43125 --option2-alias=54.321 BCDA --option2-alias=54.321 --option2-alias=.43125 -o 1342 --version --switch2-alias=2314.5 -o 2543.1 --help --option2-alias=54.321 --switch2-alias-2=BACD --option2-alias=54.321 -o 2543.1 --switch2-alias=2314.5 --version --option2-alias=ACDB --option2-alias=.43125 3124
 my program RT EYWQ test program description 
-Using Red 0.6.4 (#544a6e1) for Windows
+Using Red 0.6.4 (#b452716) for Windows
 
 
 *** 82t1763t5se4.bat ***
@@ -1294,7 +1294,7 @@ Option --switch2-alias=ACDB does not accept a value
 *** e56ts187t324.bat ***
 @red ../scripts/pi24t6sc153r.red --option2-alias=.43125 --version --switch1 -o 2543.1 1423 1423 --switch2-alias-2=BACD 4231 --switch2 3124 --option2-alias=ACDB --switch1 -o 1342 4231 --option1=54231.
 my program 25-Dec-2019 test program description 
-Using Red 0.6.4 (#544a6e1) for Windows
+Using Red 0.6.4 (#b452716) for Windows
 
 
 *** e64253t17st8.bat ***
@@ -1323,7 +1323,7 @@ Not enough operands given
 
 *** e75683stt124.bat ***
 @red ../scripts/r4p2sc31ti56.red --option2=25143. .45231 --option1=3412 --option2=25143. 3.5214
-Invalid value format: 25143.
+3.5214 should be an integer value
 
 *** e7t5164s328t.bat ***
 @red ../scripts/ic5p3t21sr64.red .34521
@@ -1712,7 +1712,7 @@ Option --switch2-alias-2=142.53 does not accept a value
 *** t6t12s78345e.bat ***
 @red ../scripts/23s6pr514cit.red -o 2431 --version 4231 --switch2-alias-2=3241 --switch1-alias=CBDA --switch2-alias-2=BACD
 QRETWY  25-Dec-2019 test program description 
-Using Red 0.6.4 (#544a6e1) for Windows
+Using Red 0.6.4 (#b452716) for Windows
 
 
 *** t73t562e814s.bat ***
@@ -1786,12 +1786,12 @@ Not enough operands given
 *** te7365t821s4.bat ***
 @red ../scripts/3c2641p5rist.red --switch1 -o 1342 4231 --version --switch2-alias-2=BACD -o 2431 --option1=54231. --switch2 --switch2 -o 2543.1 --switch2-alias=2314.5 --switch1 -o 1342 --switch2 3124 --option2-alias=ACDB --option2-alias=ACDB --option2-alias=ACDB --help BCDA
 QRETWY  25-Dec-2019 test program description 
-Using Red 0.6.4 (#544a6e1) for Windows
+Using Red 0.6.4 (#b452716) for Windows
 
 
 *** te73t2s18465.bat ***
 @red ../scripts/4i2rps5ct136.red --option1=2314 -o 1243 --option2-alias=21543. --option2-alias=21543. --option1=42.351 --switch1 --option2=DCAB --switch2 --switch2 --option1=3241 --option1=42.351
-Invalid value format: 21543.
+DCAB should be a float value
 
 *** te7t248163s5.bat ***
 @red ../scripts/5p4sci1236tr.red --option1=2314 --switch1 --switch2-alias-2=BDAC --switch1 --switch2-alias-2=BDAC -o 143.25 --option1=2314 -o 1243 --switch1 --option1=3241 --option1=2314 --switch2 --option2-alias=4312
