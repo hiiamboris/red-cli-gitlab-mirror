@@ -259,7 +259,7 @@ cli: context [
 		loadable: intersect types loadable-set
 		case/all [
 			loadable <> make typeset! [] [				;-- contains a loadable type?
-				try [x: load v]
+				set/any 'x try [load v]
 			]
 			all [										;-- try type conversion
 				not error? :x								;-- loaded at all?
