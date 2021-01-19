@@ -669,8 +669,6 @@ cli: context [
 		'program	[word! path!]
 		/name					"Overrides program name"
 			pname	[string!]
-		/exename				"Overrides executable name"
-			xname	[string!]
 		/version				"Overrides version"
 			ver		[tuple! string!]
 		/brief					"Include only the essential info"
@@ -741,6 +739,8 @@ cli: context [
 		/no-help				"Suppress automatic creation of --help and -h arguments"
 		/columns				"Specify widths of columns: indent, short option, long option, argument, description"
 			cols	[block!]
+		/exename				"Overrides executable name"
+			xname	[string!]
 		/options				"Specify all the above options as a block"
 			opts	[block! none!]
 	][
