@@ -800,7 +800,7 @@ cli: context [
 				while [cols/5 < length? s-doc/1] [		;-- split by column width parts
 					s-doc: insert  s-doc  take/part s-doc/1 any [
 						; find/part/last/tail s-doc/1 #" " cols/5		;@@ find is buggy - #4204
-						-1 + index? find/last/tail copy/part s-doc/1 cols/5 #" "
+						attempt [-1 + index? find/last/tail copy/part s-doc/1 cols/5 #" "]
 						cols/5
 					]
 				]
