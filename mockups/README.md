@@ -18,6 +18,8 @@
 
 [**Find mismatched brackets easily**](bmatch/)
 
+[**Automatically hook an audio file to any video played in your favorite player**](a+v/)
+
 There's also a `test.bat` sample command in most examples (requires a compiled exe, usually).
 
 
