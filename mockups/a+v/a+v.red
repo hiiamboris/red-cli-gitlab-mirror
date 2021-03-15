@@ -7,7 +7,7 @@ Red [needs: 'view icon: %mpv-document.ico]
 
 
 ;-- setup
-prints: func [b [block!] s [string!]] [print composite b s]
+#macro [#print string!] func [[manual] s e] [insert remove s [print #composite] s]
 
 ;-- the final call
 play: function [player root vfile afile] [
@@ -17,7 +17,7 @@ play: function [player root vfile afile] [
 
 	cwd: what-dir
 	change-dir root
-	prints['root] {invoking: (cmd)^/from: "(to-local-file what-dir)"}
+	#print {invoking: (cmd)^/from: "(to-local-file what-dir)"}
 	call/show/wait/console cmd
 	change-dir cwd
 	quit
@@ -52,8 +52,8 @@ a+v: function [
 	default conffile: to-red-file #composite %"(origin)(self).conf"
 
 	set [path: vfile:] split-path clean-path to-red-file vfile
-	prints['path] "root path: (path)"
-	prints['path] "using video file: (vfile)"
+	#print "root path: (path)"
+	#print "using video file: (vfile)"
 	clear find/last vfile-noex: copy vfile "."
 	imasks: #composite "(vfile-noex).*"
 
@@ -68,7 +68,7 @@ a+v: function [
 				set bind name 'local :value
 			]
 		][
-			prints['msg] "error reading the config file: (msg)"
+			#print "error reading the config file: (msg)"
 		]
 	]
 
@@ -77,7 +77,7 @@ a+v: function [
 		glob/limit/from/only/omit 2 path imasks xmasks
 		reduce [vfile]
 
-	foreach f afiles [prints['f] "possible audio match: (f)"]
+	foreach f afiles [#print "possible audio match: (f)"]
 	if empty? afiles [
 		print "no external audio track found..."
 		play player path vfile none
@@ -105,7 +105,7 @@ a+v: function [
 		if config/last-index: last-index [								;-- remember the selection
 			save conffile to [] config
 		]
-		print['afile] "chosen audio track: (afile)"
+		#print "chosen audio track: (afile)"
 		play player path vfile afile
 	]
 ]
