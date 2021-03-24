@@ -918,29 +918,27 @@ cli: context [
 		/local opt val r ok?
 	][
 		err: catch/name [								;-- catch processing errors only
-			apply-options context? 'opts opts				;-- args preference: /args, then /options, then system/options/args
-			unless arg-blk [arg-blk: system/options/args]
-			opts: fill-options context? 'opts
+			apply-options context? 'opts opts						;-- args priority: `args`, then `options/args`..
+			unless arg-blk [arg-blk: system/options/args]			;-- ..and then `system/options/args`
+			opts: fill-options context? 'opts						;-- used to pass options to other functions
 
-			call: copy/deep [ [] [] [] ]					;-- where to collect processed args
-			change/only call program
-
-			arg-blk: extract-args/options arg-blk (program) opts
-			foreach [name value] arg-blk [					;-- do processing
-				either name										;-- none if operand
+			call: compose/deep [ (program) [] [] ]					;-- where to collect processed args: [path operands options]
+			arg-blk: extract-args/options arg-blk (program) opts	;-- turn command line into a block of known format
+			foreach [name value] arg-blk [							;-- add options and operands to the `call`
+				either name											;-- name = none if operand, word if option
 					[ add-refinements/options call get/any program name value opts ]
 					[ add-operand/options     call get/any program value opts ]
 			]
-														;-- call the function, return it's value
-			set/any 'r do prep-call/options call get/any program opts
-			ok?: yes									;@@ can't `return :r` here, compiler bug 
+			call: prep-call/options call get/any program opts		;-- turn `call` block into an actual function call
+			set/any 'r do call										;-- call the function
+			ok?: yes												;@@ can't `return :r` here, compiler bug 
 		] 'complaint
-		if ok? [return :r]
-														;-- so, there was a processing error!
+		if ok? [return :r]								;-- normal execution ends here
+														;-- otherwise, there was a processing error!
 		if :handler [return do [handler err]]			;-- pass handler's return through, if any ;@@ DO for compiler
-
+														;-- if no handler, display the error (err = [code message])
 		print next err									;@@ TODO: output to stderr (not yet in Red)
-		quit/return 1
+		quit/return 1									;-- nonzero code signals failure to scripts running this program
 	]
 
 

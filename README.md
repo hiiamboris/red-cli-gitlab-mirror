@@ -39,6 +39,8 @@ If you want more flexibility, check out these functions that are also meant for 
 - `? cli/syntax-for`
 - `? cli/version-for`
 
+Should you ever need more flexibility, copy the `process-into` function into your code, prefix all functions belonging to `cli` context with `cli/` and rewrite it's code as you wish. It's short and extensively commented so that everyone could take it as a template and extend.
+
 
 ---
 
