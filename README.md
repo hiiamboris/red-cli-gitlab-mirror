@@ -2,6 +2,42 @@
 
 [**TL;DR: see drinking example for quick start on usage**](mockups/sing/cli-sing.red).<br>What you need is to define a Red function that will serve as an interface with the outside world, and call `cli/process-into <function-name>`. That's all.
 
+`cli/process-into` is the main exported function. It's usage:
+```
+>> do %cli.red
+>> ? cli/process-into
+USAGE:
+     CLI/PROCESS-INTO 'program
+
+DESCRIPTION:
+     Calls PROGRAM with arguments read from the command line. Passes through the returned value.
+     CLI/PROCESS-INTO is a function! value.
+
+ARGUMENTS:
+     'program     [word! path!]
+
+REFINEMENTS:
+     /no-version  => Suppress automatic creation of --version argument.
+     /no-help     => Suppress automatic creation of --help and -h arguments.
+     /name        => Overrides program name.
+        pname        [string!]
+     /exename     => Overrides executable name.
+        xname        [string!]
+     /version     => Overrides version.
+        ver          [tuple! string!]
+     /args        => Overrides system/options/args.
+        arg-blk      [block!]
+     /on-error    => Custom error handler: func [error [block!]] [...].
+        handler      [function!]
+     /options     => Specify all the above options as a block.
+        opts         [block!]
+```
+If you want more flexibility, check out these functions that are also meant for public use (e.g. if you want to customize some part of output without overriding it fully):
+- `? cli/help-for`
+- `? cli/syntax-for`
+- `? cli/version-for`
+
+
 ---
 
 - [Simple & powerful command line argument validation system](#simple---powerful-command-line-argument-validation-system)
