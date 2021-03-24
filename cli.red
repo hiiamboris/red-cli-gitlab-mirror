@@ -741,6 +741,8 @@ cli: context [
 			cols	[block!]
 		/exename				"Overrides executable name"
 			xname	[string!]
+		/post-scriptum			"Add custom explanation after the syntax"
+			pstext	[string!]
 		/options				"Specify all the above options as a block"
 			opts	[block! none!]
 	][
@@ -855,6 +857,7 @@ cli: context [
 		]
 		unless committed? [do commit]
 		append r "^/"
+		if pstext [append r pstext]
 		r
 	];; syntax-for: function
 
@@ -870,6 +873,8 @@ cli: context [
 			xname	[string!]
 		/version				"Overrides version"
 			ver		[tuple! string!]					;@@ TODO: add float? for 1.0 etc
+		/post-scriptum			"Add custom explanation after the syntax"
+			pstext	[string!]
 		/columns				"Specify widths of columns: indent, short option, long option, argument, description"
 			cols	[block!]
 		/options				"Specify all the above options as a block"
@@ -899,6 +904,8 @@ cli: context [
 			xname	[string!]
 		/version				"Overrides version"
 			ver		[tuple! string!]
+		/post-scriptum			"Add custom explanation after the syntax in help output"
+			pstext	[string!]
 		/args					"Overrides system/options/args"
 			arg-blk	[block!]
 		/on-error				"Custom error handler: func [error [block!]] [...]"
