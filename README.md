@@ -25,6 +25,8 @@ REFINEMENTS:
         xname        [string!]
      /version     => Overrides version.
         ver          [tuple! string!]
+     /post-scriptum => Add custom explanation after the syntax in help output.
+        pstext       [string!]
      /args        => Overrides system/options/args.
         arg-blk      [block!]
      /on-error    => Custom error handler: func [error [block!]] [...].
