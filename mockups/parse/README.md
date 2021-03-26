@@ -5,7 +5,7 @@ Compiling: `red -r parse.red`
 
 ```
 >parse.exe --help
-Parse tool 24-Mar-2021 - Process input using Parse commands -
+Parse tool 26-Mar-2021 - Process input using Parse commands -
 
 Syntax: parse [options] <input> <rule>
 
@@ -18,6 +18,8 @@ Options:
   -e, --enum                      Display line numbers together with the text
                                   (implies /lines)
   -c, --collect                   Collect matches and print to the console
+  -w, --write                     Write the contents back (incompatible with
+                                  --collect)
   -v, --verbose                   Verbose output
       --version                   Display program version and exit
   -h, --help                      Display this help text and exit
@@ -27,14 +29,27 @@ Parse tool works in 2 modes: LINE mode and FILE mode
 
 1. In FILE mode, it matches full file text against the RULE
    and returns 0 if RULE fully covers the file, or 1 if not.
+   (useful to check if file follows a certain structure)
 
    If COLLECT option is provided, collected tokens (if any)
    are also printed to the console.
+   (useful to gather info from the file)
+
+   If WRITE option is provided, and RULE changes the input,
+   file contents is also written back to the file.
+   (useful to modify the file)
 
 2. In LINE mode, it splits text into lines, then matches RULE against every line.
 
    If COLLECT option is provided, it prints result collected from ALL lines.
-   If not, it prints each line that matches the RULE.
+   (useful to gather info from a file that is line-oriented)
+
+   If WRITE option is provided, and RULE changes at least one line,
+   file contents is written back to the file and no output is made.
+   (useful to modify a file that is line-oriented)
+
+   Otherwise, it prints each line that matches the RULE.
+   (useful to filter the lines)
 
 Examples:
 
