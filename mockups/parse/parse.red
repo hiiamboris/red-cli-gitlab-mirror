@@ -24,13 +24,16 @@ parse-tool: function [
 	/enum    "Display line numbers together with the text (implies /lines)"
 	; /case    "Use case-sensitive comparison"	;@@ BUG: always applies - #4862
 	/collect "Collect matches and print to the console"
+	/write   "Write the contents back (incompatible with --collect)"
 	/verbose "Verbose output"
 	/l "alias /lines"
 	/e "alias /enum"
 	/c "alias /collect"
 	/v "alias /verbose"
+	/w "alias /write"
 ][
 	if error? e: try [
+		if all [write collect] [do make error! "--collect and --write options are mutually exclusive"]
 		rule: load/all rule
 		data: read/binary input
 		if enum [lines: true]
@@ -38,9 +41,10 @@ parse-tool: function [
 		if verbose [print ["File:" to-local-file input]]
 		if verbose [print ["Using rule:" mold rule]]
 		if lines [
-			nl: [opt #"^M" #"^/"]
+			nl: [opt #"^M" #"^/" marker:]
 			lines: parse data [collect [any [keep copy _ to [nl | end] opt nl]]]
 			if verbose [print ["Applying rule to" length? lines "lines"]]
+			marker: either all [marker marker/-2 = "#^M"] ["^M^/"]["^/"]	;-- determine the type of new-lines used
 		]
 		result: []
 		either lines [
@@ -50,16 +54,33 @@ parse-tool: function [
 				either collect [
 					append result parse line rule
 				][
-					if parse line rule [
-						if enum [prin line-number prin "^-"]
-						print to "" line
+					parse line [(ok?: no) rule (ok?: yes)]
+					if ok? [
+						unless write [
+							if enum [prin line-number prin "^-"]
+							print to "" line
+						]
 					]
 				]
 			]
 			if collect [probe new-line/all bin2str result yes]
+			if write [										;-- reconstruct the file contents
+				new: #{}
+				foreach line lines [append append new line marker]
+				unless #"^/" = last data [take/last new]
+				unless new == data [
+					if verbose [print "Contents have changed. Writing back."]
+					system/words/write/binary input new
+				]
+			]
 		][
+			if write [old: copy data]
 			result: parse data [rule (ok?: yes)]
 			if collect [probe new-line/all bin2str result yes]
+			if all [write  not old == data] [
+				if verbose [print "Contents have changed. Writing back."]
+				system/words/write/binary input data
+			]
 			if verbose [print ["Parsing result:" pick ["success" "failure"] ok? = yes]]
 			unless ok? [quit/return 1]
 		]
@@ -76,14 +97,27 @@ Parse tool works in 2 modes: LINE mode and FILE mode
 
 1. In FILE mode, it matches full file text against the RULE
    and returns 0 if RULE fully covers the file, or 1 if not.
+   (useful to check if file follows a certain structure)
 
    If COLLECT option is provided, collected tokens (if any)
    are also printed to the console.
+   (useful to gather info from the file)
+
+   If WRITE option is provided, and RULE changes the input,
+   file contents is also written back to the file.
+   (useful to modify the file)
 
 2. In LINE mode, it splits text into lines, then matches RULE against every line.
 
    If COLLECT option is provided, it prints result collected from ALL lines.
-   If not, it prints each line that matches the RULE.
+   (useful to gather info from a file that is line-oriented)
+
+   If WRITE option is provided, and RULE changes at least one line,
+   file contents is written back to the file and no output is made.
+   (useful to modify a file that is line-oriented)
+
+   Otherwise, it prints each line that matches the RULE.
+   (useful to filter the lines)
 
 Examples:
 

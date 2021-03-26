@@ -5,6 +5,6 @@ echo.
 set file=README.md
 
 for %%i in (integer! float! tuple! string! file!) do (
-	parse %file% "to %%i to end"
+	parse %file% "to %%i"
 	if not errorlevel 1 echo Contains %%i
 )	
