@@ -8,6 +8,8 @@ It works transparently by finding the appropriate audio and invoking your favori
 
 ### CLI usage
 ```
+a+v 28-Mar-2021
+
 Syntax: a+v [options] <vfile>
 
 Options:
@@ -20,6 +22,8 @@ Options:
       --font-name   <query-font-name>
       --font-size   <query-font-size> default: 12
   -x, --exclude     <xmasks>      Don't treat files with this mask as audio
+  -q, --quiet                     Suppress output (to avoid spawning a new
+                                  terminal)
       --version                   Display program version and exit
   -h, --help                      Display this help text and exit
 ```
