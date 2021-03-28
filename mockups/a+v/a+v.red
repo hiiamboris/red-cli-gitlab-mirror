@@ -4,10 +4,13 @@ Red [needs: 'view icon: %mpv-document.ico]
 #include %composite.red
 #include %glob.red
 #include %cli.red
+#include %console-on-demand.red
 
 
 ;-- setup
-#macro [#print string!] func [[manual] s e] [insert remove s [print #composite] s]
+#macro [#print  string!] func [[manual] s e] [insert remove s [print  #composite] s]
+#macro [#print? string!] func [[manual] s e] [insert remove s [print? #composite] s]
+print?: func [value [any-type!]] [unless get bind 'quiet :a+v [print :value]]
 
 ;-- the final call
 play: function [player root vfile afile] [
@@ -17,7 +20,7 @@ play: function [player root vfile afile] [
 
 	cwd: what-dir
 	change-dir root
-	#print {invoking: (cmd)^/from: "(to-local-file what-dir)"}
+	#print? {invoking: (cmd)^/from: "(to-local-file what-dir)"}
 	call/show/wait/console cmd
 	change-dir cwd
 	quit
@@ -34,7 +37,9 @@ a+v: function [
 	/font-name query-font-name [string!]
 	/font-size query-font-size [integer!] {default: 12}
 	/exclude xmasks  [string! block!] {Don't treat files with this mask as audio}
+	/quiet {Suppress output (to avoid spawning a new terminal)}
 	/x "alias /exclude"
+	/q "alias /quiet"
 ][
 	player: plcmd
 	default-config: [
@@ -52,12 +57,10 @@ a+v: function [
 	default conffile: to-red-file #composite %"(origin)(self).conf"
 
 	set [path: vfile:] split-path clean-path to-red-file vfile
-	#print "root path: (path)"
-	#print "using video file: (vfile)"
 	clear find/last vfile-noex: copy vfile "."
 	imasks: #composite "(vfile-noex).*"
 
-	;-- read the config
+	;-- read the config, before the 1st print so `quiet` option applies
 	config: none
 	if exists? conffile [
 		if error? msg: try/all [
@@ -71,15 +74,17 @@ a+v: function [
 			#print "error reading the config file: (msg)"
 		]
 	]
+	#print? "root path: (path)"
+	#print? "using video file: (vfile)"
 
 	;-- list possible audio paths
 	afiles: system/words/exclude
 		glob/limit/from/only/omit 2 path imasks xmasks
 		reduce [vfile]
 
-	foreach f afiles [#print "possible audio match: (f)"]
+	foreach f afiles [#print? "possible audio match: (f)"]
 	if empty? afiles [
-		print "no external audio track found..."
+		print? "no external audio track found..."
 		play player path vfile none
 	]
 
@@ -105,10 +110,10 @@ a+v: function [
 		if config/last-index: last-index [								;-- remember the selection
 			save conffile to [] config
 		]
-		#print "chosen audio track: (afile)"
+		#print? "chosen audio track: (afile)"
 		play player path vfile afile
 	]
 ]
 
-cli/process-into a+v
+wrap [cli/process-into a+v]
 

@@ -49,6 +49,12 @@ foreach url [
 ]
 ```
 4. Compile the exe: `red -r -e a+v.red`
+5. If you're compiling for Windows, use `-t MSDOS` flag (should be the default) and then run this command from the Red console:
+```
+flip-exe-flag %a+v.exe
+```
+This will stop Windows from *automatically* showing a console for it. This step only relevant for `--quiet` option, if you wish to call the player without a terminal window.
+
 
 ### Preview
 <img src="https://i.gyazo.com/5ab3f989c9941a6291b614185d6d880b.png" alt="screenshot" width=400 height=300>
