@@ -54,19 +54,19 @@ Parse tool works in 2 modes: LINE mode and FILE mode
 Examples:
 
    Displaying all lines containing 2 consecutive vowels:
-parse -e FILE "(cs: charset {AEIOUaeiou}) to 2 cs to end"
+parse -e FILE "(cs: charset {AEIOUaeiou}) to 2 cs"
 
    List what datatypes a file contains:
 for %%i in (integer! float! tuple! string! file!) do (
-    parse FILE "to %%i to end"
+    parse FILE "to %%i"
     if not errorlevel 1 echo Contains %%i
 )
 
    Collect all mixed-case words:
-parse -c FILE "any [thru [any { } copy w word!] (w: to string! w) opt [if (not any [w == uppercase copy w  w == lowercase copy w]) keep (transcode/one w)]] to end"
+parse -c FILE "any [thru [any { } copy w word!] (w: to string! w) opt [if (not any [w == uppercase copy w  w == lowercase copy w]) keep (transcode/one w)]]"
 
    Extract columns 8-15 from the text
-parse -c -l FILE "0 8 skip keep copy _ 0 8 skip to end"
+parse -c -l FILE "0 8 skip keep copy _ 0 8 skip"
 
    Extract all line comments from the script:
 parse -c -l parse.red "to {;} keep to end"
@@ -95,12 +95,12 @@ Displaying all lines containing 2 consecutive vowels:
 33         If COLLECT option is provided, it prints result collected from ALL lines.
 34         If not, it prints each line that matches the RULE.
 38         Displaying all lines containing 2 consecutive vowels:
-39      parse -e FILE "(cs: charset {AEIOUaeiou}) to 2 cs to end"
+39      parse -e FILE "(cs: charset {AEIOUaeiou}) to 2 cs"
 41         List what datatypes a file contains:
 42      for %%i in (integer! float! tuple! string! file!) do (
 44          if not errorlevel 1 echo Contains %%i
-48      parse -c FILE "any [thru [any { } copy w word!] (w: to string! w) opt [if (not any [w == uppercase copy w  w == lowercase copy w]) keep (transcode/one w)]] to end"
-51      parse -c -l FILE "0 8 skip keep copy _ 0 8 skip to end"
+48      parse -c FILE "any [thru [any { } copy w word!] (w: to string! w) opt [if (not any [w == uppercase copy w  w == lowercase copy w]) keep (transcode/one w)]]"
+51      parse -c -l FILE "0 8 skip keep copy _ 0 8 skip"
 54      parse -c -l parse.red "to {;} keep to end"
 57      See `test*.bat` files. Example output:
 ```
@@ -191,7 +191,7 @@ Extracting columns 8-15 from the text
 >test5.bat
 >pfind README.md /
                                   (implies /lines)
-parse -c FILE "any [thru [any { } copy w word!] (w: to string! w) opt [if (not any [w == uppercase copy w  w == lowercase copy w]) keep (transcode/one w)]] to end"
+parse -c FILE "any [thru [any { } copy w word!] (w: to string! w) opt [if (not any [w == uppercase copy w  w == lowercase copy w]) keep (transcode/one w)]]"
 ```
 ```
 >test6.bat
