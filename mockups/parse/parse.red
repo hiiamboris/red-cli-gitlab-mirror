@@ -26,6 +26,8 @@ parse-tool: function [
 	/collect "Collect matches and print to the console"
 	/write   "Write the contents back (incompatible with --collect)"
 	/verbose "Verbose output"
+	/help    "Display full help text and exit"
+	/h       "Display synopsis and exit"
 	/l "alias /lines"
 	/e "alias /enum"
 	/c "alias /collect"
@@ -91,8 +93,21 @@ parse-tool: function [
 	]
 ]
 
-cli/process-into/name/post-scriptum parse-tool "Parse tool"			;-- use uppercased name
-{
+init: [													;-- need special logic to distinguish -h from --help
+	catch [												;-- let errors be handled later by process-into
+		args: extract (cli/extract-args system/options/args parse-tool) 2
+		h?:    find args "h"
+		help?: find args "help"
+		if any [h? help?] [
+			print cli/help-for/name/post-scriptum/no-help parse-tool "Parse tool" either help? [pstext][""]
+			quit
+		]
+	]
+
+	cli/process-into/name parse-tool "Parse tool"		;-- use uppercased name
+]
+
+pstext: {
 Parse tool works in 2 modes: LINE mode and FILE mode
 
 1. In FILE mode, it matches full file text against the RULE
@@ -139,3 +154,5 @@ parse -c -l FILE "0 8 skip keep copy _ 0 8 skip"
    Extract all line comments from the script:
 parse -c -l parse.red "to {;} keep to end"
 }
+
+do init

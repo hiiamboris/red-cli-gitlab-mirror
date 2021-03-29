@@ -5,7 +5,7 @@ Compiling: `red -r parse.red`
 
 ```
 >parse.exe --help
-Parse tool 26-Mar-2021 - Process input using Parse commands -
+Parse tool 29-Mar-2021 - Process input using Parse commands -
 
 Syntax: parse [options] <input> <rule>
 
@@ -21,8 +21,9 @@ Options:
   -w, --write                     Write the contents back (incompatible with
                                   --collect)
   -v, --verbose                   Verbose output
+      --help                      Display full help text and exit
+  -h                              Display synopsis and exit
       --version                   Display program version and exit
-  -h, --help                      Display this help text and exit
 
 
 Parse tool works in 2 modes: LINE mode and FILE mode
