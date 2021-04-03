@@ -23,12 +23,13 @@ Red [
 	}
 ]
 
+;@@ TODO: use function flags block to let some refinements ignore the number of operands (e.g. --help) ?
 
 ;; ████████████  DEBUGGING FACILITIES  ████████████
 
 #macro [#debug 'on]  func [s e] [debug: on  []]
 #macro [#debug 'off] func [s e] [debug: off []]
-#macro [#debug block!] func [s e] [either debug [ s/2 ][ [] ]]
+#macro [#debug block!] func [[manual] s e] [remove s either debug [remove insert s s/1][remove s] s]
 #debug off
 
 #macro [#assert 'on]  func [s e] [assertions: on  []]
@@ -45,8 +46,7 @@ Red [
 ; #debug on
 ; #assert on
 
-
-; do expand-directives [									;-- boring workaround for #4128
+do expand-directives [									;-- boring workaround for #4128
 cli: context [
 
 	assertions-run: 0
@@ -107,7 +107,7 @@ cli: context [
 		"Check if ARG is an option name"
 		arg			[string!]
 		/options				"(placeholder for future expansion)"
-			opts	[block! none!]
+			opts	[block! map! none!]
 	][
 		all [
 			#"-" = first arg	;-- [1] Arguments are options if they begin with a hyphen delimiter (‘-’)
@@ -248,7 +248,7 @@ cli: context [
 		v			[string!]
 		types		[typeset! block!]
 		/options				"(placeholder for future expansion)"
-			opts	[block! none!]
+			opts	[block! map! none!]
 	][
 		if block? types [types: make typeset! types]
 		#assert [not empty? to block! types]
@@ -315,84 +315,61 @@ cli: context [
 
 	;; ████████████  /OPTIONS BLOCK SUPPORT  ████████████
 
-	;-- NOTE: options and their argument names should be consistent across all CLI funcs to work properly
-	;--       otherwise one option will do different things in different funcs that use `apply-options`
+	;-- NOTE: refinements and their argument names should be consistent across all CLI funcs to work properly
+	;--       otherwise one option will do different things in different funcs that use `sync-arguments`
 
 
-	find-option?: function [
-		"Find an option O in F's spec, return a block [option argument arg-types], or none if not found"
-		f [function!] o [any-word!]
+	arguments-from-block: function [
+		"Turn a block (e.g. [args: args]) into an arguments map (e.g. #(arg-blk: [args block]))"
+		block [block!] "Non-setwords get reduced and refinements mapped to their respective arguments"
+		spec  [block!]
 	][
-		all [
-			pos: find/tail copy spec-of :f o			;-- found o
-			refinement? pos/-1							;-- it's an /o
-			(
-				clear find pos refinement!				;-- look no further than next /ref
-				pos: find pos word!						;-- find an argument after
-				reduce [
-					bind o :f
-					all [pos bind pos/1 :f]
-					all [pos either block? pos/2 [ pos/2 ][ copy [default!] ]]
+		map: make map! block
+		foreach [k v] map [
+			if all [
+				refinement? first pos: find spec k		;-- if value is assigned to a refinement
+				pos: find next pos all-word!			;-- reassign it to it's argument instead
+				any-word? first pos
+			][
+				map/:k: true
+				k: to word! pos/1
+			]
+			map/:k: either any-word? :v [get :v][:v]	;-- reduce words
+		]
+		map
+	]
+
+	sync-arguments: function [
+		"Populate OPTS with arguments provided to the function, then back"
+		'opts [word!] "A map, block or none"
+	][
+		spec: spec-of fun: context? opts
+		case [
+			none? map: get opts [map: copy #()]
+			block? map [map: arguments-from-block map spec]	;-- block interpretation is smarter for convenience
+		]
+		#assert [map? :map]
+		set opts map
+		parse/case spec [any [
+			/local to end
+		|	not all-word! skip
+		|	set ref opt refinement! set name opt any-word! (
+				if name [			;-- get name from arguments, then from map, otherwise set to none
+					name: bind to word! name :fun
+					set/any 'map/:name
+						set/any name
+							any [get/any name  :map/:name]
+				]
+				if ref [			;-- same here but also set to 'true' if name is provided
+					ref: bind to word! ref  :fun
+					set 'map/:ref
+						set ref
+							to logic! any [get/any ref  :map/:ref  all [name get/any name]]
 				]
 			)
-		]
+		]]
+		map
 	]
-
-	apply-options: function [
-		"Populate refinements of the CALLER from an OPTIONS block (does not override those already set)"
-		caller [function!]
-		options [block! none!]
-		/local opt arg types
-	][
-		unless options [exit]									;-- no options were provided initially
-		spec: spec-of :caller
-		foreach [opt val] options [
-			if all [
-				set [opt arg types] find-option? :caller opt	;-- option is supported by the caller
-				not get/any opt									;-- it wasn't explicitly provided (tip: `opt` is bound to :caller)
-			][
-				if arg [
-					if none? :val [continue]					;-- no need to set to `none` (none is rarely in the accepted typeset)
-					unless find types type: type?/word :val [	;-- check the supplied value type
-						if word? :val [set/any 'val get/any val]
-						(find types type: type?/word :val)		;-- try also with word's value
-						else form reduce [
-							mold/part :caller 50 "does not accept" opt "of type" type
-							"^/Options: " mold options
-						]
-					]
-					set arg :val
-				]
-				set opt to logic! :val
-			]
-		]
-	]
-
-	fill-options: function [
-		"Build an options block from CALLER's spec that can be passed to other funcs"
-		caller [function!]
-	][
-		r: make block! 20
-		pos: spec-of :caller
-		while [pos: find/tail pos refinement!] [
-			set [opt arg types] find-option? :caller to word! pos/-1
-			#assert [opt]
-			repend r [
-				to set-word! opt
-				get/any any [arg opt]
-			]
-		]
-		all [									;-- unify the result with caller's own `opts` block
-			set [opt arg types] find-option? :caller 'options		;-- has /options
-			arg = 'opts							;-- it's valid `/options opts`
-			block? get/any arg					;-- opts is set to a block
-			r: union/skip r get arg	2			;-- first arg `r` gets priority
-		]
-		r
-	]
-
-	#assert [[a: b] = union/skip [a: b] [a: c] 2]
-
 
 	;; ████████████  INTERNAL CALL BUILDUP  ████████████
 
@@ -416,7 +393,7 @@ cli: context [
 		name [string!]
 		value [string! none!]	;-- none allowed if argument is nullary
 		/options				"(placeholder for future expansion)"
-			opts	[block! none!]
+			opts	[block! map! none!]
 	][
 		ref: str-to-ref name
 		spec: find-refinement prep-spec :prog ref
@@ -453,7 +430,7 @@ cli: context [
 		prog		[function!]
 		value		[string!]
 		/options				"(placeholder for future expansion)"
-			opts	[block! none!]
+			opts	[block! map! none!]
 	][
 		arity: preprocessor/func-arity? spec-of :prog
 		n-args: min arity length? call/2
@@ -482,7 +459,7 @@ cli: context [
 		call		[block!]
 		program		[function!]
 		/options				"(placeholder for future expansion)"
-			opts	[block! none!]
+			opts	[block! map! none!]
 	][
 		spec: prep-spec :program
 		r: reduce [call/1]
@@ -562,7 +539,7 @@ cli: context [
 		/no-version					"Suppress automatic creation of --version argument"
 		/no-help					"Suppress automatic creation of --help and -h arguments"
 		/options					"Specify all the above options as a block"
-			opts	[block! none!]
+			opts	[block! map! none!]
 		/local arg-name
 	][
 		;-- [1]: Long options consist of ‘--’ followed by a name made of ALPHANUMERIC characters and DASHES
@@ -673,9 +650,9 @@ cli: context [
 			ver		[tuple! string!]
 		/brief					"Include only the essential info"
 		/options				"Specify all the above options as a block"
-			opts	[block! none!]
+			opts	[block! map! none!]
 	][
-		apply-options context? 'opts opts
+		sync-arguments opts
 
 		r: make string! 100
 
@@ -744,10 +721,9 @@ cli: context [
 		/post-scriptum			"Add custom explanation after the syntax"
 			pstext	[string!]
 		/options				"Specify all the above options as a block"
-			opts	[block! none!]
+			opts	[block! map! none!]
 	][
-		apply-options context? 'opts opts
-		opts: fill-options context? 'opts
+		sync-arguments opts
 		
 		spec: prep-spec get/any program
 		unless no-version [repend spec [ [/version] "Display program version and exit" none ]]
@@ -878,10 +854,9 @@ cli: context [
 		/columns				"Specify widths of columns: indent, short option, long option, argument, description"
 			cols	[block!]
 		/options				"Specify all the above options as a block"
-			opts	[block! none!]
+			opts	[block! map! none!]
 	][
-		apply-options context? 'opts opts
-		opts: fill-options context? 'opts
+		sync-arguments opts
 		rejoin [
 			version-for/brief/options (program) opts
 			syntax-for/options (program) opts
@@ -914,24 +889,23 @@ cli: context [
 			;;  error-codes are words: ER_FEW ER_MUCH ER_LOAD ER_TYPE ER_OPT ER_CHAR ER_EMPTY ER_VAL ER_FORMAT
 			;;  value returned by handler on error is passed through by process-into
 		/options				"Specify all the above options as a block"
-			opts	[block!]
+			opts	[block! map! none!]
 		/local opt val r ok?
 	][
 		err: catch/name [								;-- catch processing errors only
-			apply-options context? 'opts opts						;-- args priority: `args`, then `options/args`..
-			unless arg-blk [arg-blk: system/options/args]			;-- ..and then `system/options/args`
-			opts: fill-options context? 'opts						;-- used to pass options to other functions
+			sync-arguments opts											;-- syncs /options with function arguments
+			arg-blk: opts/arg-blk: any [arg-blk system/options/args]	;-- args priority: (1) `args` (2) `options/args` (3) `system/options/args`
 
-			call: compose/deep [ (program) [] [] ]					;-- where to collect processed args: [path operands options]
-			arg-blk: extract-args/options arg-blk (program) opts	;-- turn command line into a block of known format
-			foreach [name value] arg-blk [							;-- add options and operands to the `call`
-				either name											;-- name = none if operand, word if option
+			call: compose/deep [ (program) [] [] ]						;-- where to collect processed args: [path operands options]
+			arg-blk: extract-args/options arg-blk (program) opts		;-- turn command line into a block of known format
+			foreach [name value] arg-blk [								;-- add options and operands to the `call`
+				either name												;-- name = none if operand, word if option
 					[ add-refinements/options call get/any program name value opts ]
 					[ add-operand/options     call get/any program value opts ]
 			]
-			call: prep-call/options call get/any program opts		;-- turn `call` block into an actual function call
-			set/any 'r do call										;-- call the function
-			ok?: yes												;@@ can't `return :r` here, compiler bug 
+			call: prep-call/options call get/any program opts			;-- turn `call` block into an actual function call
+			set/any 'r do call											;-- call the function
+			ok?: yes													;@@ can't `return :r` here, compiler bug #4202
 		] 'complaint
 		if ok? [return :r]								;-- normal execution ends here
 														;-- otherwise, there was a processing error!
@@ -944,7 +918,6 @@ cli: context [
 
 
 	;; ████████████  EXTRA TESTS  ████████████
-
 
 	#debug [
 		test-prog-1: func [
@@ -1090,9 +1063,9 @@ cli: context [
 		assert [(help-for/columns    test-prog-1 [5 10 20 10 30]) = (help-for/options test-prog-1 [columns: [5 10 20 10 30]])]
 
 		assert [(version-for/name       test-prog-1 "no name!"  ) = (version-for/options test-prog-1 [name: "no name!"]     )]
-		assert [(version-for/exename    test-prog-1 "no name!"  ) = (version-for/options test-prog-1 [exename: "no name!"]  )]
 		assert [(version-for/version    test-prog-1 "custom"    ) = (version-for/options test-prog-1 [version: "custom"]    )]
 		assert [(version-for/brief      test-prog-1             ) = (version-for/options test-prog-1 [brief: yes]           )]
+		assert [(syntax-for/exename     test-prog-1 "no name!"  ) = (syntax-for/options  test-prog-1 [exename: "no name!"]  )]
 
 		; print help-for test-prog-2
 		; process-into/options test-prog-2 [args: ["-1" "2" "3"]]
@@ -1105,4 +1078,4 @@ cli: context [
 	];; #debug
 
 ];; cli: context
-; ];; do expand-directives
+];; do expand-directives
