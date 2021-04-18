@@ -115,5 +115,6 @@ a+v: function [
 	]
 ]
 
-wrap [cli/process-into a+v]
+cli/process-into a+v
+quit
 

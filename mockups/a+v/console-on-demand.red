@@ -5,41 +5,31 @@ Red [
 	License:     'BSD-3
 	Usage: {
 		1. Include this file
-			...... using CLI lib: ......
 			#include %console-on-demand.red
-			#include %cli.red
-			..definitions..
-			wrap [cli/process-into your-function]
 
-			...... or without CLI lib: ......
+		2. ALWAYS use QUIT to terminate your program
 			#include %console-on-demand.red
-			wrap [..all your code here..]
+			...code...
+			quit
 
-			...... or if you'd rather avoid wrap so your code is compiled ......
-			#include %console-on-demand.red
-			..lots of code and prints..
-			pause-console
+			QUIT is redefined and it ensures that user sees the output before the console gets closed
+			If you don't care if your messages are read, you can forget about QUIT.
 
-		2. Compile your program with `-t MSDOS` flag (`print` won't be compiled with -t Windows!)
+		3. Compile your program with `-t MSDOS` flag (`print` won't be compiled with -t Windows!)
 
-		3. Turn it into a GUI program with the command (from Red console):
+		4. Turn it into a GUI program with the command (from Red console):
 			flip-exe-flag %full-path-name-of-the-compiled-program.exe
-		(you can use `reddo` to automate this in your build script)
-		This will stop Windows from *automatically* showing a console for it.
-
-
-		NOTE: `wrap` is used to catch `quit` and delay new console destruction (so user can read printed messages).
-		If you're not using `quit`, you can just call `pause-console` at the end of the program.
-		If you don't care if your messages are read, these functions are not needed.
+			(you can use `reddo` to automate this in your build script)
+			This will stop Windows from *always* showing a console for it.
 
 		NOTE: `print` and `prin` are dynamically redefined, but compiler can't see that.
-		It is better to wrap print statements into `wrap` or `do`, or use `-d` flag.
+		It is better to wrap `print` statements into `do`, or use `-d` flag.
 		But design is pretty forgiving about it, so it's not a strict requirement.
 		You'll get extra WINAPI calls in the worst case.
 	}
 ]
 
-#either all [rebol config/OS = 'Windows] [				;-- test if compiling FOR Windows
+#if all [rebol config/OS = 'Windows] [				;-- test if compiling FOR Windows
 	#if config/sub-system = 'GUI [
 		#do [print "*** WARNING! Print won't work! Use -t MSDOS flag! ***"]
 	]
@@ -86,7 +76,8 @@ Red [
 	unless is-print-available? [alert "`print` is not compiled in! Use -t MSDOS"]	;-- an extra sanity check
 
 	quit: func [/return code [integer!]][				;-- we don't want to close that console promptly
-		throw/name any [code 0] 'quit
+		pause-console
+		quit-return any [code 0]
 	]
 
 	context [
@@ -120,15 +111,5 @@ Red [
 		set 'pause-console does [						;-- wait a key press if it's a new terminal
 			if fresh? [call/console/shell/wait "pause"]
 		]
-
-		set 'wrap func [code [block!] /local r] [		;-- used to catch `quit`
-			code: catch/name [set/any 'r do code  'ok] 'quit
-			pause-console
-			if code <> 'ok [quit-return :code]
-			:r
-		]
 	]
-][
-	wrap: :do
-	pause-console: does []
 ]
