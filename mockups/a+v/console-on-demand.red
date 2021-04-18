@@ -85,7 +85,9 @@ Red [
 	is-print-available?: routine [return: [logic!]] [dyn-print/red-cnt > 0]
 	unless is-print-available? [alert "`print` is not compiled in! Use -t MSDOS"]	;-- an extra sanity check
 
-	quit: func [/return code][throw/name code 'quit]	;-- we don't want to close that console promptly
+	quit: func [/return code [integer!]][				;-- we don't want to close that console promptly
+		throw/name any [code 0] 'quit
+	]
 
 	context [
 		fresh?: no										;-- will become true after creating a new console window
