@@ -138,7 +138,7 @@ cli: context [
 	#assert [/x = str-to-ref "x"]
 
 	find-refinement: function [
-		"Return SPEC at block containing /ref, or none if not found"
+		"Return internal SPEC at block containing /ref, or none if not found"
 		spec [block!]
 		ref [refinement!]
 	][
@@ -177,7 +177,7 @@ cli: context [
 			set name    refinement!
 			set doc opt string!     (default doc: copy "")
 			(										;-- check the docstring for an alias definition
-				either force-nullary?: target: find/match doc "alias "	;-- alias? allow no arguments to it
+				either force-nullary?: target: find/match/tail doc "alias "	;-- alias? allow no arguments to it
 					[ repend aliases [name target] ]
 					[ repend r [to block! name  doc  none] ]
 			)
@@ -557,18 +557,14 @@ cli: context [
 			"&`'|?*~!<>"								;-- special chars in shell
 		]
 
-		do [											;@@ DO for compiler
-			help-version-quit?: has [msg] [					;-- default -h / --version handler
-				if msg: case [									;-- two special cases apply
-					all [not no-help     find ["h" "help"] arg-name]
-						[ help-for/options (program) opts ]
-					all [not no-version  arg-name = "version"]
-						[ version-for/options (program) opts ]
-				][
-					print msg
-					quit/return 0
+		add-help-version?: [							;-- add default -h / --version when allowed
+			case [
+				find ["h" "help"] arg-name [
+					unless no-help [argname: "help"]	;-- expand -h into --help
 				]
+				arg-name = "version" [not no-version]
 			]
+			;; returns none when doesn't handle the argument
 		]
 
 		allow-options?: yes								;-- will be switched off by `--`
@@ -577,9 +573,12 @@ cli: context [
 			arg: :args/1
 			unless string? :arg [arg: form :arg]		;-- should never happen?
 
-			either not all [allow-options?  option?/options arg opts] [
-				either all [arg == "--" allow-options?]
-					[ allow-options?: no ]
+			got-operand?: any [not allow-options?  not option?/options arg opts]
+			default?: no
+			either got-operand? [
+				;; "-" and "--" go here, since `option?` is false for them
+				either all [arg == "--" allow-options?]	;-- subsequent "--"s are operands
+					[ allow-options?: no ]				;-- no options after "--"
 					[ repend r [none arg] ]
 			][
 				;-- possible scenarios:
@@ -607,10 +606,15 @@ cli: context [
 						ahead dlms											;-- forbid multiple chars after a single hyphen
 					]
 					(unless supported? get/any program arg-name [		;-- check the option name
-						do [help-version-quit?]								;-- try default handlers when not handled by the program ;@@ DO for compiler
-						complain [ER_OPT "Unsupported option:" arg]
+						any [
+							default?: do add-help-version?					;-- try default arguments too
+							complain [ER_OPT "Unsupported option:" arg]
+						]
 					])
-					[	if (unary? get/any program arg-name)			;-- read the value (if required)
+					[	if (all [
+							not default?								;-- disable unary clause for internal help/version
+							unary? get/any program arg-name				;-- read the value (if required)
+						])
 						[	dlms											;-- require a delimiter
 						|	pos: (complain [ER_CHAR "Unsupported option character at" pos])
 						]
@@ -635,7 +639,7 @@ cli: context [
 			];; else: either not all [allow-options?  option?/options arg opts]
 		];; forall args
 		r
-	];; for-args: function
+	];; extract-args: function
 
 
 	;; ████████████  DEFAULT FORMATTERS  ████████████
@@ -864,6 +868,19 @@ cli: context [
 	]
 
 
+	;; when program does not support --help or --version but they are allowed
+	;; this handler is fired instead of the program
+	handle-special-arg: function [
+		"Default special option handler"
+		program [word! path!]
+		name [string!] "help or version"
+		/options opts [block! map! none!]
+	][
+		switch name [
+			"help"    [print help-for/options    (program) opts]
+			"version" [print version-for/options (program) opts]
+		]
+	]
 
 	;; ████████████  MAIN INTEFACE TO CLI ;)  ████████████
 
@@ -899,13 +916,23 @@ cli: context [
 			call: compose/deep [ (program) [] [] ]						;-- where to collect processed args: [path operands options]
 			arg-blk: extract-args/options arg-blk (program) opts		;-- turn command line into a block of known format
 			foreach [name value] arg-blk [								;-- add options and operands to the `call`
-				either name												;-- name = none if operand, word if option
-					[ add-refinements/options call get/any program name value opts ]
-					[ add-operand/options     call get/any program value opts ]
+				either name [											;-- name = none if operand, string if option
+					unless supported? get/any program name [				;-- help & version special cases
+						handle-special-arg/options program name opts
+						;; exits as if called the program so it can continue and can control the quit value:
+						ok?: yes
+						break										
+					]
+					add-refinements/options call get/any program name value opts
+				][
+					add-operand/options     call get/any program value opts
+				]
 			]
-			call: prep-call/options call get/any program opts			;-- turn `call` block into an actual function call
-			set/any 'r do call											;-- call the function
-			ok?: yes													;@@ can't `return :r` here, compiler bug #4202
+			unless ok? [
+				call: prep-call/options call get/any program opts		;-- turn `call` block into an actual function call
+				set/any 'r do call										;-- call the function
+				ok?: yes												;@@ can't `return :r` here, compiler bug #4202
+			]
 		] 'complaint
 		if ok? [return :r]								;-- normal execution ends here
 														;-- otherwise, there was a processing error!

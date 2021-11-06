@@ -29,9 +29,7 @@ Not enough operands given
 
 *** 138et6724st5.bat ***
 @red ../scripts/3rs16c25i4pt.red --switch2 --option2-alias=54.321 3124 --version --switch2 -o 2431 --option1=DABC --switch1-alias=CBDA --version --switch2-alias-2=3241 --option1=54231. -o 1342
-QRETWY  25-Dec-2019 test program description 
-Using Red 0.6.4 (#73d9bd2) for Windows
-
+Option --switch1-alias=CBDA does not accept a value
 
 *** 13ts64te5872.bat ***
 @red ../scripts/1c5ps2i643rt.red --option2-alias=21543. --switch1-alias=2431 --option2=DCAB --switch1-alias=CABD --switch2 .23541 --option2=DCAB --switch2-alias-2=DCBA --switch1-alias=CABD --switch2-alias=DBCA --switch2-alias=DBCA --switch2-alias-2=43251. --switch2-alias=CBAD --switch2-alias-2=BDAC 2435.1
@@ -71,21 +69,7 @@ Option --switch2-alias-2=DCBA does not accept a value
 
 *** 16237t4set85.bat ***
 @red ../scripts/4tp1r2ic635s.red --option1=54231. --option2-alias=.43125 --switch2 --help --switch2-alias-2=BACD -o 2431 --option1=DABC --switch2-alias-2=3241 --switch2-alias-2=3241 BCDA --switch1-alias=CBDA -o 2431 --switch1 BCDA --option1=54231. --switch1 --switch1
-my program RT EYWQ test program description 
-
-Syntax: 4tp1r2ic635s [options] <string-operand> [integer-operands]
-
-Options:
-                    <string-operand> accepts anything
-      --switch1, --switch1-alias  
-      --switch2, --switch2-alias, --switch2-alias-2  docstring here and let it be somewhat 
-                                                     longer than necessary
-      --option1     <argument1>   overriding option
-  -o, --option2, --option2-alias <argument2> collecting option
-      --version                   Display program version and exit
-  -h, --help                      Display this help text and exit
-
-
+Option --switch2-alias-2=BACD does not accept a value
 
 *** 16e5stt47283.bat ***
 @red ../scripts/13s6ri245cpt.red --switch1-alias=24513. --switch1-alias=24513. --switch1 --option2=CABD --switch2 --option2=CABD --switch1-alias=24513. --option2-alias=3124
@@ -149,9 +133,7 @@ Not enough operands given
 
 *** 1t26t583s4e7.bat ***
 @red ../scripts/ci1p5sr42t63.red --option2-alias=ACDB --option2-alias=ACDB --version --switch2-alias=2314.5 --option1=54231. --help --help -o 2543.1
-my program 25-Dec-2019 test program description 
-Using Red 0.6.4 (#73d9bd2) for Windows
-
+Option --switch2-alias=2314.5 does not accept a value
 
 *** 1t6345se82t7.bat ***
 @red ../scripts/13s6ri245cpt.red --option2-alias=BCDA --switch1-alias=2431 --option2=2143 --switch1-alias=24513. CBDA --switch1 --switch1-alias=24513. --option2=CABD --switch1 --option2-alias=BCDA --switch1-alias=2431 --switch1-alias=24513.
@@ -176,7 +158,7 @@ Option --switch2-alias=ACDB does not accept a value
 *** 2187e4t65st3.bat ***
 @red ../scripts/64s1r2cipt53.red -o 2543.1 --version --option1=54231. --switch2
 my program RT EYWQ test program description 
-Using Red 0.6.4 (#73d9bd2) for Windows
+Using Red 0.6.4 (#cebd5b9) for Windows
 
 
 *** 21t3s78e5t64.bat ***
@@ -250,7 +232,7 @@ Not enough operands given
 *** 2e6381754stt.bat ***
 @red ../scripts/3c2641p5rist.red --version --switch1
 QRETWY  25-Dec-2019 test program description 
-Using Red 0.6.4 (#73d9bd2) for Windows
+Using Red 0.6.4 (#cebd5b9) for Windows
 
 
 *** 2e6853tt4s17.bat ***
@@ -383,20 +365,7 @@ Not enough operands given
 
 *** 3t57e4812t6s.bat ***
 @red ../scripts/3t5i16pc4rs2.red -o 2543.1 1423 -o 2431 --option1=DABC --help --switch1 --switch1-alias=CBDA
-QRETWY  RT EYWQ test program description 
-
-Syntax: Q YETRW [options] <string-operand> [integer-operands]
-
-Options:
-                    <string-operand> accepts anything
-      --switch1, --switch1-alias  
-      --switch2, --switch2-alias, --switch2-alias-2  docstring here and let it be somewhat 
-                                                     longer than necessary
-      --option1     <argument1>   overriding option
-  -o, --option2, --option2-alias <argument2> collecting option
-      --version                   Display program version and exit
-
-
+Option --switch1-alias=CBDA does not accept a value
 
 *** 3t5s284617et.bat ***
 @red ../scripts/6532it1scp4r.red
@@ -915,19 +884,7 @@ Option --switch2-alias-2=3241 does not accept a value
 
 *** 6t714st8e352.bat ***
 @red ../scripts/pi24t6sc153r.red --help 1423 --option1=DABC --switch2-alias=2314.5 -o 2543.1 --option2-alias=.43125
-my program 25-Dec-2019 test program description 
-
-Syntax: pi24t6sc153r [options] <string-operand> [integer-operands]
-
-Options:
-                    <string-operand> accepts anything
-      --switch1, --switch1-alias  
-      --switch2, --switch2-alias, --switch2-alias-2  docstring here and let it be somewhat 
-                                                     longer than necessary
-      --option1     <argument1>   overriding option
-  -o, --option2, --option2-alias <argument2> collecting option
-
-
+Option --switch2-alias=2314.5 does not accept a value
 
 *** 6te43587st21.bat ***
 @red ../scripts/r1p42s3ict65.red -o .31542 --switch2
@@ -936,7 +893,7 @@ Not enough operands given
 *** 71e5st4628t3.bat ***
 @red ../scripts/r35it4s2cp16.red --version --option2-alias=ACDB --option2-alias=ACDB 3124
 my program RT EYWQ test program description 
-Using Red 0.6.4 (#73d9bd2) for Windows
+Using Red 0.6.4 (#cebd5b9) for Windows
 
 
 *** 71t286ts3e45.bat ***
@@ -949,9 +906,7 @@ Not enough operands given
 
 *** 728t6e3t41s5.bat ***
 @red ../scripts/ct1s326p4ri5.red -o 2543.1 3124 --switch2 --option2=1432 --switch1 --version --switch2-alias-2=3241 --version 1423 --option2=1432 --switch1
-my program 25-Dec-2019 test program description 
-Using Red 0.6.4 (#73d9bd2) for Windows
-
+Option --switch2-alias-2=3241 does not accept a value
 
 *** 73164e2t58st.bat ***
 @red ../scripts/53pr46ti2cs1.red --switch2-alias-2=DCBA
@@ -975,9 +930,7 @@ Not enough operands given
 
 *** 746ste1t8532.bat ***
 @red ../scripts/tp4r1s35ci62.red --version --switch2-alias-2=3241 --switch2 --option1=DABC --option2-alias=54.321 --option2-alias=ACDB --version --switch2-alias=2314.5 --option1=DABC -o 2431 --switch2 --switch2 --switch2-alias=2314.5 --option1=DABC --switch2-alias-2=BACD 4231 --switch2-alias-2=3241
-QRETWY  RT EYWQ test program description 
-Using Red 0.6.4 (#73d9bd2) for Windows
-
+Option --switch2-alias-2=3241 does not accept a value
 
 *** 748135s6tte2.bat ***
 @red ../scripts/s235t41cr6pi.red --switch2-alias-2=DCBA --option2-alias=4312 2435.1 --switch1
@@ -1037,9 +990,7 @@ BCAD should be a float value
 
 *** 7e42tt38516s.bat ***
 @red ../scripts/3rs16c25i4pt.red --option1=DABC --version --switch2-alias=2314.5 --switch2 --switch2-alias-2=3241 -o 2543.1
-QRETWY  25-Dec-2019 test program description 
-Using Red 0.6.4 (#73d9bd2) for Windows
-
+Option --switch2-alias=2314.5 does not accept a value
 
 *** 7e61s38tt452.bat ***
 @red ../scripts/6tic1p35s42r.red 412.53 --option2=CABD --switch1-alias=24513. CBDA --switch2 --switch2-alias=4312 --option2-alias=BCDA --switch2-alias-2=ABDC --option2-alias=BCDA
@@ -1123,9 +1074,7 @@ Not enough operands given
 
 *** 82471tt635se.bat ***
 @red ../scripts/4tp1r2ic635s.red 4231 -o 2543.1 --option2-alias=.43125 --option2-alias=54.321 BCDA --option2-alias=54.321 --option2-alias=.43125 -o 1342 --version --switch2-alias=2314.5 -o 2543.1 --help --option2-alias=54.321 --switch2-alias-2=BACD --option2-alias=54.321 -o 2543.1 --switch2-alias=2314.5 --version --option2-alias=ACDB --option2-alias=.43125 3124
-my program RT EYWQ test program description 
-Using Red 0.6.4 (#73d9bd2) for Windows
-
+Option --switch2-alias=2314.5 does not accept a value
 
 *** 82t1763t5se4.bat ***
 @red ../scripts/t4i3512rpcs6.red --option2=2143 --option1=2431 --option2=CABD --option1=2134 --switch1-alias=2431
@@ -1293,9 +1242,7 @@ Option --switch2-alias=ACDB does not accept a value
 
 *** e56ts187t324.bat ***
 @red ../scripts/pi24t6sc153r.red --option2-alias=.43125 --version --switch1 -o 2543.1 1423 1423 --switch2-alias-2=BACD 4231 --switch2 3124 --option2-alias=ACDB --switch1 -o 1342 4231 --option1=54231.
-my program 25-Dec-2019 test program description 
-Using Red 0.6.4 (#73d9bd2) for Windows
-
+Option --switch2-alias-2=BACD does not accept a value
 
 *** e64253t17st8.bat ***
 @red ../scripts/63rs4t1i2cp5.red
@@ -1711,9 +1658,7 @@ Option --switch2-alias-2=142.53 does not accept a value
 
 *** t6t12s78345e.bat ***
 @red ../scripts/23s6pr514cit.red -o 2431 --version 4231 --switch2-alias-2=3241 --switch1-alias=CBDA --switch2-alias-2=BACD
-QRETWY  25-Dec-2019 test program description 
-Using Red 0.6.4 (#73d9bd2) for Windows
-
+Option --switch2-alias-2=3241 does not accept a value
 
 *** t73t562e814s.bat ***
 @red ../scripts/6c24tpis3r15.red -o 2543.1 3124 --option1=DABC
@@ -1785,9 +1730,7 @@ Not enough operands given
 
 *** te7365t821s4.bat ***
 @red ../scripts/3c2641p5rist.red --switch1 -o 1342 4231 --version --switch2-alias-2=BACD -o 2431 --option1=54231. --switch2 --switch2 -o 2543.1 --switch2-alias=2314.5 --switch1 -o 1342 --switch2 3124 --option2-alias=ACDB --option2-alias=ACDB --option2-alias=ACDB --help BCDA
-QRETWY  25-Dec-2019 test program description 
-Using Red 0.6.4 (#73d9bd2) for Windows
-
+Option --switch2-alias-2=BACD does not accept a value
 
 *** te73t2s18465.bat ***
 @red ../scripts/4i2rps5ct136.red --option1=2314 -o 1243 --option2-alias=21543. --option2-alias=21543. --option1=42.351 --switch1 --option2=DCAB --switch2 --switch2 --option1=3241 --option1=42.351
