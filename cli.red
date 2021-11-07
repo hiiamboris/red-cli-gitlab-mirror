@@ -151,7 +151,7 @@ cli: context [
 	]
 
 
-	default: func [:w [set-word!] v] [unless get/any :w [set :w v]]
+	default: func [:w [set-word!] v] [any [get/any :w  set :w v]]
 
 	prep-spec: function [
 		"Converts a function SPEC into internal format used for easier argument processing"
