@@ -43,8 +43,8 @@ Red [
 
 ;-- comment these out to disable self-testing
 
-; #debug on
-; #assert on
+#debug on
+#assert on
 
 do expand-directives [									;-- boring workaround for #4128
 cli: context [
@@ -460,6 +460,7 @@ cli: context [
 		program		[function!]
 		/options				"(placeholder for future expansion)"
 			opts	[block! map! none!]
+		/local ref
 	][
 		spec: prep-spec :program
 		r: reduce [call/1]
@@ -480,7 +481,27 @@ cli: context [
 		if find spec/3 block! [append/only r []]		;-- if block is accepted, provide an empty one in absence of arguments
 
 		arity: preprocessor/func-arity? spec-of :program
-		if 1 + arity > length? r [complain [ER_FEW "Not enough operands given"]]
+		need-more: 1 + arity - length? r
+		if need-more > 0 [
+			present-options: collect [parse call/3 [	;-- find out if a shortcut option is present
+				any [set ref refinement! (keep to word! ref) | skip]	;@@ should be `keep-type` here
+			]]
+			present-shortcuts: intersect present-options opts/s-cuts
+			either empty? present-shortcuts [			;-- no shortcuts: fail
+				complain [ER_FEW "Not enough operands given"]
+			][											;-- shortcut found: provide defaults
+				repeat i need-more [
+					spec: find/skip spec word! 3
+					type: first reduce to [] spec/3		;@@ how else to get a type from typeset?
+					append/only r any [					;-- create an argument out of thin air to finish the call
+						attempt [make type 0]			;-- for most types
+						attempt [make type ""]			;-- for issues
+						attempt [make type []]			;-- for dates
+					]
+					spec: skip spec 3
+				] 
+			]
+		]
 
 		spec: head spec
 		unless empty? call/3 [							;-- add options as refinements
@@ -905,12 +926,18 @@ cli: context [
 			;-- handler should accept a block: [error-code reduced values that constitute the error message]
 			;;  error-codes are words: ER_FEW ER_MUCH ER_LOAD ER_TYPE ER_OPT ER_CHAR ER_EMPTY ER_VAL ER_FORMAT
 			;;  value returned by handler on error is passed through by process-into
+		/shortcuts				"Options (as words) that allow operands to be absent; default: [help h version]"
+			s-cuts	[block!]
 		/options				"Specify all the above options as a block"
 			opts	[block! map! none!]
 		/local opt val r ok?
 	][
 		err: catch/name [								;-- catch processing errors only
 			sync-arguments opts											;-- syncs /options with function arguments
+			s-cuts: opts/s-cuts: any [									;-- init default shortcuts
+				s-cuts
+				compose [(pick [[] [help h]] no-help) (pick [[] [version]] no-version)]
+			]
 			arg-blk: opts/arg-blk: any [arg-blk system/options/args]	;-- args priority: (1) `args` (2) `options/args` (3) `system/options/args`
 
 			call: compose/deep [ (program) [] [] ]						;-- where to collect processed args: [path operands options]
@@ -968,8 +995,8 @@ cli: context [
 			compose/only [a: (a) x: (x) b: (b) y: (y) c: (c) z: (z)]
 		]
 
-		test-ok-1: function [result [block!] args [block!]] [
-			got: process-into/options test-prog-1 [args: args]
+		test-ok-1: function [result [block!] args [block!] /with opts [block!]] [
+			got: process-into/options test-prog-1 compose [args: args (any [opts []])]
 			replace/all result 'false false
 			replace/all result 'true  true
 			replace/all result 'none  none
@@ -1055,6 +1082,23 @@ cli: context [
 		test-ok-1 
 			[a: 1 b: %a.out c: [3:00:00 4-May-2006 4:00:00 5:00:00] x: true  y: true  y1: 2.0  y2: true  z: true  z1: [1-Jan-2001 2-Feb-2002]]
 			["1" "-z 1/1/1" "a.out" "-z 2/2/2" "-y" "1.0" "3:0" "4/5/6" "4:0" "5:0:0" "-x" "-y" "2.0"]
+		;; shortcut tests
+		test-ok-1/with 
+			[a: 0 b: %"" c: [] x: false y: false y1: none y2: false z: true z1: [2-Feb-2002]]
+			["-z 2/2/2"]
+			[shortcuts: [z]]
+		test-ok-1/with 
+			[a: 0 b: %"" c: [] x: true y: false y1: none y2: false z: false z1: none]
+			["-x"]
+			[shortcuts: [z x]]
+		test-ok-1/with 
+			[a: 0 b: %"" c: [] x: true y: false y1: none y2: false z: true z1: [2-Feb-2002]]
+			["-z 2/2/2" "-x"]
+			[shortcuts: [z]]
+		test-ok-1/with 
+			[a: 0 b: %"" c: [] x: true y: false y1: none y2: false z: true z1: [2-Feb-2002]]
+			["-z 2/2/2" "-x"]
+			[shortcuts: [x]]
 
 		test-fail-1 ER_FEW    []
 		test-fail-1 ER_FEW    ["1"]
