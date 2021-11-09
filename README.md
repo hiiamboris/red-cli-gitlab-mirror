@@ -46,6 +46,8 @@ hello: hi
 world: red
 ```
 
+> NOTE: For brevity, all the other examples imply you've included `cli.red` and added the `cli/process-into program` call to it.
+
 ### Operand vs option
 
 Basics:
