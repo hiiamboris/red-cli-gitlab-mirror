@@ -271,6 +271,24 @@ $ red program.red 1 -- -x --
 ```
 You get this behavior out of the box and can't turn it off.
 
+### Shortcut options
+
+Automatically provided `--help` and `--version` options do not require one to fill all the operands. Such *shortcut options* can be created manually by listing option names in `/shortcuts` block:
+```
+program: function [a b c /x /y z] [print mold reduce [a b c x y z]]
+cli/process-into/shortcuts program [x y]
+```
+```
+$ red program.red
+Not enough operands given
+
+$ red program.red -x
+["" "" "" true false none]			# operands get filled with empty data
+
+$ red program.red -y 1
+["" "" "" false true "1"]
+``` 
+
 ### Commands
 
 It's easy to pack multiple **commands** into a single program, just by calling `process-into` with a context of functions.\
@@ -325,24 +343,6 @@ Options:
       --version                   Display program version and exit
   -h, --help                      Display this help text and exit
 ```
-
-### Shortcut options
-
-Automatically provided `--help` and `--version` options do not require one to fill all the operands. Such *shortcut options* can be created manually by listing option names in `/shortcuts` block:
-```
-program: function [a b c /x /y z] [print mold reduce [a b c x y z]]
-cli/process-into/shortcuts program [x y]
-```
-```
-$ red program.red
-Not enough operands given
-
-$ red program.red -x
-["" "" "" true false none]			# operands get filled with empty data
-
-$ red program.red -y 1
-["" "" "" false true "1"]
-``` 
 
 ### More info
 
