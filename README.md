@@ -1,30 +1,28 @@
 # Simple & powerful command line argument validation system for [Red](http://red-lang.org/)
 
-Navigate:
-  * [[--> EXAMPLES HERE <--](mockups/)](#-examples-here-mockups-)
-  * [Usage](#usage)
-    + [General idea](#general-idea)
-    + [Hello world](#hello-world)
-    + [Operand vs option](#operand-vs-option)
-    + [Short vs long option names](#short-vs-long-option-names)
-    + [Nullary vs unary options](#nullary-vs-unary-options)
-    + [Allowed value types](#allowed-value-types)
-    + [Aliases](#aliases)
-    + [Names and description](#names-and-description)
-    + [Default arguments](#default-arguments)
-    + [Multiple value collection](#multiple-value-collection)
-    + [End of options](#end-of-options)
-    + [Commands](#commands)
-    + [Shortcut options](#shortcut-options)
-    + [More info](#more-info)
-
-Old design docs can be found [here](design.md).
-
 ## [--> EXAMPLES HERE <--](mockups/)
 
 Prefer to learn by example? Start with the [drinking song](mockups/sing/cli-sing.red) and find your way from there.
 
 ## Usage
+
+Navigate:
++ [General idea](#general-idea)
++ [Hello world](#hello-world)
++ [Operand vs option](#operand-vs-option)
++ [Short vs long option names](#short-vs-long-option-names)
++ [Nullary vs unary options](#nullary-vs-unary-options)
++ [Allowed value types](#allowed-value-types)
++ [Aliases](#aliases)
++ [Names and description](#names-and-description)
++ [Default arguments](#default-arguments)
++ [Multiple value collection](#multiple-value-collection)
++ [End of options](#end-of-options)
++ [Commands](#commands)
++ [Shortcut options](#shortcut-options)
++ [More info](#more-info)
+
+Old design docs can be found [here](design.md).
 
 ### General idea
 
