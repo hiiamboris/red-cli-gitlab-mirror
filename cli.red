@@ -43,8 +43,8 @@ Red [
 
 ;-- comment these out to disable self-testing
 
-#debug on
-#assert on
+; #debug on
+; #assert on
 
 do expand-directives [									;-- boring workaround for #4128
 cli: context [
@@ -84,6 +84,7 @@ cli: context [
 	ER_TYPE:   'ER_TYPE			;-- provided valus is of wrong type
 	ER_EMPTY:  'ER_EMPTY		;-- no value provided
 	ER_VAL:    'ER_VAL			;-- value provided where no value expected
+	ER_CMD:    'ER_CMD			;-- unknown command (during dispatching)
 	ER_OPT:    'ER_OPT			;-- unknown option
 	ER_FORMAT: 'ER_FORMAT		;-- unknown option format
 	ER_CHAR:   'ER_CHAR			;-- unsupported char in option name
@@ -172,8 +173,8 @@ cli: context [
 				repend r [name  doc  make typeset! types]
 			)
 		]
+		=local=: [/local to [refinement! | end]]	;-- skip /locals (/externs are never present in the spec)
 		=ref=: [									;-- option (refinement)
-			any [/local to [refinement! | end]]			;-- skip /locals (/externs are never present in the spec)
 			set name    refinement!
 			set doc opt string!     (default doc: copy "")
 			(										;-- check the docstring for an alias definition
@@ -182,8 +183,9 @@ cli: context [
 					[ repend r [to block! name  doc  none] ]
 			)
 		]
+		=fail=: [end | p: (do make error! rejoin ["Unsupported token " mold p/1 " in CLI function spec"])]
 		force-nullary?: no  aliases: copy []  r: copy []
-		parse spec [any string! any [=arg= | =ref=]]
+		parse spec [any string! any [=arg= | =local= | =ref= | =fail=]]
 		r: new-line/skip r yes 3
 		foreach [alias target] aliases [
 			(all [
@@ -578,7 +580,7 @@ cli: context [
 			"&`'|?*~!<>"								;-- special chars in shell
 		]
 
-		add-help-version?: [							;-- add default -h / --version when allowed
+		is-help-version?: [								;-- use default -h / --version when allowed
 			case [
 				find ["h" "help"] arg-name [
 					unless no-help [argname: "help"]	;-- expand -h into --help
@@ -628,7 +630,7 @@ cli: context [
 					]
 					(unless supported? get/any program arg-name [		;-- check the option name
 						any [
-							default?: do add-help-version?					;-- try default arguments too
+							default?: do is-help-version?					;-- try default arguments too
 							complain [ER_OPT "Unsupported option:" arg]
 						]
 					])
@@ -668,7 +670,7 @@ cli: context [
 
 	version-for: function [
 		"Returns version text for the PROGRAM"
-		'program	[word! path!]
+		'program	[word! path!] "May refer to a function or context"
 		/name					"Overrides program name"
 			pname	[string!]
 		/version				"Overrides version"
@@ -688,7 +690,7 @@ cli: context [
 			pname										;-- when explicitly provided
 			attempt [system/script/title]
 			attempt [system/script/header/title]
-			attempt [dehyphenize last program]			;-- last item in the path: obj/program
+			attempt [dehyphenize first program]			;-- first item in the path: program/command/...
 			do [dehyphenize program]					;-- the word itself ;@@ DO for compiler
 			;-- reminder: do not use exe name as program name (it can be renamed easily by the user)
 		]
@@ -700,12 +702,16 @@ cli: context [
 			#do keep [now/date]							;-- compilation date otherwise
 		]
 
-		desc: first spec-of get/any program
-		unless string? desc [desc: none]
+		desc: all [
+			function? get/any program
+			s: first spec-of get/any program
+			string? s
+			trim s
+		]
 
 		author:  attempt [system/script/header/author]	;@@ TODO: join multiple authors with comma or ampersand?
-		rights:  attempt [system/script/header/rights]
-		license: attempt [system/script/header/license]
+		rights:  attempt [trim system/script/header/rights]
+		license: attempt [trim system/script/header/license]
 
 		append r form compose [
 			(pname) (ver)								;-- "Program 1.2.3"
@@ -726,7 +732,7 @@ cli: context [
 				" for " system/platform
 				#"^/"
 			]
-			if standalone? [repend r ["Build timestamp: "#do keep [now]]]
+			if standalone? [repend r ["Build timestamp: " #do keep [now]]]
 
 			if license [repend r [license #"^/"]]		;-- "License text..."
 		]
@@ -734,9 +740,41 @@ cli: context [
 		r
 	]
 
+	decorate-operand: func [name types] [				;-- x -> "<x>" or "[x]"
+		mold/flat to either find types block! [block!][tag!] name
+	]
+			
+	synopsis-for: function [
+		"Returns short synopsis line for the PROGRAM"
+		'program	[word! path!] "Must refer to a function"
+		/exename				"Overrides executable name"
+			xname	[string!]
+		/options				"Specify all the above options as a block"
+			opts	[block! map! none!]
+	][
+		sync-arguments opts
+		
+		(function? get/any program) else form rejoin [program " must refer to a function"]
+		spec: prep-spec get/any program
+		
+		r: make string! 80
+		xname: form default xname: default-exename
+		append r xname
+		if path? program [append r rejoin [" " as [] next program]]	;-- list currently applied commands
+		
+		options?: any [not opts/no-help  not opts/no-version  find spec none]
+		if options? [append r " [options]"]
+		
+		foreach [name doc types] spec [					;-- list operands:
+			if none? types [break]							;-- stop right after the last operand
+			repend r [" " do [decorate-operand name types]]		;-- append every operand as "<name>"
+		]
+		append r "^/"
+	]
+	
 	syntax-for: function [
 		"Returns usage text for the PROGRAM"
-		'program	[word! path!]
+		'program	[word! path!] "May refer to a function or context"
 		/no-version				"Suppress automatic creation of --version argument"
 		/no-help				"Suppress automatic creation of --help and -h arguments"
 		/columns				"Specify widths of columns: indent, short option, long option, argument, description"
@@ -750,30 +788,34 @@ cli: context [
 	][
 		sync-arguments opts
 		
-		spec: prep-spec get/any program
-		unless no-version [repend spec [ [/version] "Display program version and exit" none ]]
-		unless no-help    [repend spec [ [/h /help] "Display this help text and exit"  none ]]
-
 		r: make string! 500
 
-		do [											;@@ DO for compiler
-			decorate: func [x types] [					;-- x -> "<x>" or "[x]"
-				mold/flat to either find types block! [block!][tag!] x
+		;; given context, just list possible commands
+		if object? get/any program [
+			list-commands: func [program [word! path!]] [
+				foreach word words-of get program [
+					path: append to path! program word
+					either object? get/any path [
+						list-commands path
+					][
+						repend r ["  " synopsis-for/options (path) opts]
+					]
+				]
 			]
+			append r "^/Supported commands:^/"
+			list-commands program
+			return append r "^/"
+		]
+		
+		spec: prep-spec get/any program
+		unless any [no-version  find-refinement spec /version] [
+			repend spec [ [/version] "Display program version and exit" none ]
+		]
+		unless any [no-help     find-refinement spec /help] [
+			repend spec [ [/h /help] "Display this help text and exit"  none ]
 		]
 
-		xname: form any [
-			xname										;-- when explicitly provided
-			default-exename								;-- try to infer it otherwise
-		]
-
-		repend r ["^/Syntax: " xname]					;-- "Syntax: program"
-		if find spec none [append r " [options]"]		;-- add [options] if at least one option is supported
-		foreach [name doc types] spec [					;-- list operands:
-			if none? types [break]							;-- stop right after the last operand
-			repend r [" " do [decorate name types]]			;-- append every operand as "<name>" ;@@ DO for compiler
-		]
-		append r "^/^/"
+		repend r ["^/Syntax: " synopsis-for/options (program) opts "^/"]
 
 		;-- OPERANDS & OPTIONS
 
@@ -843,9 +885,9 @@ cli: context [
 				either committed? [						;-- an operand?
 					if empty? doc [continue]				;-- skip operands without description
 					s-opts: copy ""							;-- leave "--flag" column empty
-					s-arg: do [decorate names types]		;-- "<name>" or "[name]" ;@@ DO for compiler
+					s-arg: do [decorate-operand names types]	;-- "<name>" or "[name]" ;@@ DO for compiler
 				][										;-- an option then ("--flag" part was filled above)
-					s-arg: do [decorate names none]			;-- always as "<name>" ;@@ DO for compiler
+					s-arg: do [decorate-operand names none]		;-- always as "<name>" ;@@ DO for compiler
 				]
 				s-doc: case [							;-- combine `doc` with that of `--option` (if any)
 					committed? [copy doc]					;-- "      <arg> Arg description"
@@ -908,7 +950,8 @@ cli: context [
 
 	process-into: function [
 		"Calls PROGRAM with arguments read from the command line. Passes through the returned value"
-		'program	[word! path!]						;-- can't support `function!` here cause can't add refinements to a function! literal
+		;; can't support `function!` here cause can't add refinements to a function! literal
+		'program	[word! path!] "Name of a function, or of a context with functions to dispatch against"
 		/no-version				"Suppress automatic creation of --version argument"
 		/no-help				"Suppress automatic creation of --help and -h arguments"
 		/name					"Overrides program name"
@@ -940,6 +983,37 @@ cli: context [
 			]
 			arg-blk: opts/arg-blk: any [arg-blk system/options/args]	;-- args priority: (1) `args` (2) `options/args` (3) `system/options/args`
 
+			while [object? get/any program] [ 							;-- dispatch objects further
+				words: words-of get program
+				if all [											;-- unsupported command?
+					not empty? arg-blk
+					word? word: attempt [load :arg-blk/1]
+					find words word
+				][
+					append program: to path! program word
+					arg-blk: next arg-blk
+					continue
+				]
+				if any [
+					empty? arg-blk
+					all [
+						not no-help 
+						any [
+							find arg-blk "--help"
+							find arg-blk "-h"
+						]
+					]
+				][
+					print help-for/options (program) opts
+					throw/name ok?: yes 'complaint
+				]
+				if all [not no-version  find arg-blk "--version"] [
+					print version-for/options (program) opts
+					throw/name ok?: yes 'complaint
+				]
+				complain [ER_CMD "Unknown command:" form word]
+			]
+
 			call: compose/deep [ (program) [] [] ]						;-- where to collect processed args: [path operands options]
 			arg-blk: extract-args/options arg-blk (program) opts		;-- turn command line into a block of known format
 			foreach [name value] arg-blk [								;-- add options and operands to the `call`
@@ -947,19 +1021,16 @@ cli: context [
 					unless supported? get/any program name [				;-- help & version special cases
 						handle-special-arg/options program name opts
 						;; exits as if called the program so it can continue and can control the quit value:
-						ok?: yes
-						break										
+						throw/name ok?: yes 'complaint
 					]
 					add-refinements/options call get/any program name value opts
 				][
 					add-operand/options     call get/any program value opts
 				]
 			]
-			unless ok? [
-				call: prep-call/options call get/any program opts		;-- turn `call` block into an actual function call
-				set/any 'r do call										;-- call the function
-				ok?: yes												;@@ can't `return :r` here, compiler bug #4202
-			]
+			call: prep-call/options call get/any program opts			;-- turn `call` block into an actual function call
+			set/any 'r do call											;-- call the function
+			ok?: yes													;@@ can't `return :r` here, compiler bug #4202
 		] 'complaint
 		if ok? [return :r]								;-- normal execution ends here
 														;-- otherwise, there was a processing error!
@@ -968,7 +1039,6 @@ cli: context [
 		print next err									;@@ TODO: output to stderr (not yet in Red)
 		quit/return 1									;-- nonzero code signals failure to scripts running this program
 	]
-
 
 
 	;; ████████████  EXTRA TESTS  ████████████
