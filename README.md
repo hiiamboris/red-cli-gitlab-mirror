@@ -137,8 +137,6 @@ Allowed typesets so far are:
 
 | Typeset | Meaning |
 |-|-|
-| (unspecified) | Value is passed as a string |
-| `[string!]`  | Value is passed as a string |
 | `[integer!]` | Value must load as `integer!`, or runtime error is produced |
 | `[float!]`   | Value must load as `float!` or as `integer!` (automatically promoted into float), or runtime error is produced |
 | `[percent!]` | Value must load as `percent!`, or runtime error is produced |
@@ -154,6 +152,8 @@ Allowed typesets so far are:
 | any of the above combined | Allows values of multiple types, e.g. `[float! integer!]` for numbers |
 | any of the above + `string!` or `file!` | If value is not loaded as the requested type, it's passed as string or file (no runtime error) |
 | any of the above + `block!`, e.g. `[file! block!]` | Collects a block of zero or more values of `file!` type (see [collection](#multiple-value-collection)) |
+| `[string!]`  | Value is passed as string |
+| no type specified | Value is passed as string |
 
 ### Aliases
 
