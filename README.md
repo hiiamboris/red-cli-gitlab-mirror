@@ -202,7 +202,8 @@ Options:
 
 ### Default arguments
 
-By default, `--help` (aliased to `-h`) and `--version` options are supported automatically, and do not require any effort.\ Use `/no-help` and `/no-version` arguments to suppress automatic addition, or alternatively just override them:
+By default, `--help` (aliased to `-h`) and `--version` options are supported automatically, and do not require any effort.\
+Use `/no-help` and `/no-version` arguments to suppress automatic addition, or alternatively just override them:
 ```
 program: func [
 	/version "Check up"
@@ -256,7 +257,7 @@ $ red program 1 2 3 4 5
 
 ### End of options
 
-Passing `--` to the command line marks the end of option processing and the rest is treated as operands. This is useful if you wish to accept e.g. file names beginning with hyphen:
+Passing `--` to the command line marks the end of option processing and the rest is treated as operands. This is useful if you wish to pass e.g. file names beginning with hyphen:
 ```
 program: function [a b c /x /y z] [print mold reduce [a b c x y z]]
 cli/process-into program
@@ -268,10 +269,11 @@ $ red program.red -- -x -- -y
 $ red program.red 1 -- -x --
 ["1" "-x" "--" false false none]
 ```
+You get this behavior out of the box and can't turn it off.
 
 ### Commands
 
-It's easy to pack multiple **commands** into a single program, just by calling `process-into` with a context of functions.\ 
+It's easy to pack multiple **commands** into a single program, just by calling `process-into` with a context of functions.\
 Nested contexts can be used to create sub-commands: 
 ```
 program: context [
