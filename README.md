@@ -391,3 +391,103 @@ ER_FEW Not enough operands given
 ```
 
 Format of runtime errors is `[code [word!] message [string!]]`, codes can be found [in the source](https://gitlab.com/hiiamboris/red-cli/-/blob/0274075b39e9248375f373d774c2b259ccfd6d65/cli.red#L80-89)
+
+
+### Documentation generators
+
+These you can use to produce help output when needed and modify it when necessary before printing:
+```
+>> ? cli/help-for
+USAGE:
+     HELP-FOR 'program
+
+DESCRIPTION:
+     Returns help text (version and syntax) for the PROGRAM.
+     HELP-FOR is a function! value.
+
+ARGUMENTS:
+     'program     [word! path!] "May refer to a function or context."
+
+REFINEMENTS:
+     /no-version  => Suppress automatic creation of --version argument.
+     /no-help     => Suppress automatic creation of --help and -h arguments.
+     /name        => Overrides program name.
+        pname        [string!]
+     /exename     => Overrides executable name.
+        xname        [string!]
+     /version     => Overrides version.
+        ver          [tuple! string!]
+     /post-scriptum => Add custom explanation after the syntax.
+        pstext       [string!]
+     /columns     => Specify widths of columns: indent, short option, long option, argument, description.
+        cols         [block!]
+     /options     => Specify all the above options as a block.
+        opts         [block! map! none!]
+        
+```
+---
+```        
+>> ? cli/version-for
+USAGE:
+     VERSION-FOR 'program
+
+DESCRIPTION:
+     Returns version text for the PROGRAM.
+     VERSION-FOR is a function! value.
+
+ARGUMENTS:
+     'program     [word! path!] "May refer to a function or context."
+
+REFINEMENTS:
+     /name        => Overrides program name.
+        pname        [string!]
+     /version     => Overrides version.
+        ver          [tuple! string!]
+     /brief       => Include only the essential info.
+     /options     => Specify all the above options as a block.
+        opts         [block! map! none!]
+```
+---        
+```
+>> ? cli/syntax-for
+USAGE:
+     SYNTAX-FOR 'program
+
+DESCRIPTION:
+     Returns usage text for the PROGRAM.
+     SYNTAX-FOR is a function! value.
+
+ARGUMENTS:
+     'program     [word! path!] "May refer to a function or context."
+
+REFINEMENTS:
+     /no-version  => Suppress automatic creation of --version argument.
+     /no-help     => Suppress automatic creation of --help and -h arguments.
+     /columns     => Specify widths of columns: indent, short option, long option, argument, description.
+        cols         [block!]
+     /exename     => Overrides executable name.
+        xname        [string!]
+     /post-scriptum => Add custom explanation after the syntax.
+        pstext       [string!]
+     /options     => Specify all the above options as a block.
+        opts         [block! map! none!]
+```        
+---
+```        
+>> ? cli/synopsis-for
+USAGE:
+     SYNOPSIS-FOR 'program
+
+DESCRIPTION:
+     Returns short synopsis line for the PROGRAM.
+     SYNOPSIS-FOR is a function! value.
+
+ARGUMENTS:
+     'program     [word! path!] "Must refer to a function."
+
+REFINEMENTS:
+     /exename     => Overrides executable name.
+        xname        [string!]
+     /options     => Specify all the above options as a block.
+        opts         [block! map! none!]
+```

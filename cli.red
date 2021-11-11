@@ -906,8 +906,8 @@ cli: context [
 
 
 	help-for: function [
-		"Returns help text for the PROGRAM"
-		'program	[word! path!]
+		"Returns help text (version and syntax) for the PROGRAM"
+		'program	[word! path!] "May refer to a function or context"
 		/no-version				"Suppress automatic creation of --version argument"
 		/no-help				"Suppress automatic creation of --help and -h arguments"
 		/name					"Overrides program name"
