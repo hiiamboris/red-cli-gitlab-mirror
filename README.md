@@ -21,6 +21,7 @@ Navigate:
 + [Commands](#commands)
 + [Shortcut options](#shortcut-options)
 + [More info](#more-info)
++ [Documentation generators](#documentation-generators)
 
 Old design docs can be found [here](design.md).
 
