@@ -1013,6 +1013,9 @@ cli: context [
 				]
 				complain [ER_CMD "Unknown command:" form word]
 			]
+			(function? get/any program) else form rejoin [
+				"Word " program " must refer to a function, not " type? get/any program
+			]
 
 			call: compose/deep [ (program) [] [] ]						;-- where to collect processed args: [path operands options]
 			arg-blk: extract-args/options arg-blk (program) opts		;-- turn command line into a block of known format
