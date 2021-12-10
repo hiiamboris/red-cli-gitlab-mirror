@@ -27,6 +27,8 @@ Red [
 
 ;; ████████████  DEBUGGING FACILITIES  ████████████
 
+#local [												;-- don't override global assert
+
 #macro [#debug 'on]  func [s e] [debug: on  []]
 #macro [#debug 'off] func [s e] [debug: off []]
 #macro [#debug block!] func [[manual] s e] [remove s either debug [remove insert s s/1][remove s] s]
@@ -1223,3 +1225,5 @@ cli: context [
 
 ];; cli: context
 ];; do expand-directives
+
+];; #local
