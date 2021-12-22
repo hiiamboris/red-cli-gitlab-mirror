@@ -1,8 +1,8 @@
-= Simple & powerful command line argument validation system for http://red-lang.org/[Red]
+= Simple & powerful command line argument validation system
 
-== link:mockups/[--> EXAMPLES HERE <--]
+== link:https://gitlab.com/hiiamboris/red-cli/-/tree/master/mockups/[--> EXAMPLES HERE <--]
 
-Prefer to learn by example? Start with the link:mockups/sing/cli-sing.red[drinking song] and find your way from there.
+Prefer to learn by example? Start with the link:https://gitlab.com/hiiamboris/red-cli/-/tree/master/mockups/sing/cli-sing.red[drinking song] and find your way from there.
 
 == Usage
 
