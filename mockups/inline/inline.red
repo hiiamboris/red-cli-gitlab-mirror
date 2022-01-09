@@ -44,6 +44,18 @@ skip-string: function [input [string!]] [
 	end
 ]
 
+skip-macro: function [input [string!]] [				;-- without it, may hang on `#macro [] func [...]
+	if p: find/match/tail input "#macro" [
+		set [_: p:] transcode/next p
+		set [token: p:] transcode/next p
+		if token = 'func [
+			set [_: p:] transcode/next p				;-- spec
+			set [_: p:] transcode/next p				;-- body
+		]
+	]
+	any [p input]
+]
+
 handle-include: function [input [string!]] [
 	end: find/match/tail input "#include"
 	attempt [set [file: end:] transcode/next end]		;-- may fail on "]"
@@ -84,6 +96,7 @@ inline: function [text [string!]][
 	|	if (not keep-assert?) ahead "#assert" p: (p: remove-assert p) :p
 	|	ahead [any "%" "{" | {"}] p: (p: skip-string p) :p
 	|	ahead ";" p: (p: skip-comment p) :p 
+	|	ahead "#macro" p: (p: skip-macro p) :p 
 	|	skip
 	]]
 	r
