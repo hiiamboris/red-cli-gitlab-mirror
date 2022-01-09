@@ -71,7 +71,7 @@ handle-include: function [input [string!]] [
 	]
 	text: inline text
 	remove/part input end
-	end: insert insert insert input "do [" text "]"		;-- make it compatible with `x: #include y` expressions
+	end: insert input text
 	
 	take/last indent
 	change-dir old-path
@@ -98,7 +98,7 @@ inline-tool: function [
 ][
 	set 'keep-assert? assert
 	;; inlining is textual, because often `mold/all` doesn't round-trip with `load`
-	print ["master script: "(clean-path to-red-file script)]
+	print ["master script:"(clean-path to-red-file script)]
 	write output inline read script
 	print "done!"
 ]
