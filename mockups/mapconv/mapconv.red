@@ -14,6 +14,7 @@ do [
 
 data: []
 total: 0x0
+width: 0
 
 is-dir?: func [file [file!]] [none <> query dirize file]
 
@@ -27,6 +28,11 @@ tracer: function [
     token [any-type!]
 ][
 	[prescan open close error]
+	on-error: [
+		change skip tail data -2 yes
+		input: next input
+		return no									;-- needed for lexer regressions
+	]
 	switch event [
 		prescan [
 			if all [datatype? type  find map+datatype! type] [		;-- both #() and #[] here
@@ -40,17 +46,14 @@ tracer: function [
 		close [
 			if all [datatype? type  find any-list! type] [
 				s: take/last open  e: index? input
+				unless s on-error
 				p: at head input s
 				if #"#" = p/-1 [
 					repend last data [line  to char! p/1  s  e]
 				]
 			]
 		]
-		error [
-			change skip tail data -2 yes
-			input: next input
-			return no									;-- needed for lexer regressions
-		]
+		error [do on-error]
 	]
 	true
 ]
@@ -62,10 +65,10 @@ display: function [] [
 		parens: count match #"("
 		set 'total total + as-pair blocks parens
 		errors?: pick [" WARNING: HAS LOADING ERRORS!" ""] errors?
-		print `"(to-local-file file): #[(blocks)] #(\(parens))(errors?)"`
+		print pad `"(to-local-file file): #[(blocks)] #(\(parens))(errors?)"` width
 	]
 	n: (length? data) / 3
-	print `"Total: #[(total/1)] #(\(total/2)) across (n) files"`
+	print pad `"Total: #[(total/1)] #(\(total/2)) across (n) files"` width
 ]
 
 swap: function [] [
@@ -78,12 +81,12 @@ swap: function [] [
 			change at bin e select "])]" to char! bin/:e
 		] 
 		errors?: pick [" WARNING: HAS LOADING ERRORS!" ""] errors?
-		print `"written (to-local-file file)(errors?)"`
+		print pad `"written (to-local-file file)(errors?)"` width
 		write/binary file bin
 		modified: modified + 1
 	]
 	n: (length? data) / 3
-	print `"Written total (modified) of (n) files"`
+	print pad `"Written total (modified) of (n) files"` width
 ]
 
 mapconv: function [
@@ -99,11 +102,17 @@ mapconv: function [
 	][
 		set [root mask] split-path root					;-- e.g. /path/*.xyz
 	]
-	files: glob/files/from/only root as {} mask
+	files: either not empty? intersect "*?" as "" mask [
+		glob/files/from/only root as {} mask
+	][
+		reduce [rejoin [dirize root mask]]				;-- no globbing if a single file
+	]
 	saved-dir: what-dir
 	change-dir root
 	
+	set 'width any [attempt [system/console/size/x - 1] 80]
 	foreach file files [
+		prin rejoin [pad rejoin [to-local-file file "..."] width - 3 cr]
 		repend data [file no copy []]
 		clear open
 		transcode/trace read/binary file :tracer
