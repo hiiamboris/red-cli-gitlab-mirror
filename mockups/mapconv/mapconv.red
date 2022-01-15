@@ -31,7 +31,7 @@ tracer: function [
 	on-error: [
 		change skip tail data -2 yes
 		input: next input
-		return no									;-- needed for lexer regressions
+		return no										;-- needed for lexer regressions
 	]
 	switch event [
 		prescan [
@@ -46,7 +46,7 @@ tracer: function [
 		close [
 			if all [datatype? type  find any-list! type] [
 				s: take/last open  e: index? input
-				unless s on-error
+				unless s on-error						;-- unbalanced brackets or free-form file?
 				p: at head input s
 				if #"#" = p/-1 [
 					repend last data [line  to char! p/1  s  e]
@@ -115,7 +115,9 @@ mapconv: function [
 		prin rejoin [pad rejoin [to-local-file file "..."] width - 3 cr]
 		repend data [file no copy []]
 		clear open
-		transcode/trace read/binary file :tracer
+		bin: read/binary file
+		parse bin [to ["Red" any ws block!] bin:]		;-- try to ignore what's before the header, e.g. #/bin/red
+		transcode/trace bin :tracer						;-- but still process if no header was found (maybe a headerless script)
 	]
 	
 	unless convert [display]
