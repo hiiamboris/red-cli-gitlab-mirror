@@ -10,7 +10,7 @@ do [
 #include %/d/devel/red/common/glob.red
 #include %/d/devel/red/common/composite.red
 #include %/d/devel/red/common/count.red
-#include %/d/devel/red/cli/cli.red
+;#include %/d/devel/red/cli/cli.red
 
 data: []
 total: 0x0
