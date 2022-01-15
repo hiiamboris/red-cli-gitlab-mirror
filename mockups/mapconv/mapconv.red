@@ -111,6 +111,7 @@ mapconv: function [
 	change-dir root
 	
 	set 'width any [attempt [system/console/size/x - 1] 80]
+	ws: charset " ^-^M^/"
 	foreach file files [
 		prin rejoin [pad rejoin [to-local-file file "..."] width - 3 cr]
 		repend data [file no copy []]
