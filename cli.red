@@ -4,16 +4,15 @@ Red [
 	File: 		%cli.red
 	Version:	20/01/2020
 	Tabs:		4
-	Rights:		"Copyright (C) 2011-2020 Red Foundation. All rights reserved."
+	Rights:		"Copyright (C) 2011-2021 Red Foundation. All rights reserved."
 	Homepage:	https://gitlab.com/hiiamboris/red-cli
 	License: {
 		Distributed under the Boost Software License, Version 1.0.
 		See https://github.com/red/red/blob/master/BSL-License.txt
 	}
 	Bugs: {
-		- Red does not support system/script/header, so
-		  don't expect values from it to be automatically fetched yet
-		  unless you make this object yourself
+		- Red supports system/script/header but only a very limited implementation,
+		  so you may have to explicitly set header fields after all #includes
 		- When compiled, words lose their case info, so
 		  if program name is generated from a word, it will always be in lower case
 	}
@@ -23,7 +22,6 @@ Red [
 	}
 ]
 
-;@@ TODO: use function flags block to let some refinements ignore the number of operands (e.g. --help) ?
 
 ;; ████████████  DEBUGGING FACILITIES  ████████████
 
@@ -585,7 +583,7 @@ cli: context [
 		is-help-version?: [								;-- use default -h / --version when allowed
 			case [
 				find ["h" "help"] arg-name [
-					unless no-help [argname: "help"]	;-- expand -h into --help
+					unless no-help [arg-name: "help"]	;-- expand -h into --help
 				]
 				arg-name = "version" [not no-version]
 			]
@@ -669,6 +667,7 @@ cli: context [
 
 	;; ████████████  DEFAULT FORMATTERS  ████████████
 
+	dehyphenize: func [x] [replace/all form x #"-" #" "]
 
 	version-for: function [
 		"Returns version text for the PROGRAM"
@@ -687,13 +686,12 @@ cli: context [
 
 		standalone?: none? system/options/script		;@@ is there a better way to check?
 
-		do [dehyphenize: func [x] [replace/all form x #"-" #" "]]	;@@ DO for compiler
 		pname: form any [
 			pname										;-- when explicitly provided
 			attempt [system/script/title]
 			attempt [system/script/header/title]
 			attempt [dehyphenize first program]			;-- first item in the path: program/command/...
-			do [dehyphenize program]					;-- the word itself ;@@ DO for compiler
+			dehyphenize program							;-- the word itself
 			;-- reminder: do not use exe name as program name (it can be renamed easily by the user)
 		]
 
@@ -769,7 +767,7 @@ cli: context [
 		
 		foreach [name doc types] spec [					;-- list operands:
 			if none? types [break]							;-- stop right after the last operand
-			repend r [" " do [decorate-operand name types]]		;-- append every operand as "<name>"
+			repend r [" " decorate-operand name types]		;-- append every operand as "<name>"
 		]
 		append r "^/"
 	]
@@ -887,9 +885,9 @@ cli: context [
 				either committed? [						;-- an operand?
 					if empty? doc [continue]				;-- skip operands without description
 					s-opts: copy ""							;-- leave "--flag" column empty
-					s-arg: do [decorate-operand names types]	;-- "<name>" or "[name]" ;@@ DO for compiler
+					s-arg: decorate-operand names types		;-- "<name>" or "[name]"
 				][										;-- an option then ("--flag" part was filled above)
-					s-arg: do [decorate-operand names none]		;-- always as "<name>" ;@@ DO for compiler
+					s-arg: decorate-operand names none		;-- always as "<name>"
 				]
 				s-doc: case [							;-- combine `doc` with that of `--option` (if any)
 					committed? [copy doc]					;-- "      <arg> Arg description"
