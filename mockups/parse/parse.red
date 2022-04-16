@@ -23,6 +23,7 @@ parse-tool: function [
 	/lines   "Parse input line-by-line (default: as a single string)"
 	/enum    "Display line numbers together with the text (implies /lines)"
 	; /case    "Use case-sensitive comparison"	;@@ BUG: always applies - #4862
+	/count   "Count matches and display the number"
 	/collect "Collect matches and print to the console"
 	/write   "Write the contents back (incompatible with --collect)"
 	/verbose "Verbose output"
@@ -30,6 +31,7 @@ parse-tool: function [
 	/h       "Display synopsis and exit"
 	/l "alias /lines"
 	/e "alias /enum"
+	/n "alias /count"
 	/c "alias /collect"
 	/v "alias /verbose"
 	/w "alias /write"
@@ -48,6 +50,7 @@ parse-tool: function [
 			if verbose [print ["Applying rule to" length? lines "lines"]]
 			marker: either all [marker marker/-2 = "#^M"] ["^M^/"]["^/"]	;-- determine the type of new-lines used
 		]
+		count: if count [0]
 		result: []
 		either lines [
 			repeat i length? lines [
@@ -55,12 +58,16 @@ parse-tool: function [
 				set 'line-number i							;-- expose line-number to rule (e.g. `keep (line-number)`)
 				either collect [
 					append result parse line rule
-				][
+				][ 
 					parse line [(ok?: no) rule (ok?: yes)]
 					if ok? [
-						unless write [
-							if enum [prin line-number prin "^-"]
-							print to "" line
+						either count [
+							count: count + 1
+						][
+							unless write [
+								if enum [prin line-number prin "^-"]
+								print to "" line
+							]
 						]
 					]
 				]
@@ -75,21 +82,27 @@ parse-tool: function [
 					system/words/write/binary input new
 				]
 			]
+			if count [print "Total" count "matches found"]
 		][
-			if write [old: copy data]
-			result: parse data [rule (ok?: yes)]
-			if collect [probe new-line/all bin2str result yes]
-			if all [write  not old == data] [
-				if verbose [print "Contents have changed. Writing back."]
-				system/words/write/binary input data
+			either count [
+				parse data [any [rule (count: count + 1) | skip]]
+				print ["Total" count "matches found"]
+			][
+				if write [old: copy data]
+				result: parse data [rule (ok?: yes)]
+				if collect [probe new-line/all bin2str result yes]
+				if all [write  not old == data] [
+					if verbose [print "Contents have changed. Writing back."]
+					system/words/write/binary input data
+				]
+				if verbose [print ["Parsing result:" pick ["success" "failure"] ok? = yes]]
+				unless ok? [quit/return 1]
 			]
-			if verbose [print ["Parsing result:" pick ["success" "failure"] ok? = yes]]
-			unless ok? [quit/return 1]
 		]
 		quit/return 0
 	][
 		print e
-		quit/return 999
+		quit/return 2
 	]
 ]
 
@@ -121,6 +134,10 @@ Parse tool works in 2 modes: LINE mode and FILE mode
    If WRITE option is provided, and RULE changes the input,
    file contents is also written back to the file.
    (useful to modify the file)
+   
+   If COUNT option is provided, RULE is matched any number of times
+   and total number of matches is shown.
+   (useful to obtain statistics)
 
 2. In LINE mode, it splits text into lines, then matches RULE against every line.
 
@@ -131,6 +148,9 @@ Parse tool works in 2 modes: LINE mode and FILE mode
    file contents is written back to the file and no output is made.
    (useful to modify a file that is line-oriented)
 
+   If COUNT option is provided, number of matching lines is shown.
+   (useful to obtain line statistics)
+   
    Otherwise, it prints each line that matches the RULE.
    (useful to filter the lines)
 
