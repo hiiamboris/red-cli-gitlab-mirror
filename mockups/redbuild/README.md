@@ -1,5 +1,7 @@
 # RedBuild & RedBuildGUI
 
+Prerequisites for both: `git` installed and available from PATH, sources downloaded somewhere.
+
 - `redbuild` provides automation for building Red from sources.
 
 Pre-built binaries: [Windows](redbuild.exe), [Linux 32-bit](redbuild), [Mac 32-bit](redbuild-mac)
@@ -24,8 +26,6 @@ Options:
       --version                   Display program version and exit
   -h, --help                      Display this help text and exit
 ```
-
-Prerequisites: `git` installed and available from PATH, sources downloaded somewhere.
 
 Usage example: `redbuild cli -m view -b master -s %root%\red\source -o %root%\red\builds --shortcut %root%\bin\redd.exe -d` will build a debug version of CLI console with View module included on top of the `master` branch, shoving the output into `builds` directory and adding a handy `redd` shortcut.
 
