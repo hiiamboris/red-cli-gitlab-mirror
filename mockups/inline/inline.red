@@ -56,6 +56,13 @@ skip-macro: function [input [string!]] [				;-- without it, may hang on `#macro 
 	any [p input]
 ]
 
+remove-process: function [input [string!]] [			;-- disarm #process off/on directive, to be able to expand the source
+	if p: find/match/tail input "#process" [
+		set [_: p:] transcode/next p					;-- skip off/on
+	]
+	any [p input]
+]
+
 handle-include: function [input [string!]] [
 	end: find/match/tail input "#include"
 	attempt [set [file: end:] transcode/next end]		;-- may fail on "]"
@@ -96,7 +103,8 @@ inline: function [text [string!]][
 	|	if (not keep-assert?) ahead "#assert" p: (p: remove-assert p) :p
 	|	ahead [any "%" "{" | {"}] p: (p: skip-string p) :p
 	|	ahead ";" p: (p: skip-comment p) :p 
-	|	ahead "#macro" p: (p: skip-macro p) :p 
+	|	ahead "#macro" p: (p: skip-macro p) :p
+	|	ahead "#process" p: (p: remove-process p) :p 
 	|	skip
 	]]
 	r
@@ -107,12 +115,19 @@ inline-tool: function [
 	script [file!] "Source .red script"
 	output [file!] "Output with all of it's dependencies embedded"
 	/assert        "Do not strip #assert directives"
+	/expand        "Expand (preprocess) the output; involves LOAD!"
+	/t platform    "Specify target platform"
 	/a "alias /assert"
+	/e "alias /expand"
 ][
 	set 'keep-assert? assert
+	if platform [system/platform: load platform]
 	;; inlining is textual, because often `mold/all` doesn't round-trip with `load`
 	print ["master script:"(clean-path to-red-file script)]
-	write output inline read script
+	result: inline read script
+	;@@ why the hell double expand is required??
+	if expand [result: mold/only expand-directives expand-directives load result]
+	write output result
 	print "done!"
 ]
 
