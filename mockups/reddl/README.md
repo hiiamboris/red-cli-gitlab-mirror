@@ -2,6 +2,8 @@
 
 `reddl` automates download of pre-compiled Red binaries.
 
+Pre-built binaries: [Windows](reddl.exe), [Linux 32-bit](reddl), [Mac 32-bit](reddl-mac)
+
 ```
 $ reddl --help
 reddl 14-Aug-2022 Automate Red downloads

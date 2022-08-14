@@ -2,6 +2,8 @@
 
 - `redbuild` provides automation for building Red from sources.
 
+Pre-built binaries: [Windows](redbuild.exe), [Linux 32-bit](redbuild), [Mac 32-bit](redbuild-mac)
+
 ```
 $ redbuild --help
 red build 14-Aug-2022 Build CLI or GUI Red console from sources
@@ -28,6 +30,8 @@ Usage example: `redbuild cli -m view -b master -s %root%\red\source -o %root%\re
 ---
 
 - `redbuildgui` is a newbies interface to it, allowing one to compile Red with zero knowledge of the process.
+
+Pre-built binaries: [Windows](redbuildgui.exe), [Linux 32-bit](redbuildgui), [Mac 32-bit](redbuildgui-mac)
 
 ![](https://i.gyazo.com/ccd6045afe019fb46f1771f2030f1586.png)
 
