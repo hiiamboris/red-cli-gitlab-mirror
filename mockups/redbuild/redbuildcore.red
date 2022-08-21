@@ -85,6 +85,9 @@ red-build: function compose [
 	hexd: charset "0123456789abcdefABCDEF"
 	call/wait/output `"(gitcmd) log -1 --format=%h/%cs"` commit: clear {}
 	trim/lines commit
+	if find commit "%cs" [
+		ragequit 1 "Your git version is too ancient! Please update it"
+	]
 	unless parse commit [copy hash 7 hexd any hexd "/" copy date to end] [
 		ragequit 1 `"Cannot get commit info! Got (commit)"`
 	]
