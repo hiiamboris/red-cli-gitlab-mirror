@@ -2,6 +2,10 @@
 
 The tool you need to compile scripts with multiple dependencies.
 
+Download binaries:
+- [Win32](inline.exe)
+- [Linux x86](inline)
+
 ```
 $ inline --help
 inline tool 9-Jan-2022 Prepare script for compilation by embedding all of it's dependencies
