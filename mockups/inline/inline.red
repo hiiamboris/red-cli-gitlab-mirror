@@ -126,7 +126,7 @@ inline-tool: function [
 	print ["master script:"(clean-path to-red-file script)]
 	result: inline read script
 	;@@ why the hell double expand is required??
-	if expand [result: mold/only expand-directives expand-directives load result]
+	if expand [result: mold/all/only expand-directives expand-directives load result]
 	write output result
 	print "done!"
 ]
