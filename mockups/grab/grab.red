@@ -15,6 +15,7 @@ Red [
 
 dpi: (any [system/view/metrics/dpi 96]) / 96
 
+;; color change detector
 contrast?: func [c1 [tuple!] c2 [tuple!]] [
 	make integer! not all [
 		50 >= absolute c1/1 - c2/1
@@ -23,6 +24,7 @@ contrast?: func [c1 [tuple!] c2 [tuple!]] [
 	]
 ]
 
+;; corner snapper
 snap: function [img [image!] xy [pair!]] [
 	w:  32
 	xy: xy * dpi
@@ -41,9 +43,7 @@ snap: function [img [image!] xy [pair!]] [
 				eb: contrast? c01 c11
 				edges: reduce [el et er eb]
 				corner?: find/only [[1 1 0 0] [0 1 1 0] [0 0 1 1] [1 0 0 1]] edges
-				if corner? [
-					keep reduce [xy' distance? xy xy']
-				]
+				if corner? [keep reduce [xy' distance? xy xy']]
 			]
 		]
 	]
