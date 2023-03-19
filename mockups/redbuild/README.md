@@ -5,15 +5,14 @@ Prerequisites for both:
 - [Rebol 2](http://www.rebol.com/downloads.html) for your OS installed and available from PATH 
 
 
-- `redbuildgui` is a newbies interface to it, allowing one to compile Red with zero knowledge of the process.
+### `redbuildgui` is a newbies interface to `redbuild`, allowing one to compile Red with zero knowledge of the process.
 
 Pre-built binaries: [Windows](redbuildgui.exe), [Linux 32-bit](redbuildgui), [Mac 32-bit](redbuildgui-mac)
 
 ![](https://i.gyazo.com/ccd6045afe019fb46f1771f2030f1586.png)
 
----
 
-- `redbuild` provides automation for building Red from sources.
+### `redbuild` provides automation for building Red from sources.
 
 Pre-built binaries: [Windows](redbuild.exe), [Linux 32-bit](redbuild), [Mac 32-bit](redbuild-mac)
 
