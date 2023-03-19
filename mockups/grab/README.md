@@ -5,7 +5,7 @@ that leverages GUI+CLI mixed mode (I externalized this functionality as [console
 Build it with `build-grab.red` script. Make a shortcut to the exe with desired options and put it into a toolbar or somewhere.
 
 ```
-grab 5-Jan-2020
+grab 19-Mar-2023 Screen grabber demo
 
 Syntax: grab [options]
 
@@ -15,7 +15,9 @@ Options:
                                   offset)
       --into        <dir>         Save image in a directory path (default:
                                   current directory)
-      --clip                      Copy image into clipboard as well
+      --select                    Interactively select an area (overrides
+                                  offset and size)
+      --clip                      Copy filename into clipboard as well
       --version                   Display program version and exit
   -h, --help                      Display this help text and exit
 ```
