@@ -65,8 +65,10 @@ grab: function [
 	/into dir	[file!] "Save image in a directory path (default: current directory)"
 	/select				"Interactively select an area (overrides offset and size)"
 	/clip				"Copy filename into clipboard as well"
+	/delay timeout [time! integer! float!] "Delay screen grab by the specified number of seconds"
 ][
 	do [
+		if delay [wait timeout]
 		shot: to-image screen: system/view/screens/1
 
 		ofs: any [ofs 0x0]
