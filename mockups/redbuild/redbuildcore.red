@@ -102,6 +102,12 @@ red-build: function compose [
 		save cpath source
 	]
 	
+	unless exists? dirize opath [make-dir/deep opath]
+	if scut [
+		clear find/last scpath: copy scut "/"
+		unless exists? dirize scpath [make-dir/deep scpath]
+	]
+	
 	;; build the console
 	suffix?:  either find ["Windows" "MSDOS"] target [".exe"][""]
 	d?:       when debug "d"
@@ -114,7 +120,7 @@ red-build: function compose [
 	; if scut [scut: `"(basename)(d?)(suffix?)"`  scut: opath/:scut]
 	rename?:  when scut (`"write/binary (mold scut) read/binary (mold exepath)"`)
 	redr:     spath/red.r
-	command: `{rebol --do "do/args (mold redr) {-r (-d?) -t (target) -o (to-local-file exepath) (to-local-file cpath)} (rename?) quit"}`
+	command: `{rebol -qs --do "do/args (mold redr) {-r (-d?) -t (target) -o (to-local-file exepath) (to-local-file cpath)} (rename?) quit"}`
 	print ["Executing:" command]
 	call/shell/console command
 ]
