@@ -20,6 +20,7 @@ Navigate:
 + [End of options](#end-of-options)
 + [Commands](#commands)
 + [Shortcut options](#shortcut-options)
++ [Script header](#script-header)
 + [More info](#more-info)
 + [Documentation generators](#documentation-generators)
 
@@ -344,6 +345,29 @@ Options:
       --version                   Display program version and exit
   -h, --help                      Display this help text and exit
 ```
+
+
+### Script header
+
+The following header fields are used to build default `--help` and `--version` output, so you might wanna fill them:
+```
+Red [
+	title:   "Used as 'program name' when not explicitly specified"
+	version: "When absent, script modification date or compilation date is used"
+	author:  "Who wrote the program"
+	rights:  "Who's the rights holder"
+	license: {
+		License text
+		may span multiple lines
+		<- but mind the indentation
+	}
+]
+```
+Additionally:
+- `system/platform` and `system/version` are used in Red version report in `--version`
+- `system/build/git/commit` when available nails down Red version further
+- name of the function (word or first item in path) is used as default program name (with hyphens replaced by spaces, so it's easy to create a name consisting of multiple words, e.g. `The-ultimate-program`)
+
 
 ### More info
 
