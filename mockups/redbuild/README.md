@@ -1,7 +1,8 @@
 # RedBuild & RedBuildGUI
 
 Prerequisites for both:
-- `git` installed and available from PATH, sources downloaded somewhere.
+- Red sources downloaded somewhere
+- [`git`](https://git-scm.com/downloads) installed and available from PATH
 - [Rebol 2](http://www.rebol.com/downloads.html) for your OS installed and available from PATH 
 
 
